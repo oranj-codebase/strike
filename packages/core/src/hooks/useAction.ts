@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { Action, type ActionAdapter } from '../api';
+import { Action, type ActionAdapter } from '../api/index.ts';
 import { unfurlUrlToActionApiUrl } from '../utils/url-mapper.ts';
 import { useActionsRegistryInterval } from './useActionRegistryInterval.ts';
 

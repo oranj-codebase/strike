@@ -1,4 +1,4 @@
-import { isUrlSameOrigin } from '../../shared';
+import { isUrlSameOrigin } from '../../shared/index.ts';
 import { proxify, proxifyImage } from '../../utils/proxify.ts';
 import type { ActionAdapter } from '../ActionConfig.ts';
 import type {
@@ -16,7 +16,7 @@ import {
   FormActionComponent,
   MultiValueActionComponent,
   SingleValueActionComponent,
-} from './action-components';
+} from './action-components/index.ts';
 
 const MULTI_VALUE_TYPES: ActionParameterType[] = ['checkbox'];
 

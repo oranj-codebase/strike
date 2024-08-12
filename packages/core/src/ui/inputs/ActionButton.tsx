@@ -1,5 +1,5 @@
 import { Button } from '../Button.tsx';
-import { CheckIcon, SpinnerDots } from '../icons';
+import { CheckIcon, SpinnerDots } from '../icons/index.ts';
 import type { BaseButtonProps } from './types.ts';
 
 export const ActionButton = ({

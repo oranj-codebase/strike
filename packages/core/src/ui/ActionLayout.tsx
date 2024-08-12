@@ -1,9 +1,15 @@
 import clsx from 'clsx';
 import { useState, type ReactNode } from 'react';
-import type { ExtendedActionState } from '../api';
+import type { ExtendedActionState } from '../api/index.ts';
 import { Badge } from './Badge.tsx';
 import { Snackbar } from './Snackbar.tsx';
-import { ExclamationShieldIcon, InfoShieldIcon, LinkIcon } from './icons';
+import {
+  ExclamationShieldIcon,
+  InfoShieldIcon,
+  LinkIcon,
+} from './icons/index.ts';
+import { ActionCheckboxGroup } from './inputs/ActionCheckboxGroup.tsx';
+import { ActionTextArea } from './inputs/ActionTextArea.tsx';
 import {
   ActionButton,
   ActionDateInput,
@@ -13,9 +19,7 @@ import {
   ActionSelect,
   ActionTextInput,
   ActionUrlInput,
-} from './inputs';
-import { ActionCheckboxGroup } from './inputs/ActionCheckboxGroup.tsx';
-import { ActionTextArea } from './inputs/ActionTextArea.tsx';
+} from './inputs/index.ts';
 import type { BaseButtonProps, BaseInputProps } from './inputs/types.ts';
 
 type ActionType = ExtendedActionState;

@@ -7,13 +7,16 @@ import {
   getExtendedWebsiteState,
   type ActionAdapter,
   type ActionCallbacksConfig,
-} from '../api';
-import { checkSecurity, type SecurityLevel } from '../shared';
-import { ActionContainer, type StylePreset } from '../ui';
-import { noop } from '../utils/constants';
+} from '../api/index.ts';
+import { checkSecurity, type SecurityLevel } from '../shared/index.ts';
+import { ActionContainer, type StylePreset } from '../ui/index.ts';
+import { noop } from '../utils/constants.ts';
 import { isInterstitial } from '../utils/interstitial-url.ts';
 import { proxify } from '../utils/proxify.ts';
-import { ActionsURLMapper, type ActionsJsonConfig } from '../utils/url-mapper';
+import {
+  ActionsURLMapper,
+  type ActionsJsonConfig,
+} from '../utils/url-mapper.ts';
 
 type ObserverSecurityLevel = SecurityLevel;
 

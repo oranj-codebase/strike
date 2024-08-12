@@ -1,5 +1,5 @@
 import { type ChangeEvent, useEffect, useId, useMemo, useState } from 'react';
-import { LinkIcon } from '../icons';
+import { LinkIcon } from '../icons/index.ts';
 import { ActionButton } from './ActionButton.tsx';
 import { BaseInputContainer } from './BaseInputContainer.tsx';
 import type { BaseInputProps } from './types.ts';

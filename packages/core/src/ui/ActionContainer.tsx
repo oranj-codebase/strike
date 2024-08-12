@@ -16,8 +16,8 @@ import {
   type ActionContext,
   type ActionPostResponse,
   type ExtendedActionState,
-} from '../api';
-import { checkSecurity, type SecurityLevel } from '../shared';
+} from '../api/index.ts';
+import { checkSecurity, type SecurityLevel } from '../shared/index.ts';
 import { isInterstitial } from '../utils/interstitial-url.ts';
 import {
   isPostRequestError,
@@ -28,7 +28,7 @@ import {
   DisclaimerType,
   type Disclaimer,
   type StylePreset,
-} from './ActionLayout';
+} from './ActionLayout.tsx';
 
 type ExecutionStatus = 'blocked' | 'idle' | 'executing' | 'success' | 'error';
 
