@@ -1,0 +1,51 @@
+{
+  "canisters": {
+    "blinks_icp_backend": {
+      "candid": "canisters/blinks_icp/blinks_icp.did",
+      "package": "blinks_icp",
+      "type": "rust",
+      "declarations": {
+        "node_compatibility": true
+      }
+    },
+    "blinks_icp_frontend": {
+      "dependencies": ["blinks_icp_backend"],
+      "source": ["apps/site/dist"],
+      "frontend": {
+        "entrypoint": "apps/site/dis/index.html"
+      },
+      "type": "assets",
+      "workspace": "@blinks-icp/site"
+    },
+    "internet_identity": {
+      "type": "custom",
+      "candid": "https://github.com/dfinity/internet-identity/releases/download/release-2023-11-17/internet_identity.did",
+      "wasm": "https://github.com/dfinity/internet-identity/releases/download/release-2023-11-17/internet_identity_dev.wasm.gz",
+      "remote": {
+        "id": {
+          "ic": "rdmx6-jaaaa-aaaaa-aaadq-cai",
+          "staging": "rdmx6-jaaaa-aaaaa-aaadq-cai"
+        }
+      },
+      "frontend": {}
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "networks": {
+    "local": {
+      "bind": "127.0.0.1:4943",
+      "type": "ephemeral"
+    },
+    "staging": {
+      "providers": ["https://icp0.io"],
+      "type": "persistent"
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}

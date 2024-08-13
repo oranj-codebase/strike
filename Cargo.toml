@@ -1,0 +1,3 @@
+[workspace]
+members = ["canisters/blinks_icp"]
+resolver = "2"

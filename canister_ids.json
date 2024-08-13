@@ -1,0 +1,10 @@
+{
+  "blinks_icp_backend": {
+    "ic": "h5fnl-4iaaa-aaaap-abddq-cai",
+    "staging": "quuas-aqaaa-aaaak-afcja-cai"
+  },
+  "blinks_icp_frontend": {
+    "ic": "gqljf-taaaa-aaaap-abdea-cai",
+    "staging": "q5xlo-wyaaa-aaaak-afciq-cai"
+  }
+}
