@@ -13,6 +13,7 @@
     "apps/*"
   ],
   "scripts": {
+    "dev:site": "yarn workspace @blinks-icp/site start",
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint"
