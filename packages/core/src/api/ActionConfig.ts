@@ -1,4 +1,4 @@
-import { Connection } from '@solana/web3.js';
+import { HttpAgent } from '@dfinity/agent';
 import { type Action } from './Action';
 import { AbstractActionComponent } from './Action/action-components';
 
@@ -31,20 +31,20 @@ export interface ActionAdapter {
 
 export class ActionConfig implements ActionAdapter {
   private static readonly CONFIRM_TIMEOUT_MS = 60000 * 1.2; // 20% extra time
-  private connection: Connection;
+  private agent: HttpAgent;
 
   constructor(
-    rpcUrlOrConnection: string | Connection,
+    hostOrAgent: string | HttpAgent,
     private adapter: IncomingActionConfig['adapter'],
   ) {
-    if (!rpcUrlOrConnection) {
-      throw new Error('rpcUrl or connection is required');
+    if (!hostOrAgent) {
+      throw new Error('rpcUrl or Agent is required');
     }
 
-    this.connection =
-      typeof rpcUrlOrConnection === 'string'
-        ? new Connection(rpcUrlOrConnection, 'confirmed')
-        : rpcUrlOrConnection;
+    this.agent =
+      typeof hostOrAgent === 'string'
+        ? new HttpAgent({ host: hostOrAgent })
+        : hostOrAgent;
   }
 
   async connect(context: ActionContext) {
@@ -59,45 +59,9 @@ export class ActionConfig implements ActionAdapter {
     return this.adapter.signTransaction(tx, context);
   }
 
-  confirmTransaction(signature: string): Promise<void> {
-    return new Promise<void>((res, rej) => {
-      const start = Date.now();
-
-      const confirm = async () => {
-        if (Date.now() - start >= ActionConfig.CONFIRM_TIMEOUT_MS) {
-          rej(new Error('Unable to confirm transaction: timeout reached'));
-          return;
-        }
-
-        try {
-          const status = await this.connection.getSignatureStatus(signature);
-
-          // if error present, transaction failed
-          if (status.value?.err) {
-            rej(
-              new Error(
-                `Transaction execution failed, check wallet for details`,
-              ),
-            );
-            return;
-          }
-
-          // if has confirmations, transaction is successful
-          if (status.value && status.value.confirmations !== null) {
-            res();
-            return;
-          }
-        } catch (e) {
-          console.error(
-            '[@dialectlabs/blinks] Error confirming transaction',
-            e,
-          );
-        }
-
-        setTimeout(confirm, 3000);
-      };
-
-      confirm();
+  confirmTransaction(_signature: string): Promise<void> {
+    return new Promise<void>((res) => {
+      res();
     });
   }
 }

@@ -5,18 +5,18 @@
  */
 
 /**
- * Protocol identifier for the Solana Actions protocol
+ * Protocol identifier for the ICP Actions protocol
  */
-export type SOLANA_ACTIONS_PROTOCOL = 'solana-action:';
+export type ICP_ACTIONS_PROTOCOL = 'icp-action:';
 
 /**
  * @internal
- * Protocol identifier for the Solana Pay protocol
+ * Protocol identifier for the ICP Pay protocol
  */
-export type SOLANA_PAY_PROTOCOL = 'solana:';
+export type ICP_PAY_PROTOCOL = 'icp:';
 
 /** @internal */
-export type SupportedProtocols = SOLANA_ACTIONS_PROTOCOL | SOLANA_PAY_PROTOCOL;
+export type SupportedProtocols = ICP_ACTIONS_PROTOCOL | ICP_PAY_PROTOCOL;
 
 /**
  * The `actions.json` instruct clients on what website URLs support
@@ -169,8 +169,8 @@ export interface ActionParameterSelectable<T extends ActionParameterType>
  * Response body payload sent via the Action POST Request
  */
 export interface ActionPostRequest<T = string> {
-  /** base58-encoded public key of an account that may sign the transaction */
-  account: string;
+  /** base58-encoded public key of an principal that may sign the transaction */
+  principal: string;
   /**
    * Key-value map of parameter values from user's input
    * - key - parameter name
@@ -182,7 +182,7 @@ export interface ActionPostRequest<T = string> {
 /**
  * Response body payload returned from the Action POST Request
  */
-export interface ActionPostResponse<T extends ActionType = ActionType> {
+export interface ActionPostResponse<_T extends ActionType = ActionType> {
   /** base64 encoded serialized transaction */
   transaction: string;
   /** describes the nature of the transaction */

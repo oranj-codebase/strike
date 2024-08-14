@@ -6,7 +6,7 @@ export interface SolanaPaySpecGetResponse {
 
 // POST
 export interface SolanaPaySpecPostRequestBody {
-  account: string; // transaction signer public key
+  principal: string; // transaction signer public key
 }
 
 export interface SolanaPaySpecPostResponse {

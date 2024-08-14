@@ -36,7 +36,12 @@ deploy-backend: build \
 	dfx deploy $(BACKEND)
 
 deploy-ii:
-	dfx deploy internet_identity
+	dfx deps pull
+	dfx deps init --argument '(null)' internet-identity
+	dfx deps deploy
+
+deploy-ledger:
+	dfx deploy icp_ledger_canister
 
 deploy: deploy-backend \
 	deploy-ii

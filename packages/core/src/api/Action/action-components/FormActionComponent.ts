@@ -25,7 +25,7 @@ export class FormActionComponent extends AbstractActionComponent {
   }
 
   // any, since we don't know the parameter names on the client level
-  protected buildBody(account: string): ActionPostRequest<any> {
+  protected buildBody(principal: string): ActionPostRequest<any> {
     const paramNames = Object.keys(this.parameterValues);
     const bodyParams: string[] = [];
 
@@ -37,7 +37,7 @@ export class FormActionComponent extends AbstractActionComponent {
 
     if (bodyParams.length > 0) {
       return {
-        account,
+        principal,
         data: Object.fromEntries(
           paramNames
             .filter((name) => bodyParams.includes(name))
@@ -46,7 +46,7 @@ export class FormActionComponent extends AbstractActionComponent {
       };
     }
 
-    return { account };
+    return { principal };
   }
 
   get href(): string {

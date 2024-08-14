@@ -29,13 +29,14 @@ export abstract class AbstractActionComponent {
 
   public abstract get href(): string;
 
-  protected abstract buildBody(account: string): ActionPostRequest;
+  protected abstract buildBody(principal: string): ActionPostRequest;
 
-  public async post(account: string) {
+  public async post(principal: string) {
     const proxyUrl = proxify(this.href);
+    console.log(principal, proxyUrl.toString());
     const response = await fetch(proxyUrl, {
       method: 'POST',
-      body: JSON.stringify(this.buildBody(account)),
+      body: JSON.stringify(this.buildBody(principal)),
       headers: {
         'Content-Type': 'application/json',
       },

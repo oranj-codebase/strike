@@ -23,13 +23,13 @@ export class SingleValueActionComponent extends AbstractActionComponent {
     return this._parentComponent ?? null;
   }
 
-  protected buildBody(account: string) {
+  protected buildBody(principal: string) {
     if (this._href.indexOf(`{${this.parameter.name}}`) > -1) {
-      return { account };
+      return { principal };
     }
 
     return {
-      account,
+      principal,
       params: {
         [this.parameter.name]: this.parameterValue,
       },

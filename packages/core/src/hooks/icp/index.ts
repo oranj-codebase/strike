@@ -1,0 +1,1 @@
+export { useActionICPWalletAdapter } from './useActionICPWalletAdapter';

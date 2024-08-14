@@ -359,14 +359,14 @@ export const ActionContainer = ({
     };
 
     try {
-      const account = await action.adapter.connect(context);
-      if (!account) {
+      const principal = await action.adapter.connect(context);
+      if (!principal) {
         dispatch({ type: ExecutionType.RESET });
         return;
       }
 
       const tx = await component
-        .post(account)
+        .post(principal)
         .catch((e: Error) => ({ error: e.message }));
 
       if (!(tx as ActionPostResponse).transaction || isPostRequestError(tx)) {
@@ -400,7 +400,7 @@ export const ActionContainer = ({
         // chain
         const nextAction = await action.chain(tx.links.next, {
           signature: signResult.signature,
-          account: account,
+          principal: principal,
         });
 
         if (!nextAction) {

@@ -42,7 +42,7 @@ impl Storable for BlinkRegistry {
 struct State {
     // Data that lives on the heap.
     // This is an example for data that would need to be serialized/deserialized
-    // on every upgrade for it to be persisted.
+    // on every upgrade for it to be persisted. it is kind of reserved
     data_on_the_heap: Vec<u8>,
 
     // Data stored in `StableVec` doesn't need to be

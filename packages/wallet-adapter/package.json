@@ -1,29 +1,12 @@
 {
-  "name": "@blinks-icp/core",
-  "version": "0.0.1",
-  "license": "Apache-2.0",
-  "private": false,
-  "sideEffects": true,
-  "type": "module",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/dialectlabs/blinks"
-  },
+  "name": "@blinks-icp/wallet-adapter",
+  "private": true,
+  "version": "0.0.0",
   "scripts": {
     "build": "tsup-node",
     "dev": "tsup-node --watch"
   },
-  "main": "src/index.ts",
-  "module": "src/index.ts",
-  "types": "src/index.ts",
-  "files": [
-    "dist"
-  ],
-  "dependencies": {
-    "clsx": "^2.1.1"
-  },
   "devDependencies": {
-    "@solana/actions-spec": "^2.2.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^7.16.1",
@@ -48,9 +31,6 @@
     "@dfinity/candid": "^1.3",
     "@dfinity/identity": "^1.3",
     "@dfinity/principal": "^1.3",
-    "@solana/wallet-adapter-react": "^0.15.0",
-    "@solana/wallet-adapter-react-ui": "^0.9.0",
-    "@solana/web3.js": "^1.95.1",
     "@ic-reactor/react": "^1.8.2",
     "react": ">=18",
     "react-dom": ">=18"
