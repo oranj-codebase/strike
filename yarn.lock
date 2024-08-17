@@ -155,7 +155,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.24.7"
 
-"@babel/runtime@^7", "@babel/runtime@^7.24.8":
+"@babel/runtime@^7.24.8":
   version "7.25.0"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.25.0.tgz#3af9a91c1b739c569d5d80cc917280919c544ecb"
   integrity sha512-7dRy4DwXwtzBrPbZflqxnvfxLF8kdZXPkhymtDeFoFqE6ldzjQFgYTtYIFARcLEYDrqfBfYcZt1WqFxRoyC9Rw==
@@ -587,25 +587,10 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/retry/-/retry-0.3.0.tgz#6d86b8cb322660f03d3f0aa94b99bdd8e172d570"
   integrity sha512-d2CGZR2o7fS6sWB7DG/3a95bGKQyHMACZ5aW8qGkkqQpUoZV6C0X7Pc7l4ZNMZkfNBf4VWNe9E1jRsf0G146Ew==
 
-"@ic-reactor/core@^1.8.0":
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/@ic-reactor/core/-/core-1.8.0.tgz#aa3568063395f85681e849efb655c4f5a3f862eb"
-  integrity sha512-5NhsCHKk8OF/ePCgGU9632dDM8AbCbOmKrCMle2tzpAAbueOsqH6pC8EY8LOIljAO0iMETpeKNLqI2E0OND4TA==
-  dependencies:
-    "@dfinity/agent" "^1.3"
-    "@dfinity/auth-client" "^1.3"
-    "@dfinity/candid" "^1.3"
-    "@dfinity/identity" "^1.3"
-    "@dfinity/principal" "^1.3"
-    zustand "^4.5"
-
-"@ic-reactor/react@^1.8.2":
-  version "1.8.2"
-  resolved "https://registry.yarnpkg.com/@ic-reactor/react/-/react-1.8.2.tgz#3b2288c4ab417b70c3746e98d90720b867af99c7"
-  integrity sha512-7pFq7o1gL+7eSts+pG5w+uPp0L3MoQr9BgfGJ4A3xb6UrRKY1sHQg/L+VSX1MLqVWgjXpBLVbCRjljrXpn0Cyw==
-  dependencies:
-    "@ic-reactor/core" "^1.8.0"
-    zustand-utils "^1.3"
+"@ic-reactor/parser@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@ic-reactor/parser/-/parser-0.4.0.tgz#52dd15dfbed82b327251232791d2185f04e48b1d"
+  integrity sha512-sd+9QwR4XiNnB8RwLXTljDb7Ydicmu4l3OMGSIMPwHr8vTb/Fgps5CIZXprKbTBWY5iZ8P19kCB9ssnRI1ARzA==
 
 "@isaacs/cliui@^8.0.2":
   version "8.0.2"
@@ -2488,7 +2473,7 @@ eyes@^0.1.8:
   resolved "https://registry.yarnpkg.com/eyes/-/eyes-0.1.8.tgz#62cf120234c683785d902348a800ef3e0cc20bc0"
   integrity sha512-GipyPsXO1anza0AOZdy69Im7hGFCNB7Y/NGjDlZGJ3GJJLtwNSb2vrzYrTYJRrRloVx7pl+bhUaTB8yiccPvFQ==
 
-fast-deep-equal@^3, fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3:
+fast-deep-equal@^3.1.1, fast-deep-equal@^3.1.3:
   version "3.1.3"
   resolved "https://registry.yarnpkg.com/fast-deep-equal/-/fast-deep-equal-3.1.3.tgz#3a7d56b559d6cbc3eb512325244e619a65c6c525"
   integrity sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==
@@ -4498,11 +4483,6 @@ use-isomorphic-layout-effect@^1.1.2:
   resolved "https://registry.yarnpkg.com/use-isomorphic-layout-effect/-/use-isomorphic-layout-effect-1.1.2.tgz#497cefb13d863d687b08477d9e5a164ad8c1a6fb"
   integrity sha512-49L8yCO3iGT/ZF9QttjwLF/ZD9Iwto5LnH5LmEdk/6cFmXddqi2ulF0edxTwjj+7mqvpVVGQWvbXZdn32wRSHA==
 
-use-sync-external-store@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.2.0.tgz#7dbefd6ef3fe4e767a0cf5d7287aacfb5846928a"
-  integrity sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==
-
 use-sync-external-store@^1.0.0:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.2.2.tgz#c3b6390f3a30eba13200d2302dcdf1e7b57b2ef9"
@@ -4689,18 +4669,3 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
-
-zustand-utils@^1.3:
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/zustand-utils/-/zustand-utils-1.3.2.tgz#d7881063f6a89cd6aea0c1a040989474cad70e45"
-  integrity sha512-c+X8whiqWKgl6r3jzzlNR6vp5ZHsqfIxbZN2uyv+GlqATKh//6GIneywm7tcq+8XZXINT8N9tnDH8npPdXDLEA==
-  dependencies:
-    "@babel/runtime" "^7"
-    fast-deep-equal "^3"
-
-zustand@^4.5:
-  version "4.5.4"
-  resolved "https://registry.yarnpkg.com/zustand/-/zustand-4.5.4.tgz#63abdd81edfb190bc61e0bbae045cc4d52158a05"
-  integrity sha512-/BPMyLKJPtFEvVL0E9E9BTUM63MNyhPGlvxk1XjrfWTUlV+BR8jufjsovHzrtR6YNcBEcL7cMHovL1n9xHawEg==
-  dependencies:
-    use-sync-external-store "1.2.0"

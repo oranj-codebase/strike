@@ -19,6 +19,8 @@ import {
 
 type Provider = IConnector;
 
+type SupporedProviders = "ii" | "plug" | "stoic" | "dfinity";
+
 export type RootContext = {
   host: string;
   dev: boolean;
@@ -247,7 +249,7 @@ const authStates: MachineConfig<RootContext, any, RootEvent> = {
       },
     },
     connected: {
-      entry: ["onConnect"],
+      entry: ["onConnected"],
       invoke: {
         id: "actorService",
         src: "actorService",
@@ -351,8 +353,27 @@ class Client {
     return sub.unsubscribe;
   }
 
-  connect(provider: any) {
+  connect(provider: string = "ii") {
     this._service.send({ type: "CONNECT", data: { provider } });
+  }
+
+  async connectAsync(provider: string = "ii") {
+    // TODO: handle previous connected provider
+
+    this._service.send({ type: "CONNECT", data: { provider } });
+
+    return new Promise<ConnectDoneEvent["data"]>((resolve, reject) => {
+      this._service.onTransition(({ event }) => {
+        console.log(event);
+        switch (event.type) {
+          case "CONNECT_DONE":
+            resolve(event.data);
+            break;
+          default:
+            reject(event);
+        }
+      });
+    });
   }
 
   cancelConnect() {
@@ -361,6 +382,10 @@ class Client {
 
   public disconnect() {
     this._service.send({ type: "DISCONNECT" });
+  }
+
+  public get agent() {
+    return new HttpAgent({ host: this.config.host });
   }
 
   public get providers() {
@@ -485,7 +510,6 @@ const createClient = ({
           // Initialize
           Object.keys(context.canisters).forEach(async (canisterName) => {
             const { canisterId, idlFactory } = context.canisters[canisterName];
-            // TODO: why type error
             const result = await context.activeProvider!.createActor(
               canisterId,
               idlFactory
@@ -498,24 +522,28 @@ const createClient = ({
         },
       },
       actions: {
-        onDisconnect: () => {
-          emitter.emit("disconnect");
-        },
         onInit: () => {
           emitter.emit("init");
         },
-        onConnect: (context, event: ConnectEvent) => {
+        onConnecting: () => {
+          emitter.emit("connecting");
+        },
+        onConnected: (
+          context,
+          event: ConnectDoneEvent | DoneAndConnectedEvent
+        ) => {
+          console.log("event", context, event);
           emitter.emit("connect", event.data);
           // TODO: check if works
           return assign({
             connectingProvider: event.data,
           });
         },
-        onConnecting: () => {
-          emitter.emit("connecting");
-        },
         onDisconnecting: () => {
           emitter.emit("disconnecting");
+        },
+        onDisconnect: () => {
+          emitter.emit("disconnect");
         },
       },
     }
@@ -524,6 +552,7 @@ const createClient = ({
   const service = interpret(rootMachine, { devTools: true });
 
   service.start();
+
   // @ts-ignore
   return new Client(service, emitter, config);
 };

@@ -1,4 +1,4 @@
-import { SOLANA_ACTION_PREFIX } from './constants';
+import { ICP_BLINK_PREFIX } from './constants';
 import { isInterstitial } from './interstitial-url';
 import { proxify } from './proxify';
 
@@ -91,8 +91,8 @@ export async function unfurlUrlToActionApiUrl(
   const url = new URL(actionUrl);
   const strUrl = actionUrl.toString();
   // case 1: if the URL is a solana action URL
-  if (SOLANA_ACTION_PREFIX.test(strUrl)) {
-    return strUrl.replace(SOLANA_ACTION_PREFIX, '');
+  if (ICP_BLINK_PREFIX.test(strUrl)) {
+    return strUrl.replace(ICP_BLINK_PREFIX, '');
   }
 
   // case 2: if the URL is an interstitial URL

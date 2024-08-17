@@ -67,6 +67,8 @@ export interface TypedAction<T extends ActionType = 'action'> {
   title: string;
   /** brief summary of the action to be performed */
   description: string;
+  /** canister id of the action */
+  canisterId: string;
   /** button text rendered to the user */
   label: string;
   /** UI state for the button being rendered to the user */
@@ -183,8 +185,10 @@ export interface ActionPostRequest<T = string> {
  * Response body payload returned from the Action POST Request
  */
 export interface ActionPostResponse<_T extends ActionType = ActionType> {
-  /** base64 encoded serialized transaction */
-  transaction: string;
+  canisterId: string;
+  /** method to do update call */
+  method: string;
+  parameters: string[];
   /** describes the nature of the transaction */
   message?: string;
   links?: {

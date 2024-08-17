@@ -1,2 +1,2 @@
 export const noop = () => {};
-export const SOLANA_ACTION_PREFIX = /^(solana-action:|solana:)/;
+export const ICP_BLINK_PREFIX = /^(icp-action:|icp:)/;

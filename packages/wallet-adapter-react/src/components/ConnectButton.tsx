@@ -1,4 +1,4 @@
-import React, { CSSProperties, PropsWithChildren } from "react";
+import React, { type CSSProperties, type PropsWithChildren } from "react";
 import { useConnect, useDialog } from "../index";
 
 //@ts-ignore

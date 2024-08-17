@@ -5,10 +5,11 @@ prepare:
 	rustup target add wasm32-unknown-unknown
 
 start:
-	dfx start --background --clean
+	dfx start --background
 
 start-clean:
-	dfx start --background
+	dfx start --background --clean
+	dfx canister create $(BACKEND)
 
 stop:
 	dfx stop

@@ -1,4 +1,4 @@
-import { SOLANA_ACTION_PREFIX } from './constants';
+import { ICP_BLINK_PREFIX } from './constants';
 
 export type IsInterstitialResult =
   | {
@@ -19,14 +19,11 @@ export function isInterstitial(url: string | URL): IsInterstitialResult {
     }
     const urlDecodedActionUrl = decodeURIComponent(actionUrl);
 
-    if (!SOLANA_ACTION_PREFIX.test(urlDecodedActionUrl)) {
+    if (!ICP_BLINK_PREFIX.test(urlDecodedActionUrl)) {
       return { isInterstitial: false };
     }
 
-    const decodedActionUrl = urlDecodedActionUrl.replace(
-      SOLANA_ACTION_PREFIX,
-      '',
-    );
+    const decodedActionUrl = urlDecodedActionUrl.replace(ICP_BLINK_PREFIX, '');
 
     // Validate the decoded action URL
     const decodedActionUrlObj = new URL(decodedActionUrl);

@@ -42,9 +42,8 @@ export const useConnect = (props: Props = {}) => {
     isDisconnecting:
       client._service.state?.matches({ idle: "disconnecting" }) ?? false,
     isIdle: client._service.state?.matches({ idle: "idle" }) ?? false,
-    connect: (provider: string) => {
-      client.connect(provider);
-    },
+    connect: (provider?: string) => client.connect(provider),
+    connectAsync: async (provider?: string) => client.connectAsync(provider),
     cancelConnect: () => {
       client.cancelConnect();
     },

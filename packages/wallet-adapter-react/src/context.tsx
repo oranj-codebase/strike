@@ -1,4 +1,4 @@
-import React, { createContext, useState, PropsWithChildren } from "react";
+import React, { createContext, useState, type PropsWithChildren } from "react";
 import type { Client } from "@blinks-icp/wallet-adapter";
 
 import "./style.css";

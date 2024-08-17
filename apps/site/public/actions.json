@@ -1,0 +1,33 @@
+{
+  "icon": "https://ucarecdn.com/e75cce91-c367-4f74-9ffe-2b6d63398ce1/-/preview/880x864/-/quality/smart/-/format/auto/",
+  "label": "Donate ICP",
+  "title": "Donate ICP",
+  "description": "Donate ICP to betBTC project",
+  "canisterId": "n5wcd-faaaa-aaaar-qaaea-cai",
+  "links": {
+    "actions": [
+      {
+        "label": "1 ICP",
+        "href": "/1.json"
+      },
+      {
+        "label": "5 ICP",
+        "href": "/action/5.json"
+      },
+      {
+        "label": "10 ICP",
+        "href": "/action/10.json"
+      },
+      {
+        "href": "/action/{amount}",
+        "label": "Donate",
+        "parameters": [
+          {
+            "name": "amount",
+            "label": "Enter a ICP amount"
+          }
+        ]
+      }
+    ]
+  }
+}

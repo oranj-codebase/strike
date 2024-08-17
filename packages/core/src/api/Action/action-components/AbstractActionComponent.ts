@@ -55,4 +55,27 @@ export abstract class AbstractActionComponent {
 
     return (await response.json()) as ActionPostResponse;
   }
+
+  public async get(_principal: string) {
+    const proxyUrl = proxify(this.href);
+    const response = await fetch(proxyUrl, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      const error = (await response.json()) as ActionError;
+      console.error(
+        `[@dialectlabs/blinks] Failed to execute action ${proxyUrl}, href ${this.href}, reason: ${error.message}`,
+      );
+
+      throw {
+        message: error.message,
+      } as ActionError;
+    }
+
+    return (await response.json()) as ActionPostResponse;
+  }
 }

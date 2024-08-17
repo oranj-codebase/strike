@@ -1,7 +1,8 @@
 'use client';
 
+import { useConnect, useDialog } from '@blinks-icp/wallet-adapter-react';
 import { HttpAgent } from '@dfinity/agent';
-import { useAuth } from '@ic-reactor/react';
+
 import { useMemo } from 'react';
 
 import { ActionConfig } from '../../api';
@@ -14,30 +15,28 @@ import { ActionConfig } from '../../api';
  * @param rpcUrlOrConnection
  * @see {Action}
  */
-export function useActionICPWalletAdapter({
-  agent,
-  identityProvider = 'https://identity.ic0.app',
-}: {
-  agent: HttpAgent;
-  identityProvider?: string;
-}) {
-  const { login, identity } = useAuth();
+export function useActionICPWalletAdapter({ agent }: { agent: HttpAgent }) {
+  const { isConnected, principal, connectAsync: _ } = useConnect();
+  const { open } = useDialog();
+
   const adapter = useMemo(() => {
     return new ActionConfig(agent, {
       connect: async () => {
-        if (identity) {
-          return identity.getPrincipal().toString();
+        if (isConnected) {
+          return principal!;
         }
 
         try {
-          await login({ identityProvider });
-        } catch {
+          // connect to the previous connector
+          // const { principal } = await connectAsync();
+          // return principal;
+          throw new Error('Should handle previous connector');
+          // return 'test-principal';
+        } catch (error) {
+          console.log(error);
+          open();
           return null;
         }
-
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-expect-error
-        return identity?.getPrincipal().toString() ?? null;
       },
       // ICP doesn't need
       signTransaction: async (txData: string) => {
@@ -48,7 +47,7 @@ export function useActionICPWalletAdapter({
         }
       },
     });
-  }, [agent, login, identity, identityProvider]);
+  }, [agent, isConnected, principal, open]);
 
   return { adapter };
 }

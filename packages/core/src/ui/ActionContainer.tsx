@@ -1,3 +1,5 @@
+import { useClient } from '@blinks-icp/wallet-adapter-react';
+import { fetchCandid } from '@dfinity/agent';
 import { useEffect, useMemo, useReducer, useState } from 'react';
 import {
   AbstractActionComponent,
@@ -14,15 +16,12 @@ import {
   SingleValueActionComponent,
   type ActionCallbacksConfig,
   type ActionContext,
-  type ActionPostResponse,
   type ExtendedActionState,
 } from '../api/index.ts';
 import { checkSecurity, type SecurityLevel } from '../shared/index.ts';
+import { candidToJS } from '../utils/blockchain.ts';
 import { isInterstitial } from '../utils/interstitial-url.ts';
-import {
-  isPostRequestError,
-  isSignTransactionError,
-} from '../utils/type-guards.ts';
+import { isPostRequestError } from '../utils/type-guards.ts';
 import {
   ActionLayout,
   DisclaimerType,
@@ -217,7 +216,8 @@ export const ActionContainer = ({
   // please do not use it yet, better api is coming..
   Experimental__ActionLayout?: typeof ActionLayout;
 }) => {
-  const [action, setAction] = useState(initialAction);
+  const [action] = useState(initialAction);
+  const client = useClient();
   const normalizedSecurityLevel: NormalizedSecurityLevel = useMemo(() => {
     if (typeof securityLevel === 'string') {
       return {
@@ -365,55 +365,51 @@ export const ActionContainer = ({
         return;
       }
 
-      const tx = await component
-        .post(principal)
+      const actionData = await component
+        .get(principal)
         .catch((e: Error) => ({ error: e.message }));
 
-      if (!(tx as ActionPostResponse).transaction || isPostRequestError(tx)) {
+      if (isPostRequestError(actionData)) {
         dispatch({
           type: ExecutionType.SOFT_RESET,
-          errorMessage: isPostRequestError(tx)
-            ? tx.error
+          errorMessage: isPostRequestError(actionData)
+            ? actionData.error
             : 'Transaction data missing',
         });
         return;
       }
+      // Fetch did and construct idlFactory
+      const did = await fetchCandid(actionData.canisterId, client.agent);
+      const js = await candidToJS(did);
+      const dataUri =
+        'data:text/javascript;charset=utf-8,' + encodeURIComponent(js);
+      const candid: any = await eval('import("' + dataUri + '")');
 
-      const signResult = await action.adapter.signTransaction(
-        tx.transaction,
-        context,
+      // Create actor
+      const actorResult = await client.activeProvider?.createActor(
+        actionData.canisterId,
+        candid.idlFactory,
       );
-
-      if (!signResult || isSignTransactionError(signResult)) {
-        dispatch({ type: ExecutionType.RESET });
-      } else {
-        await action.adapter.confirmTransaction(signResult.signature, context);
-
-        if (!tx.links?.next) {
-          dispatch({
-            type: ExecutionType.FINISH,
-            successMessage: tx.message,
-          });
-          return;
-        }
-
-        // chain
-        const nextAction = await action.chain(tx.links.next, {
-          signature: signResult.signature,
-          principal: principal,
-        });
-
-        if (!nextAction) {
-          dispatch({
-            type: ExecutionType.FINISH,
-            successMessage: tx.message,
-          });
-          return;
-        }
-
-        setAction(nextAction);
-        dispatch({ type: ExecutionType.RESET });
+      if (!actorResult) {
+        throw new Error('Actor not found');
       }
+      if (actorResult.isErr()) {
+        throw new Error('Unable to create actor');
+      }
+      const actor = actorResult.value;
+
+      // run action
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-expect-error
+      const result = await actor[actionData.method](...actionData.parameters);
+
+      // TODO: Handle next action
+
+      dispatch({
+        type: ExecutionType.FINISH,
+        successMessage: JSON.stringify(result),
+      });
+      return;
     } catch (e) {
       dispatch({
         type: ExecutionType.SOFT_RESET,
