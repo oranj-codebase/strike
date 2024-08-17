@@ -15,5 +15,9 @@ export default defineConfig([
     dts: {
       entry: ["src/index.ts", "src/providers/index.ts"],
     },
+    loader: {
+      ".png": "dataurl",
+      ".svg": "dataurl",
+    },
   },
 ]);

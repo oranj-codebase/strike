@@ -1,13 +1,13 @@
 {
   "icon": "https://ucarecdn.com/e75cce91-c367-4f74-9ffe-2b6d63398ce1/-/preview/880x864/-/quality/smart/-/format/auto/",
-  "label": "Donate ICP",
-  "title": "Donate ICP",
-  "description": "Donate ICP to betBTC project",
+  "label": "ckBTC Index Canister",
+  "title": "ckBTC Index Canister",
+  "description": "ckBTC Index Canister",
   "canisterId": "n5wcd-faaaa-aaaar-qaaea-cai",
   "links": {
     "actions": [
       {
-        "label": "1 ICP",
+        "label": "get ledger id",
         "href": "/1.json"
       },
       {

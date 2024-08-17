@@ -59,6 +59,10 @@ export class Action {
     });
   }
 
+  public get canisterId() {
+    return this._data.canisterId;
+  }
+
   public get isChained() {
     return this._chainMetadata.isChained;
   }
