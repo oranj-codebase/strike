@@ -1,10 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import {
-  Connect2ICProvider,
-  createClient,
-  defaultProviders,
-} from "@blinks-icp/wallet-adapter-react";
+import { Connect2ICProvider } from "@blinks-icp/wallet-adapter-react";
+import { createClient, defaultProviders } from "@blinks-icp/wallet-adapter";
 
 import App from "./App.tsx";
 import "./index.css";

@@ -3,16 +3,31 @@
   "author": "Mio Quispe",
   "private": false,
   "version": "0.2.0-beta.23",
-  "files": [
-    "dist",
-    "providers",
-    "style.css"
-  ],
   "type": "module",
-  "main": "src/index.ts",
-  "module": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    "./providers": {
+      "import": "./dist/providers/index.js",
+      "require": "./dist/providers/index.cjs",
+      "types": "./dist/providers/index.d.ts"
+    },
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./index.css": "./dist/index.css"
+  },
+  "files": [
+    "dist"
+  ],
   "sideEffects": true,
+  "scripts": {
+    "build": "tsup-node",
+    "dev": "tsup-node --watch"
+  },
   "dependencies": {
     "events": "^3.3.0",
     "neverthrow": "^5.0.0",
@@ -20,6 +35,7 @@
   },
   "devDependencies": {
     "@types/events": "^3.0.3",
+    "tsup": "^8.2.0",
     "typescript": "^5.5.3"
   },
   "peerDependencies": {

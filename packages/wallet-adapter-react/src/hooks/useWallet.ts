@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { useSelector } from "@xstate/react";
 import type { IConnector, IWalletConnector } from "@blinks-icp/wallet-adapter";
 

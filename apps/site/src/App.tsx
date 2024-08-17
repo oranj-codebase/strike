@@ -1,8 +1,7 @@
 import { HttpAgent } from "@dfinity/agent";
 import { Blink, useAction, useActionICPWalletAdapter } from "@blinks-icp/core";
-import { ConnectButton } from "@blinks-icp/wallet-adapter-react";
 
-import "@blinks-icp/core/dist/index.css";
+import "@blinks-icp/core/index.css";
 
 const App = () => {
   const url = "icp-action:http://localhost:5173/actions.json";

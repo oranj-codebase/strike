@@ -13,9 +13,32 @@
     "build": "tsup-node",
     "dev": "tsup-node --watch"
   },
-  "main": "src/index.ts",
-  "module": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    "./ext/twitter": {
+      "import": "./dist/ext/twitter.js",
+      "require": "./dist/ext/twitter.cjs",
+      "types": "./dist/ext/twitter.d.ts"
+    },
+    "./hooks": {
+      "import": "./dist/hooks/index.js",
+      "require": "./dist/hooks/index.cjs",
+      "types": "./dist/hooks/index.d.ts"
+    },
+    "./hooks/solana": {
+      "import": "./dist/hooks/solana/index.js",
+      "require": "./dist/hooks/solana/index.cjs",
+      "types": "./dist/hooks/solana/index.d.ts"
+    },
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./index.css": "./dist/index.css"
+  },
   "files": [
     "dist"
   ],

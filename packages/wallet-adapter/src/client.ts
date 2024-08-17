@@ -154,7 +154,7 @@ const authStates: MachineConfig<RootContext, any, RootEvent> = {
                 },
               });
             })
-            .catch((e) => {
+            .catch((e: any) => {
               callback({ type: "DONE", data: { providers } });
             });
         },

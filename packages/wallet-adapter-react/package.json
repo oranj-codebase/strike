@@ -2,20 +2,37 @@
   "name": "@blinks-icp/wallet-adapter-react",
   "author": "Mio Quispe",
   "version": "0.2.0-beta.23",
+  "sideEffects": true,
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    "./hooks": {
+      "import": "./dist/hooks/index.js",
+      "require": "./dist/hooks/index.cjs",
+      "types": "./dist/hooks/index.d.ts"
+    },
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "files": [
     "dist"
   ],
-  "sideEffects": true,
-  "type": "module",
-  "main": "src/index.ts",
-  "module": "src/index.ts",
-  "types": "src/index.ts",
+  "scripts": {
+    "build": "tsup-node",
+    "dev": "tsup-node --watch"
+  },
   "dependencies": {
     "@xstate/react": "^3.0.1",
     "neverthrow": "^5.0.0"
   },
   "devDependencies": {
     "typescript": "^5.5.3",
+    "tsup": "^8.2.0",
     "@types/react": "^18.0.8",
     "@types/react-dom": "^18.0.3"
   },

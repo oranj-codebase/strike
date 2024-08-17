@@ -17,6 +17,7 @@ export default defineConfig([
       'src/ext/twitter.tsx',
       'src/hooks/index.ts',
       'src/hooks/icp/index.ts',
+      'src/index.css',
     ],
     dts: {
       entry: [
