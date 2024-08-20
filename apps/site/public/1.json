@@ -1,5 +1,4 @@
 {
-  "canisterId": "n5wcd-faaaa-aaaar-qaaea-cai",
   "method": "ledger_id",
   "parameters": []
 }
