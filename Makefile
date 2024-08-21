@@ -1,4 +1,4 @@
-BACKEND=blinks_icp_backend
+BACKEND=strike_backend
 FRONTEND=blinks_icp_frontend
 
 prepare:
@@ -16,6 +16,10 @@ stop:
 
 build:
 	dfx build $(BACKEND) --network=local
+
+test:
+	scripts/download-pocket-ic.sh
+	cargo test
 
 build-staging:
 	dfx build $(BACKEND) --network=staging

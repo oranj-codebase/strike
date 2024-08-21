@@ -204,3 +204,6 @@ dist/
 
 # environment variables
 .env
+
+# PocketIC
+pocket-ic

@@ -1,0 +1,30 @@
+[package]
+name = "strike"
+version = "0.1.0"
+edition = "2021"
+publish = false
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "strike_backend"
+path = "src/strike.rs"
+
+[dependencies]
+candid = "0.10"
+ciborium = "0.2.1"
+ic-cdk = "0.15.0"
+ic-stable-structures = "0.6.5"
+rmp-serde = "1.1.2"
+serde = "1.0.207"
+tracing = "0.1.37"
+tracing-attributes = "0.1.26"
+tracing-subscriber = "0.3.17"
+# http = "1.1.0"
+
+[dev-dependencies]
+pocket-ic = "4"
+escargot = { version = "0.5.7", features = ["print"] }
+cargo_metadata = "0.18"
+serde_bytes = "0.11"
+sha2 = "0.10"
+hex = "0.4"

@@ -1,3 +1,3 @@
 [workspace]
-members = ["canisters/blinks_icp"]
+members = ["canisters/strike"]
 resolver = "2"

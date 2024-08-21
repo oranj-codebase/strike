@@ -1,15 +1,15 @@
 {
   "canisters": {
-    "blinks_icp_backend": {
-      "candid": "canisters/blinks_icp/blinks_icp.did",
-      "package": "blinks_icp",
+    "strike_backend": {
+      "candid": "canisters/strike/strike.did",
+      "package": "strike",
       "type": "rust",
       "declarations": {
         "node_compatibility": true
       }
     },
     "blinks_icp_frontend": {
-      "dependencies": ["blinks_icp_backend"],
+      "dependencies": ["strike_backend"],
       "source": ["apps/site/dist"],
       "frontend": {
         "entrypoint": "apps/site/dis/index.html"
