@@ -1,4 +1,6 @@
 BACKEND=strike_backend
+BACKEND_ID=bkyz2-fmaaa-aaaaa-qaaaq-cai
+HELLO_ID=ea6rm-nyaaa-aaaak-ak2wa-cai
 FRONTEND=blinks_icp_frontend
 
 prepare:
@@ -9,7 +11,7 @@ start:
 
 start-clean:
 	dfx start --background --clean
-	dfx canister create $(BACKEND)
+	dfx canister create $(BACKEND) --specified-id $(BACKEND_ID)
 
 stop:
 	dfx stop
@@ -38,18 +40,23 @@ generate: generate-did \
 
 deploy-backend: build \
 	generate-did
-	dfx deploy $(BACKEND)
+	dfx deploy $(BACKEND) --specified-id $(BACKEND_ID)
 
 deploy-ii:
 	dfx deps pull
 	dfx deps init --argument '(null)' internet-identity
 	dfx deps deploy
 
+deploy-hello:
+	dfx canister create hello --specified-id $(HELLO_ID)
+	dfx deploy hello --specified-id $(HELLO_ID)
+
 deploy-ledger:
 	dfx deploy icp_ledger_canister
 
 deploy: deploy-backend \
-	deploy-ii
+	deploy-ii \
+	deploy-hello
 
 redeploy: build \
 	generate-did

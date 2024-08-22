@@ -1,3 +1,3 @@
 [workspace]
-members = ["canisters/strike_backend"]
+members = ["canisters/strike_backend", "canisters/hello"]
 resolver = "2"

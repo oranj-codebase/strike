@@ -15,6 +15,7 @@ export interface IncomingActionConfig {
 }
 
 export interface ActionAdapter {
+  agent: HttpAgent;
   connect: (context: ActionContext) => Promise<string | null>;
   signTransaction: (
     tx: string,
@@ -31,7 +32,7 @@ export interface ActionAdapter {
 
 export class ActionConfig implements ActionAdapter {
   private static readonly CONFIRM_TIMEOUT_MS = 60000 * 1.2; // 20% extra time
-  private agent: HttpAgent;
+  public agent: HttpAgent;
 
   constructor(
     hostOrAgent: string | HttpAgent,

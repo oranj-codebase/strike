@@ -1,4 +1,9 @@
-import { Actor, HttpAgent, type Identity } from "@dfinity/agent";
+import {
+  Actor,
+  AnonymousIdentity,
+  HttpAgent,
+  type Identity,
+} from "@dfinity/agent";
 import { AuthClient } from "@dfinity/auth-client";
 import { ok, err } from "neverthrow";
 
@@ -29,7 +34,7 @@ class InternetIdentity implements IConnector {
     providerUrl: string;
     dev: boolean;
   };
-  #identity?: Identity;
+  #identity: Identity;
   #principal?: string;
   #client?: AuthClient;
 
@@ -49,6 +54,7 @@ class InternetIdentity implements IConnector {
       dev: true,
       ...userConfig,
     };
+    this.#identity = new AnonymousIdentity();
   }
 
   set config(config) {
@@ -129,7 +135,9 @@ class InternetIdentity implements IConnector {
       });
       const identity = this.#client?.getIdentity();
       const principal = identity?.getPrincipal().toString();
-      this.#identity = identity;
+      if (identity) {
+        this.#identity = identity;
+      }
       this.#principal = principal;
       return ok(true);
     } catch (e) {
@@ -146,6 +154,10 @@ class InternetIdentity implements IConnector {
       console.error(e);
       return err({ kind: DisconnectError.DisconnectFailed });
     }
+  }
+
+  get identity() {
+    return this.#identity;
   }
 }
 

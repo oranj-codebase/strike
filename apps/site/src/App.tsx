@@ -5,6 +5,7 @@ import { ConnectButton, ConnectDialog } from "@blinks-icp/wallet-adapter-react";
 
 import "@blinks-icp/core/index.css";
 import "@blinks-icp/wallet-adapter-react/index.css";
+import { host } from "./config";
 
 const App = () => {
   const [tempUrl, setTempUrl] = useState("");
@@ -13,7 +14,7 @@ const App = () => {
   );
   // useAction initiates registry, adapter and fetches the action.
   // TODO: update this
-  const agent = new HttpAgent();
+  const agent = new HttpAgent({ host });
   const { adapter } = useActionICPWalletAdapter({
     agent,
   });

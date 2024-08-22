@@ -3,28 +3,25 @@
   "label": "ckBTC Index Canister",
   "title": "ckBTC Index Canister",
   "description": "ckBTC Index Canister",
-  "canisterId": "n5wcd-faaaa-aaaar-qaaea-cai",
+  "canisterId": "ea6rm-nyaaa-aaaak-ak2wa-cai",
   "links": {
     "actions": [
       {
-        "label": "get ledger id",
+        "label": "Hello",
         "href": "/1.json"
       },
       {
-        "label": "5 ICP",
-        "href": "/action/5.json"
+        "label": "Get owner",
+        "href": "2.json"
       },
+
       {
-        "label": "10 ICP",
-        "href": "/action/10.json"
-      },
-      {
-        "href": "/action/{amount}",
-        "label": "Donate",
+        "href": "/3.json",
+        "label": "Set owner",
         "parameters": [
           {
-            "name": "amount",
-            "label": "Enter a ICP amount"
+            "name": "owner",
+            "label": "Enter a new owner"
           }
         ]
       }

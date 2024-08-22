@@ -8,7 +8,15 @@
         "node_compatibility": true
       }
     },
-    "blinks_icp_frontend": {
+    "hello": {
+      "candid": "canisters/hello/hello.did",
+      "package": "hello",
+      "type": "rust",
+      "declarations": {
+        "node_compatibility": true
+      }
+    },
+    "strike_frontend": {
       "dependencies": ["strike_backend"],
       "source": ["apps/site/dist"],
       "frontend": {
@@ -30,6 +38,10 @@
           "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
         }
       }
+    },
+    "did_to_js": {
+      "type": "pull",
+      "id": "a4gq6-oaaaa-aaaab-qaa4q-cai"
     }
   },
   "defaults": {

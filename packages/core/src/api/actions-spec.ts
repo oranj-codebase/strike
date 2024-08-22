@@ -185,7 +185,6 @@ export interface ActionPostRequest<T = string> {
  * Response body payload returned from the Action POST Request
  */
 export interface ActionPostResponse<_T extends ActionType = ActionType> {
-  canisterId: string;
   /** method to do update call */
   method: string;
   parameters: string[];

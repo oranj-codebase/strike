@@ -1,4 +1,4 @@
-import { type ActorSubclass } from "@dfinity/agent";
+import { type ActorSubclass, type Identity } from "@dfinity/agent";
 import type { IDL } from "@dfinity/candid";
 import type { Result } from "neverthrow";
 
@@ -78,6 +78,7 @@ export interface IConnector {
   }) => Promise<ConnectResult>;
   disconnect: () => Promise<DisconnectResult>;
   principal?: string;
+  get identity(): Identity | undefined;
 }
 
 export enum BalanceError {

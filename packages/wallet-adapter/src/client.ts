@@ -385,7 +385,10 @@ class Client {
   }
 
   public get agent() {
-    return new HttpAgent({ host: this.config.host });
+    return new HttpAgent({
+      host: this.config.host,
+      identity: this.activeProvider?.identity,
+    });
   }
 
   public get providers() {

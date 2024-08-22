@@ -364,7 +364,6 @@ export const ActionContainer = ({
         dispatch({ type: ExecutionType.RESET });
         return;
       }
-
       const actionData = await component
         .get(principal)
         .catch((e: Error) => ({ error: e.message }));
@@ -379,7 +378,13 @@ export const ActionContainer = ({
         return;
       }
       // Fetch did and construct idlFactory
-      const did = await fetchCandid(actionData.canisterId, client.agent);
+      const agent = action.adapter.agent;
+      console.log(agent);
+      if (agent.isLocal()) {
+        await agent.fetchRootKey();
+      }
+
+      const did = await fetchCandid(action.canisterId, agent);
       const js = await candidToJS(did);
       const dataUri =
         'data:text/javascript;charset=utf-8,' + encodeURIComponent(js);
@@ -387,7 +392,7 @@ export const ActionContainer = ({
 
       // Create actor
       const actorResult = await client.activeProvider?.createActor(
-        actionData.canisterId,
+        action.canisterId,
         candid.idlFactory,
       );
       if (!actorResult) {
@@ -397,7 +402,7 @@ export const ActionContainer = ({
         throw new Error('Unable to create actor');
       }
       const actor = actorResult.value;
-
+      console.log(actionData, params);
       // run action
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
@@ -411,6 +416,7 @@ export const ActionContainer = ({
       });
       return;
     } catch (e) {
+      console.log(e);
       dispatch({
         type: ExecutionType.SOFT_RESET,
         errorMessage: (e as Error).message ?? 'Unknown error, please try again',

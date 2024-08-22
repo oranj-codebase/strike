@@ -5,15 +5,15 @@ import { createClient, defaultProviders } from "@blinks-icp/wallet-adapter";
 
 import App from "./App.tsx";
 import "./index.css";
+import { host, provider } from "./config.ts";
 
 const client = createClient({
   providers: defaultProviders({
-    host: "https://icp0.io",
-    // providerUrl:
-    //   "http://localhost:4943/?canisterId=rdmx6-jaaaa-aaaaa-aaadq-cai",
+    host,
+    providerUrl: provider,
   }),
   globalProviderConfig: {
-    host: "https://icp0.io",
+    host,
   },
 });
 
