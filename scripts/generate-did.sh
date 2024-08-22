@@ -2,11 +2,11 @@
 
 SCRIPT=$(readlink -f "$0")
 SCRIPT_DIR=$(dirname "$SCRIPT")
-CANISTER="strike"
+CANISTER="strike_backend"
 
 cd $SCRIPT_DIR/..
 
-echo Generating blinks_icp did file
+echo Generating $CANISTER did file
 
 if ! cargo install --list | grep -Fxq "candid-extractor v0.1.4:"
 then

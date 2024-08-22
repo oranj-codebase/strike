@@ -1,8 +1,8 @@
 {
   "canisters": {
     "strike_backend": {
-      "candid": "canisters/strike/strike.did",
-      "package": "strike",
+      "candid": "canisters/strike_backend/strike_backend.did",
+      "package": "strike_backend",
       "type": "rust",
       "declarations": {
         "node_compatibility": true

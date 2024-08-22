@@ -190,6 +190,7 @@ dist
 
 # dfx temporary files
 .dfx/
+/deps
 
 # generated files
 **/declarations/
@@ -207,3 +208,4 @@ dist/
 
 # PocketIC
 pocket-ic
+

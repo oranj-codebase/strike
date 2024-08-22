@@ -51,7 +51,7 @@ fn get_strike_by_canister_id(canister_id: Principal) -> Option<StrikeRegistry> {
 }
 
 #[update(guard = "caller_is_not_anonymous")]
-fn add_registry(canister_id: Principal, module_hash: Option<String>, website_url: Option<String>) -> Option<StrikeRegistry> {
+fn add_registry(canister_id: Principal, module_hash: Option<String>, website_url: Option<String>) -> Result<(), String> {
     let caller = caller();
 
     let registry = StrikeRegistry {
@@ -63,7 +63,32 @@ fn add_registry(canister_id: Principal, module_hash: Option<String>, website_url
         status: StrikeStatus::Submitted,
     };
 
-    REGISTRY.with(|s| s.borrow_mut().insert(canister_id.clone(), registry))
+    // TODO: Validate canister ownership by caller
+
+    // Find exist one
+    if let Some(exist_registry) = REGISTRY.with(|s| s.borrow().get(&canister_id)) {
+        if exist_registry.status != StrikeStatus::Submitted {
+            return Err("Canister already trusted or blocked".to_string());
+        }
+    };
+
+    REGISTRY.with(|s| s.borrow_mut().insert(canister_id.clone(), registry));
+
+    Ok(())
+}
+
+#[update(guard = "caller_is_admin")]
+fn update_registry_status(canister_id: Principal, status: StrikeStatus) -> Result<(), String> {
+    let mut registry = REGISTRY
+        .with(|s| s.borrow_mut().get(&canister_id))
+        .ok_or("Canister not found")?;
+
+    registry.status = status;
+
+    // Save registry
+    REGISTRY.with(|s| s.borrow_mut().insert(canister_id, registry));
+
+    Ok(())
 }
 
 #[update(guard = "caller_is_admin")]
@@ -76,6 +101,11 @@ pub fn add_admin(admin: Principal) -> Result<(), String> {
 pub fn remove_admin(admin: Principal) -> Result<(), String> {
     let caller = ic_cdk::api::caller();
     admins::remove_admins(caller, [admin].to_vec())
+}
+
+#[query]
+pub fn is_admin(user: Principal) -> bool {
+    admins::is_admin(user)
 }
 
 ic_cdk::export_candid!();
