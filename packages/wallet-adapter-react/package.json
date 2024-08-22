@@ -32,10 +32,10 @@
     "neverthrow": "^5.0.0"
   },
   "devDependencies": {
-    "typescript": "^5.5.3",
-    "tsup": "^8.2.0",
     "@types/react": "^18.0.8",
-    "@types/react-dom": "^18.0.3"
+    "@types/react-dom": "^18.0.3",
+    "tsup": "^8.2.0",
+    "typescript": "^5.5.3"
   },
   "peerDependencies": {
     "@blinks-icp/wallet-adapter": "*",

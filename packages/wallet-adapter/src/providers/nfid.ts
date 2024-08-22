@@ -1,16 +1,16 @@
 import { AuthClient } from "@dfinity/auth-client";
-import { Actor, HttpAgent } from "@dfinity/agent";
-import type { IConnector } from "./connectors";
-import nfidLogoLight from "../assets/nfid.png";
-// @ts-ignore
-import nfidLogoDark from "../assets/nfid.png";
+import { Actor, HttpAgent, type Identity } from "@dfinity/agent";
 import { IDL } from "@dfinity/candid";
 import { ok, err } from "neverthrow";
+
+import nfidLogoLight from "../assets/nfid.png";
+import nfidLogoDark from "../assets/nfid.png";
 import {
   ConnectError,
   CreateActorError,
   DisconnectError,
   InitError,
+  type IConnector,
 } from "./connectors";
 
 class NFID implements IConnector {
@@ -31,7 +31,7 @@ class NFID implements IConnector {
     providerUrl: string;
     dev: Boolean;
   };
-  #identity?: any;
+  #identity?: Identity;
   #principal?: string;
   #client?: any;
 
@@ -73,7 +73,7 @@ class NFID implements IConnector {
       const isConnected = await this.isConnected();
       if (isConnected) {
         this.#identity = this.#client.getIdentity();
-        this.#principal = this.#identity.getPrincipal().toString();
+        this.#principal = this.#identity?.getPrincipal().toString();
       }
       return ok({ isConnected });
     } catch (e) {

@@ -1,4 +1,4 @@
-import { type ActorSubclass, type Agent } from "@dfinity/agent";
+import { type ActorSubclass, type Agent, type Identity } from "@dfinity/agent";
 import { IDL } from "@dfinity/candid";
 import { Principal } from "@dfinity/principal";
 import { ok, err } from "neverthrow";
@@ -76,7 +76,7 @@ class PlugWallet implements IConnector, IWalletConnector {
     dev: boolean;
     onConnectionUpdate: () => void;
   };
-  #identity?: any;
+  #identity?: Identity;
   #principal?: string;
   #client?: any;
   #ic?: Plug;

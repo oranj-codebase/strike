@@ -328,7 +328,6 @@ export const ActionContainer = ({
       }
       // Fetch did and construct idlFactory
       const agent = action.adapter.agent;
-      console.log(agent);
       if (agent.isLocal()) {
         await agent.fetchRootKey();
       }

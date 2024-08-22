@@ -38,7 +38,7 @@ class InfinityWallet implements IConnector {
   };
 
   #config: Config;
-  #identity?: any;
+  #identity?: Identity;
   #principal?: string;
   #client?: any;
   #ic?: IC;
