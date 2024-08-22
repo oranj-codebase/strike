@@ -1,14 +1,11 @@
 import { createRoot } from 'react-dom/client';
 import {
   Action,
-  ActionsRegistry,
-  getExtendedActionState,
-  getExtendedInterstitialState,
-  getExtendedWebsiteState,
+  getActionState,
   type ActionAdapter,
   type ActionCallbacksConfig,
 } from '../api/index.ts';
-import { checkSecurity, type SecurityLevel } from '../shared/index.ts';
+import { type SecurityLevel } from '../shared/index.ts';
 import { ActionContainer, type StylePreset } from '../ui/index.ts';
 import { noop } from '../utils/constants.ts';
 import { isInterstitial } from '../utils/interstitial-url.ts';
@@ -74,34 +71,24 @@ export function setupTwitterObserver(
   const mergedOptions = normalizeOptions(options);
   const twitterReactRoot = document.getElementById('react-root')!;
 
-  const refreshRegistry = async () => {
-    return ActionsRegistry.getInstance().init();
-  };
-
-  // if we don't have the registry, then we don't show anything
-  refreshRegistry().then(() => {
-    // entrypoint
-    const observer = new MutationObserver((mutations) => {
-      // it's fast to iterate like this
-      for (let i = 0; i < mutations.length; i++) {
-        const mutation = mutations[i];
-        for (let j = 0; j < mutation.addedNodes.length; j++) {
-          const node = mutation.addedNodes[j];
-          if (node.nodeType !== Node.ELEMENT_NODE) {
-            return;
-          }
-          handleNewNode(
-            node as Element,
-            config,
-            callbacks,
-            mergedOptions,
-          ).catch(noop);
+  // entrypoint
+  const observer = new MutationObserver((mutations) => {
+    // it's fast to iterate like this
+    for (let i = 0; i < mutations.length; i++) {
+      const mutation = mutations[i];
+      for (let j = 0; j < mutation.addedNodes.length; j++) {
+        const node = mutation.addedNodes[j];
+        if (node.nodeType !== Node.ELEMENT_NODE) {
+          return;
         }
+        handleNewNode(node as Element, config, callbacks, mergedOptions).catch(
+          noop,
+        );
       }
-    });
-
-    observer.observe(twitterReactRoot, { childList: true, subtree: true });
+    }
   });
+
+  observer.observe(twitterReactRoot, { childList: true, subtree: true });
 }
 async function handleNewNode(
   node: Element,
@@ -146,24 +133,8 @@ async function handleNewNode(
 
   let actionApiUrl: string | null;
   if (interstitialData.isInterstitial) {
-    const interstitialState = getExtendedInterstitialState(
-      actionUrl.toString(),
-    );
-
-    if (
-      !checkSecurity(interstitialState, options.securityLevel.interstitials)
-    ) {
-      return;
-    }
-
     actionApiUrl = interstitialData.decodedActionUrl;
   } else {
-    const websiteState = getExtendedWebsiteState(actionUrl.toString());
-
-    if (!checkSecurity(websiteState, options.securityLevel.websites)) {
-      return;
-    }
-
     const actionsJsonUrl = actionUrl.origin + '/actions.json';
     const actionsJson = await fetch(proxify(actionsJsonUrl)).then(
       (res) => res.json() as Promise<ActionsJsonConfig>,
@@ -174,18 +145,17 @@ async function handleNewNode(
     actionApiUrl = actionsUrlMapper.mapUrl(actionUrl);
   }
 
-  const state = actionApiUrl ? getExtendedActionState(actionApiUrl) : null;
-  if (
-    !actionApiUrl ||
-    !state ||
-    !checkSecurity(state, options.securityLevel.actions)
-  ) {
+  if (!actionApiUrl) {
     return;
   }
 
   const action = await Action.fetch(actionApiUrl, config).catch(noop);
-
   if (!action) {
+    return;
+  }
+
+  const state = await getActionState(action);
+  if (state !== 'trusted') {
     return;
   }
 
@@ -193,7 +163,7 @@ async function handleNewNode(
     const supported = await config.isSupported({
       originalUrl: actionUrl.toString(),
       action,
-      actionType: state,
+      actionState: state,
     });
     if (!supported) {
       return;

@@ -1,4 +1,5 @@
 {
   "method": "get_owner",
-  "parameters": []
+  "parameters": [],
+  "signatures": []
 }

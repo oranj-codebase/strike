@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import { useState, type ReactNode } from 'react';
-import type { ExtendedActionState } from '../api/index.ts';
+import type { ActionState } from '../api/index.ts';
 import { Badge } from './Badge.tsx';
 import { Snackbar } from './Snackbar.tsx';
 import {
@@ -22,7 +22,7 @@ import {
 } from './inputs/index.ts';
 import type { BaseButtonProps, BaseInputProps } from './inputs/types.ts';
 
-type ActionType = ExtendedActionState;
+type ActionType = ActionState;
 type ButtonProps = BaseButtonProps;
 type InputProps = BaseInputProps;
 
@@ -152,7 +152,7 @@ const DisclaimerBlock = ({
           </p>
           <a
             className="mt-3 inline-block font-semibold transition-colors hover:text-text-warning-hover motion-reduce:transition-none"
-            href="https://discord.gg/saydialect"
+            href="https://x.com/oranjinals"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -238,7 +238,13 @@ export const ActionLayout = ({
                   icon={<InfoShieldIcon width={13} height={13} />}
                 />
               )}
-              {type === 'unknown' && (
+              {type === 'submitted' && (
+                <Badge
+                  variant="warning"
+                  icon={<InfoShieldIcon width={13} height={13} />}
+                />
+              )}
+              {type === 'notfound' && (
                 <Badge
                   variant="warning"
                   icon={<InfoShieldIcon width={13} height={13} />}

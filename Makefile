@@ -1,5 +1,5 @@
 BACKEND=strike_backend
-BACKEND_ID=bkyz2-fmaaa-aaaaa-qaaaq-cai
+BACKEND_ID=eh7xy-aaaaa-aaaak-ak2wq-cai
 HELLO_ID=ea6rm-nyaaa-aaaak-ak2wa-cai
 FRONTEND=blinks_icp_frontend
 

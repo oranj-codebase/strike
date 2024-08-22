@@ -40,7 +40,7 @@ export class Action {
     private readonly _url: string,
     private readonly _data: NextAction,
     private readonly _metadata: ActionMetadata,
-    private _adapter?: ActionAdapter,
+    private _adapter: ActionAdapter,
     private readonly _chainMetadata: ActionChainMetadata = { isChained: false },
   ) {
     // if no links present or completed, fallback to original solana pay spec (or just using the button as a placeholder)
@@ -176,12 +176,12 @@ export class Action {
     url: string,
     data: NextAction,
     metadata: ActionMetadata,
-    adapter?: ActionAdapter,
+    adapter: ActionAdapter,
   ) {
     return new Action(url, data, metadata, adapter);
   }
 
-  static async fetch(apiUrl: string, adapter?: ActionAdapter) {
+  static async fetch(apiUrl: string, adapter: ActionAdapter) {
     const proxyUrl = proxify(apiUrl);
     const response = await fetch(proxyUrl, {
       headers: {

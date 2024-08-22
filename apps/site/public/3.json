@@ -1,4 +1,5 @@
 {
   "method": "set_owner",
-  "parameters": ["{owner}"]
+  "parameters": ["{owner}"],
+  "signatures": ["principal"]
 }

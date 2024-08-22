@@ -1,9 +1,6 @@
 import { Action } from './Action';
+import type { ActionState } from './ActionsRegistry';
 
 export interface ActionCallbacksConfig {
-  onActionMount: (
-    action: Action,
-    originalUrl: string,
-    type: 'trusted' | 'malicious' | 'unknown',
-  ) => void;
+  onActionMount: (action: Action, state: ActionState) => void;
 }

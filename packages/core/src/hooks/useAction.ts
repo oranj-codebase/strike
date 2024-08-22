@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 
 import { Action, type ActionAdapter } from '../api/index.ts';
 import { unfurlUrlToActionApiUrl } from '../utils/url-mapper.ts';
-import { useActionsRegistryInterval } from './useActionRegistryInterval.ts';
 
 interface UseActionOptions {
   url: string | URL;
@@ -38,19 +37,18 @@ function useActionApiUrl(url: string | URL) {
 }
 
 export function useAction({ url, adapter }: UseActionOptions) {
-  const { isRegistryLoaded } = useActionsRegistryInterval();
   const { actionApiUrl } = useActionApiUrl(url);
   const [action, setAction] = useState<Action | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
-    if (!isRegistryLoaded || !actionApiUrl) {
+    if (!actionApiUrl) {
       return;
     }
 
     let ignore = false;
-    Action.fetch(actionApiUrl)
+    Action.fetch(actionApiUrl, adapter)
       .then((action) => {
         if (ignore) {
           return;
@@ -70,7 +68,8 @@ export function useAction({ url, adapter }: UseActionOptions) {
     return () => {
       ignore = true;
     };
-  }, [actionApiUrl, isRegistryLoaded]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [actionApiUrl]);
 
   useEffect(() => {
     action?.setAdapter(adapter);

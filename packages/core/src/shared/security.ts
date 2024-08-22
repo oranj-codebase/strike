@@ -1,9 +1,9 @@
-import type { ExtendedActionState } from '../api';
+import type { ActionState } from '../api';
 
 export type SecurityLevel = 'only-trusted' | 'non-malicious' | 'all';
 
 export const checkSecurity = (
-  state: ExtendedActionState,
+  state: ActionState,
   securityLevel: SecurityLevel,
 ): boolean => {
   switch (securityLevel) {

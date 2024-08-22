@@ -1,26 +1,23 @@
 import { useClient } from '@blinks-icp/wallet-adapter-react';
 import { fetchCandid } from '@dfinity/agent';
+import { Principal } from '@dfinity/principal';
 import { useEffect, useMemo, useReducer, useState } from 'react';
 import {
   AbstractActionComponent,
   Action,
   ButtonActionComponent,
   FormActionComponent,
-  getExtendedActionState,
-  getExtendedInterstitialState,
-  getExtendedWebsiteState,
+  getActionState,
   isParameterSelectable,
   isPatternAllowed,
-  mergeActionStates,
   MultiValueActionComponent,
   SingleValueActionComponent,
   type ActionCallbacksConfig,
   type ActionContext,
-  type ExtendedActionState,
+  type ActionState,
 } from '../api/index.ts';
 import { checkSecurity, type SecurityLevel } from '../shared/index.ts';
 import { candidToJS } from '../utils/blockchain.ts';
-import { isInterstitial } from '../utils/interstitial-url.ts';
 import { isPostRequestError } from '../utils/type-guards.ts';
 import {
   ActionLayout,
@@ -139,53 +136,12 @@ const buttonLabelMap: Record<ExecutionStatus, string | null> = {
   error: 'Failed',
 };
 
-type ActionStateWithOrigin =
-  | {
-      action: ExtendedActionState;
-      origin?: never;
-    }
-  | {
-      action: ExtendedActionState;
-      origin: ExtendedActionState;
-      originType: Source;
-    };
-
-const getOverallActionState = (
-  action: Action,
-  websiteUrl?: string | null,
-): ActionStateWithOrigin => {
-  const actionState = getExtendedActionState(action);
-  const originalUrlData = websiteUrl ? isInterstitial(websiteUrl) : null;
-
-  if (!originalUrlData) {
-    return {
-      action: actionState,
-    };
-  }
-
-  if (originalUrlData.isInterstitial) {
-    return {
-      action: actionState,
-      origin: getExtendedInterstitialState(websiteUrl!),
-      originType: 'interstitials' as Source,
-    };
-  }
-
-  return {
-    action: actionState,
-    origin: getExtendedWebsiteState(websiteUrl!),
-    originType: 'websites' as Source,
-  };
-};
-
 const checkSecurityFromActionState = (
-  state: ActionStateWithOrigin,
+  state: ActionState,
   normalizedSecurityLevel: NormalizedSecurityLevel,
 ): boolean => {
-  return checkSecurity(state.action, normalizedSecurityLevel.actions) &&
-    state.origin
-    ? checkSecurity(state.origin, normalizedSecurityLevel[state.originType])
-    : true;
+  // TODO
+  return checkSecurity(state, normalizedSecurityLevel.actions);
 };
 
 const SOFT_LIMIT_BUTTONS = 10;
@@ -230,24 +186,14 @@ export const ActionContainer = ({
     return securityLevel;
   }, [securityLevel]);
 
-  const [actionState, setActionState] = useState(
-    getOverallActionState(action, websiteUrl),
-  );
-  const overallState = useMemo(
-    () =>
-      mergeActionStates(
-        ...([actionState.action, actionState.origin].filter(
-          Boolean,
-        ) as ExtendedActionState[]),
-      ),
-    [actionState],
-  );
+  const [actionState, setActionState] = useState<ActionState | null>(null);
+  const overallState = useMemo(() => actionState ?? 'notfound', [actionState]);
 
   // adding ui check as well, to make sure, that on runtime registry lookups, we are not allowing the action to be executed
-  const isPassingSecurityCheck = checkSecurityFromActionState(
-    actionState,
-    normalizedSecurityLevel,
-  );
+  const isPassingSecurityCheck =
+    (actionState &&
+      checkSecurityFromActionState(actionState, normalizedSecurityLevel)) ??
+    true;
 
   const [executionState, dispatch] = useReducer(executionReducer, {
     status:
@@ -257,14 +203,17 @@ export const ActionContainer = ({
   });
 
   useEffect(() => {
-    callbacks?.onActionMount?.(
-      action,
-      websiteUrl ?? action.url,
-      actionState.action,
-    );
-    // we ignore changes to `actionState.action` explicitly, since we want this to run once
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [callbacks, action, websiteUrl]);
+    (async () => {
+      const state = await getActionState(action);
+      setActionState(state);
+    })();
+  }, [action]);
+
+  useEffect(() => {
+    if (actionState) {
+      callbacks?.onActionMount?.(action, actionState);
+    }
+  }, [callbacks, action, actionState]);
 
   const buttons = useMemo(
     () =>
@@ -332,18 +281,18 @@ export const ActionContainer = ({
       }
     }
 
-    const newActionState = getOverallActionState(action, websiteUrl);
+    if (!actionState) {
+      return;
+    }
+
+    const newActionState = await getActionState(action);
     const newIsPassingSecurityCheck = checkSecurityFromActionState(
       newActionState,
       normalizedSecurityLevel,
     );
 
     // if action state has changed or origin's state has changed, and it doesn't pass the security check or became malicious, block the action
-    if (
-      (newActionState.action !== actionState.action ||
-        newActionState.origin !== actionState.origin) &&
-      !newIsPassingSecurityCheck
-    ) {
+    if (newActionState !== actionState && !newIsPassingSecurityCheck) {
       setActionState(newActionState);
       dispatch({ type: ExecutionType.BLOCK });
       return;
@@ -353,7 +302,7 @@ export const ActionContainer = ({
 
     const context: ActionContext = {
       action: component.parent,
-      actionType: actionState.action,
+      actionState: actionState,
       originalUrl: websiteUrl ?? component.parent.url,
       triggeredLinkedAction: component,
     };
@@ -402,11 +351,37 @@ export const ActionContainer = ({
         throw new Error('Unable to create actor');
       }
       const actor = actorResult.value;
-      console.log(actionData, params);
+
+      const parameters: any[] = [];
+
+      for (let i = 0; i < actionData.parameters.length; i++) {
+        const parameter = actionData.parameters[i];
+        const type = actionData.signatures[i];
+        let value = '';
+
+        if (/^\{(.*)\}$/.test(parameter)) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-expect-error
+          value = params[parameter.slice(1, -1)];
+        } else {
+          value = parameter;
+        }
+        switch (type) {
+          case 'principal':
+            parameters.push(Principal.fromText(value));
+            break;
+          case 'string':
+            parameters.push(value);
+            break;
+          default:
+            throw new Error('Unknown type');
+        }
+      }
+
       // run action
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-expect-error
-      const result = await actor[actionData.method](...actionData.parameters);
+      const result = await actor[actionData.method](...parameters);
 
       // TODO: Handle next action
 
@@ -495,7 +470,7 @@ export const ActionContainer = ({
       };
     }
 
-    if (overallState === 'unknown') {
+    if (overallState === 'notfound') {
       return {
         type: DisclaimerType.UNKNOWN,
         ignorable: isPassingSecurityCheck,

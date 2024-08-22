@@ -1,8 +1,8 @@
 {
   "icon": "https://ucarecdn.com/e75cce91-c367-4f74-9ffe-2b6d63398ce1/-/preview/880x864/-/quality/smart/-/format/auto/",
-  "label": "ckBTC Index Canister",
-  "title": "ckBTC Index Canister",
-  "description": "ckBTC Index Canister",
+  "label": "simple onwership",
+  "title": "simple onwership",
+  "description": "demo canister integration with STRIKE",
   "canisterId": "ea6rm-nyaaa-aaaak-ak2wa-cai",
   "links": {
     "actions": [
@@ -12,12 +12,12 @@
       },
       {
         "label": "Get owner",
-        "href": "2.json"
+        "href": "/2.json"
       },
 
       {
-        "href": "/3.json",
         "label": "Set owner",
+        "href": "/3.json",
         "parameters": [
           {
             "name": "owner",

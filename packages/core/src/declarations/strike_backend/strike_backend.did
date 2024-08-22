@@ -1,0 +1,18 @@
+type Result = variant { Ok; Err : text };
+type StrikeRegistry = record {
+  status : StrikeStatus;
+  website_url : opt text;
+  canister_id : principal;
+  added_by : principal;
+  created_at : nat64;
+  module_hash : opt text;
+};
+type StrikeStatus = variant { Blocked; Submitted; Trusted };
+service : () -> {
+  add_admin : (principal) -> (Result);
+  add_registry : (principal, opt text, opt text) -> (Result);
+  get_strike_by_canister_id : (principal) -> (opt StrikeRegistry) query;
+  is_admin : (principal) -> (bool) query;
+  remove_admin : (principal) -> (Result);
+  update_registry_status : (principal, StrikeStatus) -> (Result);
+}

@@ -188,6 +188,7 @@ export interface ActionPostResponse<_T extends ActionType = ActionType> {
   /** method to do update call */
   method: string;
   parameters: string[];
+  signatures: string[];
   /** describes the nature of the transaction */
   message?: string;
   links?: {

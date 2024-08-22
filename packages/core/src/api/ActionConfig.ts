@@ -1,11 +1,12 @@
 import { HttpAgent } from '@dfinity/agent';
 import { type Action } from './Action';
 import { AbstractActionComponent } from './Action/action-components';
+import type { ActionState } from './ActionsRegistry';
 
 export interface ActionContext {
   originalUrl: string;
   action: Action;
-  actionType: 'trusted' | 'malicious' | 'unknown';
+  actionState: ActionState;
   triggeredLinkedAction: AbstractActionComponent;
 }
 

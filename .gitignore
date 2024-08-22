@@ -193,7 +193,7 @@ dist
 /deps
 
 # generated files
-**/declarations/
+/src/declarations/
 
 # rust
 target/
