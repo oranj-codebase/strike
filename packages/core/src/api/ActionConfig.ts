@@ -1,4 +1,5 @@
-import { HttpAgent } from '@dfinity/agent';
+import { Actor, HttpAgent } from '@dfinity/agent';
+import type { IDL } from '@dfinity/candid';
 import { type Action } from './Action';
 import { AbstractActionComponent } from './Action/action-components';
 import type { ActionState } from './ActionsRegistry';
@@ -12,20 +13,17 @@ export interface ActionContext {
 
 export interface IncomingActionConfig {
   rpcUrl: string;
-  adapter: Pick<ActionAdapter, 'connect' | 'signTransaction'>;
+  adapter: Pick<ActionAdapter, 'connect' | 'createActor'>;
 }
 
 export interface ActionAdapter {
   agent: HttpAgent;
   connect: (context: ActionContext) => Promise<string | null>;
-  signTransaction: (
-    tx: string,
+  createActor: (
+    canisterId: string,
+    idlFactory: IDL.InterfaceFactory,
     context: ActionContext,
-  ) => Promise<{ signature: string } | { error: string }>;
-  confirmTransaction: (
-    signature: string,
-    context: ActionContext,
-  ) => Promise<void>;
+  ) => Promise<{ actor: Actor } | { error: string }>;
   isSupported?: (
     context: Omit<ActionContext, 'triggeredLinkedAction'>,
   ) => Promise<boolean>;
@@ -57,8 +55,12 @@ export class ActionConfig implements ActionAdapter {
     }
   }
 
-  signTransaction(tx: string, context: ActionContext) {
-    return this.adapter.signTransaction(tx, context);
+  createActor(
+    canisterId: string,
+    idlFactory: IDL.InterfaceFactory,
+    context: ActionContext,
+  ): Promise<{ actor: Actor } | { error: string }> {
+    return this.adapter.createActor(canisterId, idlFactory, context);
   }
 
   confirmTransaction(_signature: string): Promise<void> {

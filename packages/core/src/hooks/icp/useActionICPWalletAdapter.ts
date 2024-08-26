@@ -1,8 +1,8 @@
 'use client';
 
 import { useConnect, useDialog } from '@blinks-icp/wallet-adapter-react';
-import { HttpAgent } from '@dfinity/agent';
-
+import { Actor, HttpAgent } from '@dfinity/agent';
+import type { IDL } from '@dfinity/candid';
 import { useMemo } from 'react';
 
 import { ActionConfig } from '../../api';
@@ -16,7 +16,7 @@ import { ActionConfig } from '../../api';
  * @see {Action}
  */
 export function useActionICPWalletAdapter({ agent }: { agent: HttpAgent }) {
-  const { isConnected, principal, connectAsync } = useConnect();
+  const { isConnected, principal, connectAsync, activeProvider } = useConnect();
   const { open } = useDialog();
 
   const adapter = useMemo(() => {
@@ -28,9 +28,7 @@ export function useActionICPWalletAdapter({ agent }: { agent: HttpAgent }) {
         }
 
         try {
-          console.log(`attemp`);
           const { activeProvider } = await connectAsync();
-          console.log(activeProvider);
           return activeProvider.principal ?? null;
         } catch (error) {
           console.log(error);
@@ -38,16 +36,29 @@ export function useActionICPWalletAdapter({ agent }: { agent: HttpAgent }) {
           return null;
         }
       },
-      // ICP doesn't need
-      signTransaction: async (txData: string) => {
+      createActor: async (
+        canisterId: string,
+        idlFactory: IDL.InterfaceFactory,
+      ): Promise<{ actor: Actor } | { error: string }> => {
         try {
-          return { signature: txData };
-        } catch {
-          return { error: 'Signing failed.' };
+          const actorResult = await activeProvider?.createActor(
+            canisterId,
+            idlFactory,
+          );
+          if (!actorResult) {
+            throw new Error('Actor not found');
+          }
+          if (actorResult.isErr()) {
+            throw new Error('Unable to create actor');
+          }
+          const actor = actorResult.value;
+          return { actor };
+        } catch (err) {
+          return { error: (err as Error).message || 'Signing failed.' };
         }
       },
     });
-  }, [agent, isConnected, principal, open, connectAsync]);
+  }, [agent, isConnected, principal, open, connectAsync, activeProvider]);
 
   return { adapter };
 }

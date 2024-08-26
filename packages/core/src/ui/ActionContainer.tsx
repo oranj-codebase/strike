@@ -1,4 +1,3 @@
-import { useClient } from '@blinks-icp/wallet-adapter-react';
 import { fetchCandid } from '@dfinity/agent';
 import { Principal } from '@dfinity/principal';
 import { useEffect, useMemo, useReducer, useState } from 'react';
@@ -173,7 +172,6 @@ export const ActionContainer = ({
   Experimental__ActionLayout?: typeof ActionLayout;
 }) => {
   const [action] = useState(initialAction);
-  const client = useClient();
   const normalizedSecurityLevel: NormalizedSecurityLevel = useMemo(() => {
     if (typeof securityLevel === 'string') {
       return {
@@ -341,17 +339,16 @@ export const ActionContainer = ({
       const candid: any = await eval('import("' + dataUri + '")');
 
       // Create actor
-      const actorResult = await client.activeProvider?.createActor(
+      const actorResult = await action.adapter.createActor(
         action.canisterId,
         candid.idlFactory,
+        context,
       );
-      if (!actorResult) {
-        throw new Error('Actor not found');
+      if ('error' in actorResult) {
+        dispatch({ type: ExecutionType.RESET });
+        return;
       }
-      if (actorResult.isErr()) {
-        throw new Error('Unable to create actor');
-      }
-      const actor = actorResult.value;
+      const actor = actorResult.actor;
 
       const parameters: any[] = [];
 
