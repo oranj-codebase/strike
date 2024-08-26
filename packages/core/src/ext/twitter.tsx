@@ -68,6 +68,7 @@ export function setupTwitterObserver(
   callbacks: Partial<ActionCallbacksConfig> = {},
   options: Partial<ObserverOptions> = DEFAULT_OPTIONS,
 ) {
+  console.log(`setupTwitterObserver`);
   const mergedOptions = normalizeOptions(options);
   const twitterReactRoot = document.getElementById('react-root')!;
 
@@ -129,8 +130,8 @@ async function handleNewNode(
 
   const shortenedUrl = anchor.href;
   const actionUrl = await resolveTwitterShortenedUrl(shortenedUrl);
-  const interstitialData = isInterstitial(actionUrl);
 
+  const interstitialData = isInterstitial(actionUrl);
   let actionApiUrl: string | null;
   if (interstitialData.isInterstitial) {
     actionApiUrl = interstitialData.decodedActionUrl;

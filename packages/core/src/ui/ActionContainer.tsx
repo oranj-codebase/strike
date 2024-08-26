@@ -296,7 +296,7 @@ export const ActionContainer = ({
       dispatch({ type: ExecutionType.BLOCK });
       return;
     }
-    console.log(`hol`);
+
     dispatch({ type: ExecutionType.INITIATE, executingAction: component });
 
     const context: ActionContext = {
@@ -307,6 +307,7 @@ export const ActionContainer = ({
     };
 
     try {
+      console.log(`requesting connect`);
       const principal = await action.adapter.connect(context);
       console.log(principal);
       if (!principal) {
