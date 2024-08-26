@@ -139,13 +139,11 @@ class PlugWallet implements IConnector, IWalletConnector {
       }
       const status = await this.status();
 
-      if (status !== "disconnected") {
+      if (status === "connected") {
         await this.#ic.createAgent({
           host: this.#config.host,
           whitelist: this.#config.whitelist,
         });
-      }
-      if (status === "connected") {
         // Never finishes if locked
         this.#principal = (await this.#ic.getPrincipal()).toString();
         this.#wallet = {
@@ -177,15 +175,7 @@ class PlugWallet implements IConnector, IWalletConnector {
   }
 
   async isConnected() {
-    try {
-      if (!this.#ic) {
-        return false;
-      }
-      return await this.#ic.isConnected();
-    } catch (e) {
-      console.error(e);
-      return false;
-    }
+    return (await this.status()) === "connected";
   }
 
   async createActor<Service>(

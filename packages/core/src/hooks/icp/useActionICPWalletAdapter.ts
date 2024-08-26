@@ -16,22 +16,22 @@ import { ActionConfig } from '../../api';
  * @see {Action}
  */
 export function useActionICPWalletAdapter({ agent }: { agent: HttpAgent }) {
-  const { isConnected, principal, connectAsync: _ } = useConnect();
+  const { isConnected, principal, connectAsync } = useConnect();
   const { open } = useDialog();
 
   const adapter = useMemo(() => {
     return new ActionConfig(agent, {
       connect: async () => {
+        console.log(isConnected, principal);
         if (isConnected) {
           return principal!;
         }
 
         try {
-          // connect to the previous connector
-          // const { principal } = await connectAsync();
-          // return principal;
-          throw new Error('Should handle previous connector');
-          // return 'test-principal';
+          console.log(`attemp`);
+          const { activeProvider } = await connectAsync();
+          console.log(activeProvider);
+          return activeProvider.principal ?? null;
         } catch (error) {
           console.log(error);
           open();
@@ -47,7 +47,7 @@ export function useActionICPWalletAdapter({ agent }: { agent: HttpAgent }) {
         }
       },
     });
-  }, [agent, isConnected, principal, open]);
+  }, [agent, isConnected, principal, open, connectAsync]);
 
   return { adapter };
 }

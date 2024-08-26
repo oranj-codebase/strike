@@ -260,6 +260,7 @@ export const ActionContainer = ({
     component: AbstractActionComponent,
     params?: Record<string, string | string[]>,
   ) => {
+    console.log(`executing actions`);
     if (params) {
       if (component instanceof FormActionComponent) {
         Object.entries(params).forEach(([name, value]) =>
@@ -280,7 +281,7 @@ export const ActionContainer = ({
         component.setValue(value);
       }
     }
-
+    console.log(actionState);
     if (!actionState) {
       return;
     }
@@ -297,7 +298,7 @@ export const ActionContainer = ({
       dispatch({ type: ExecutionType.BLOCK });
       return;
     }
-
+    console.log(`hol`);
     dispatch({ type: ExecutionType.INITIATE, executingAction: component });
 
     const context: ActionContext = {
@@ -309,6 +310,7 @@ export const ActionContainer = ({
 
     try {
       const principal = await action.adapter.connect(context);
+      console.log(principal);
       if (!principal) {
         dispatch({ type: ExecutionType.RESET });
         return;

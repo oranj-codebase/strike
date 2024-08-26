@@ -33,7 +33,7 @@ class NFID implements IConnector {
   };
   #identity?: Identity;
   #principal?: string;
-  #client?: any;
+  #client?: AuthClient;
 
   get identity() {
     return this.#identity;
@@ -130,23 +130,21 @@ class NFID implements IConnector {
   async connect() {
     try {
       await new Promise((resolve, reject) => {
+        if (!this.#client) {
+          return err({ kind: ConnectError.NotInitialized });
+        }
         this.#client.login({
-          // TODO: local
-          identityProvider:
-            this.#config.providerUrl +
-            `/authenticate/?applicationName=${this.#config.appName}`,
+          identityProvider: `https://nfid.one/authenticate/?applicationName=${this.#config.appName}`,
           onSuccess: resolve,
           onError: reject,
         });
       });
-      const identity = this.#client.getIdentity();
-      const principal = identity.getPrincipal().toString();
-      // TODO: why is this check here?
-      if (identity) {
-        this.#identity = identity;
-        this.#principal = principal;
-        return ok(true);
+      if (!this.#client) {
+        return err({ kind: ConnectError.NotInitialized });
       }
+      this.#identity = this.#client.getIdentity();
+      this.#principal = this.#identity.getPrincipal().toString();
+
       return ok(true);
     } catch (e) {
       console.error(e);
@@ -156,6 +154,9 @@ class NFID implements IConnector {
 
   async disconnect() {
     try {
+      if (!this.#client) {
+        return err({ kind: DisconnectError.NotInitialized });
+      }
       await this.#client.logout();
       return ok(true);
     } catch (e) {

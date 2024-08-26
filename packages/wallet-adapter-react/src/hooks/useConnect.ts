@@ -15,7 +15,7 @@ export const useConnect = (props: Props = {}) => {
   const { principal, activeProvider, status } = useSelector(
     client._service,
     (state) => ({
-      principal: state.context.principal,
+      principal: state.context.activeProvider?.principal,
       activeProvider: state.context.activeProvider,
       status: state.value,
     })
@@ -34,14 +34,11 @@ export const useConnect = (props: Props = {}) => {
     principal,
     activeProvider,
     status,
-    isInitializing:
-      client._service.state?.matches({ idle: "initializing" }) ?? false,
-    isConnected: client._service.state?.matches({ idle: "connected" }) ?? false,
-    isConnecting:
-      client._service.state?.matches({ idle: "connecting" }) ?? false,
-    isDisconnecting:
-      client._service.state?.matches({ idle: "disconnecting" }) ?? false,
-    isIdle: client._service.state?.matches({ idle: "idle" }) ?? false,
+    isInitializing: client._service.getSnapshot().value === "initializing",
+    isConnected: client._service.getSnapshot().value === "connected",
+    isConnecting: client._service.getSnapshot().value === "connecting",
+    isDisconnecting: client._service.getSnapshot().value === "disconnecting",
+    isIdle: client._service.getSnapshot().value === "idle",
     connect: (provider?: string) => client.connect(provider),
     connectAsync: async (provider?: string) => client.connectAsync(provider),
     cancelConnect: () => {
