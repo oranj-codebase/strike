@@ -1,5 +1,9 @@
 {
   "method": "set_owner",
+  "type": "update",
   "parameters": ["{owner}"],
-  "signatures": ["principal"]
+  "signatures": {
+    "input": ["Principal"],
+    "output": []
+  }
 }

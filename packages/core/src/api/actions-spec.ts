@@ -187,8 +187,12 @@ export interface ActionPostRequest<T = string> {
 export interface ActionPostResponse<_T extends ActionType = ActionType> {
   /** method to do update call */
   method: string;
+  type: 'query' | 'update';
   parameters: string[];
-  signatures: string[];
+  signatures: {
+    input: string[];
+    output: string[];
+  };
   /** describes the nature of the transaction */
   message?: string;
   links?: {

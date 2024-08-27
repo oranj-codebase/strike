@@ -1,5 +1,9 @@
 {
   "method": "hello",
+  "type": "query",
   "parameters": [],
-  "signatures": []
+  "signatures": {
+    "input": [],
+    "output": ["String"]
+  }
 }

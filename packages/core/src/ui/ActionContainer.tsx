@@ -1,4 +1,4 @@
-import { fetchCandid } from '@dfinity/agent';
+import type { IDL } from '@dfinity/candid';
 import { Principal } from '@dfinity/principal';
 import { useEffect, useMemo, useReducer, useState } from 'react';
 import {
@@ -16,7 +16,6 @@ import {
   type ActionState,
 } from '../api/index.ts';
 import { checkSecurity, type SecurityLevel } from '../shared/index.ts';
-import { candidToJS } from '../utils/blockchain.ts';
 import { isPostRequestError } from '../utils/type-guards.ts';
 import {
   ActionLayout,
@@ -307,7 +306,6 @@ export const ActionContainer = ({
     };
 
     try {
-      console.log(`requesting connect`);
       const principal = await action.adapter.connect(context);
       console.log(principal);
       if (!principal) {
@@ -333,16 +331,25 @@ export const ActionContainer = ({
         await agent.fetchRootKey();
       }
 
-      const did = await fetchCandid(action.canisterId, agent);
-      const js = await candidToJS(did);
-      const dataUri =
-        'data:text/javascript;charset=utf-8,' + encodeURIComponent(js);
-      const candid: any = await eval('import("' + dataUri + '")');
+      // idlFactory
+      const idlFactory: IDL.InterfaceFactory = ({ IDL }) => {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        const input = actionData.signatures.input.map((i) => IDL[i]);
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-expect-error
+        const output = actionData.signatures.output.map((i) => IDL[i]);
+        return IDL.Service({
+          hello: IDL.Func(input, output, [
+            actionData.type === 'query' ? 'query' : '',
+          ]),
+        });
+      };
 
       // Create actor
       const actorResult = await action.adapter.createActor(
         action.canisterId,
-        candid.idlFactory,
+        idlFactory,
         context,
       );
       if ('error' in actorResult) {
@@ -355,7 +362,7 @@ export const ActionContainer = ({
 
       for (let i = 0; i < actionData.parameters.length; i++) {
         const parameter = actionData.parameters[i];
-        const type = actionData.signatures[i];
+        const type = actionData.signatures.input[i];
         let value = '';
 
         if (/^\{(.*)\}$/.test(parameter)) {
