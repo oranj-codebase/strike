@@ -58,12 +58,10 @@ export const createAuthMachine = (initialContext: RootContext) => {
       }),
       handleConnectRequest: fromPromise<
         { activeProvider: Provider; principal: string },
-        { providerId?: string; providers: Provider[] },
-        ConncetedEvent
-      >(async ({ emit, input: { providerId, providers } }) => {
+        { providerId?: string; providers: Provider[] }
+      >(async ({ input: { providerId, providers } }) => {
         const provider2Connect =
           providerId ?? (localStorage.getItem("icp:provider") as string);
-        console.log(`provider2Connect ${provider2Connect}`);
         if (!provider2Connect) {
           throw new Error("Provider not found");
         }
@@ -79,8 +77,7 @@ export const createAuthMachine = (initialContext: RootContext) => {
             if (!connected) {
               throw new Error("Error while connecting");
             }
-            emit({ type: "CONNECTED", data: { activeProvider: provider } });
-
+            localStorage.setItem("icp:provider", provider.meta.id);
             return {
               activeProvider: provider,
               principal: provider.principal!,
@@ -120,7 +117,6 @@ export const createAuthMachine = (initialContext: RootContext) => {
           onDone: {
             target: "connected",
             actions: [
-              log("Connected"),
               assign(({ event }) => ({
                 activeProvider: event.output.activeProvider,
                 principal: event.output.principal,
@@ -181,6 +177,13 @@ export const createAuthMachine = (initialContext: RootContext) => {
             target: "disconnecting",
           },
         },
+        entry: [
+          emit(({ context }) => ({
+            type: "CONNECTED",
+            data: { activeProvider: context.activeProvider! },
+          })),
+          log("Connected"),
+        ],
       },
       disconnecting: {
         id: "disconnecting",
