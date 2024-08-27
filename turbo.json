@@ -6,6 +6,9 @@
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": ["dist/**"]
     },
+    "@blinks-icp/wallet-adapter#build": {
+      "outputs": ["dist/**"]
+    },
     "@blinks-icp/wallet-adapter-react#build": {
       "dependsOn": ["@blinks-icp/wallet-adapter#build"],
       "outputs": ["dist/**"]
@@ -19,17 +22,17 @@
     },
     "@blinks-icp/site#build": {
       "dependsOn": [
-        "@blinks-icp/core#build",
         "@blinks-icp/wallet-adapter#build",
-        "@blinks-icp/wallet-adapter-react#build"
+        "@blinks-icp/wallet-adapter-react#build",
+        "@blinks-icp/core#build"
       ],
       "outputs": ["dist/**"]
     },
     "@blinks-icp/chrome-extension": {
       "dependsOn": [
-        "@blinks-icp/core#build",
         "@blinks-icp/wallet-adapter#build",
-        "@blinks-icp/wallet-adapter-react#build"
+        "@blinks-icp/wallet-adapter-react#build",
+        "@blinks-icp/core#build"
       ],
       "outputs": ["build/**"]
     },
