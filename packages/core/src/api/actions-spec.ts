@@ -1,5 +1,3 @@
-// TODO: Uncomment this once the `@solana/actions-spec` package is published with chaining types
-// export type * from '@solana/actions-spec';
 /**
  * Solana Actions and blinks specification - v2.0
  */

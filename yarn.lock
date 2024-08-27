@@ -255,13 +255,6 @@
   dependencies:
     "@noble/hashes" "^1.3.1"
 
-"@dialectlabs/blinks@^0.7.0":
-  version "0.7.0"
-  resolved "https://registry.yarnpkg.com/@dialectlabs/blinks/-/blinks-0.7.0.tgz#09ff99d4305f5fa49eebddc0c1247d6aa918c3bf"
-  integrity sha512-MiUyrDXZJk2Jypz2WV2v7agi6iosiCX7tkUXEwppRaiNBeklWqLU2fPxTx+eKGeoxltHUW++m0f+t0w/SLlRCQ==
-  dependencies:
-    clsx "^2.1.1"
-
 "@esbuild/aix-ppc64@0.21.5":
   version "0.21.5"
   resolved "https://registry.yarnpkg.com/@esbuild/aix-ppc64/-/aix-ppc64-0.21.5.tgz#c7184a326533fcdf1b8ee0733e21c713b975575f"
@@ -587,11 +580,6 @@
   resolved "https://registry.yarnpkg.com/@humanwhocodes/retry/-/retry-0.3.0.tgz#6d86b8cb322660f03d3f0aa94b99bdd8e172d570"
   integrity sha512-d2CGZR2o7fS6sWB7DG/3a95bGKQyHMACZ5aW8qGkkqQpUoZV6C0X7Pc7l4ZNMZkfNBf4VWNe9E1jRsf0G146Ew==
 
-"@ic-reactor/parser@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@ic-reactor/parser/-/parser-0.4.0.tgz#52dd15dfbed82b327251232791d2185f04e48b1d"
-  integrity sha512-sd+9QwR4XiNnB8RwLXTljDb7Ydicmu4l3OMGSIMPwHr8vTb/Fgps5CIZXprKbTBWY5iZ8P19kCB9ssnRI1ARzA==
-
 "@isaacs/cliui@^8.0.2":
   version "8.0.2"
   resolved "https://registry.yarnpkg.com/@isaacs/cliui/-/cliui-8.0.2.tgz#b37667b7bc181c168782259bab42474fbf52b550"
@@ -804,11 +792,6 @@
     js-base64 "^3.7.5"
   optionalDependencies:
     "@react-native-async-storage/async-storage" "^1.17.7"
-
-"@solana/actions-spec@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@solana/actions-spec/-/actions-spec-2.2.0.tgz#9514ef28452fe0ac55f45a34ea34d2b212797895"
-  integrity sha512-APQohvb0frZWuIBwWT+9rIYqiejEc3vyjrueRc2CkDo6DpgtMskVt7TtpFCMBdncgS1O8QoPPJe8pUnWhP2gYg==
 
 "@solana/buffer-layout@^4.0.1":
   version "4.0.1"
@@ -1517,11 +1500,6 @@ base-x@^4.0.0:
   resolved "https://registry.yarnpkg.com/base-x/-/base-x-4.0.0.tgz#d0e3b7753450c73f8ad2389b5c018a4af7b2224a"
   integrity sha512-FuwxlW4H5kh37X/oW59pwTzzTKRzfrrQwhmyspRM7swOEZcHtDZSCt45U6oKgtuFE+WYPblePMVIPR4RZrh/hw==
 
-base-x@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/base-x/-/base-x-5.0.0.tgz#6d835ceae379130e1a4cb846a70ac4746f28ea9b"
-  integrity sha512-sMW3VGSX1QWVFA6l8U62MLKz29rRfpTlYdCqLdpLo1/Yd4zZwSbnUaDfciIAowAqvq7YFnWq9hrhdg1KYgc1lQ==
-
 base64-arraybuffer@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/base64-arraybuffer/-/base64-arraybuffer-0.2.0.tgz#4b944fac0191aa5907afe2d8c999ccc57ce80f45"
@@ -1633,13 +1611,6 @@ bs58@^5.0.0:
   integrity sha512-r+ihvQJvahgYT50JD05dyJNKlmmSlMoOGwn1lCcEzanPglg7TxYjioQUYehQ9mAR/+hOSd2jRc/Z2y5UxBymvQ==
   dependencies:
     base-x "^4.0.0"
-
-bs58@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/bs58/-/bs58-6.0.0.tgz#a2cda0130558535dd281a2f8697df79caaf425d8"
-  integrity sha512-PD0wEnEYg6ijszw/u8s+iI3H17cTymlrwkKhDhPZq+Sokl3AU4htyBFTjAeNAlCCmg0f53g6ih3jATyCKftTfw==
-  dependencies:
-    base-x "^5.0.0"
 
 buffer@6.0.3, buffer@^6.0.3, buffer@~6.0.3:
   version "6.0.3"

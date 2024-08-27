@@ -23,13 +23,10 @@
     "zip": "npm run build && node src/zip.js"
   },
   "dependencies": {
-    "@dialectlabs/blinks": "^0.7.0",
-    "@solana/web3.js": "^1.95.1",
-    "bs58": "^6.0.0",
+    "@blinks-icp/core": "*",
     "buffer": "^6.0.3",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "@blinks-icp/core": "*"
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@crxjs/vite-plugin": "2.0.0-beta.25",
