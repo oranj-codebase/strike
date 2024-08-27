@@ -21,14 +21,15 @@ export const useConnect = (props: Props = {}) => {
     })
   );
 
-  useEffect(() => {
-    const unsub = client.on("connect", onConnect);
-    const unsub2 = client.on("disconnect", onDisconnect);
-    return () => {
-      unsub();
-      unsub2();
-    };
-  }, [client]);
+  // TODO:
+  // useEffect(() => {
+  //   const unsub = client.on("connect", onConnect);
+  //   const unsub2 = client.on("disconnect", onDisconnect);
+  //   return () => {
+  //     unsub();
+  //     unsub2();
+  //   };
+  // }, [client]);
 
   return {
     principal,

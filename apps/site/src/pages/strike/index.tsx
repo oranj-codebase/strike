@@ -42,7 +42,11 @@ export function StrikePage() {
             <button
               className="flex w-full items-center justify-center text-nowrap rounded-button px-4 py-3 text-text font-semibold transition-colors motion-reduce:transition-none bg-[#232327] text-white rounded-md hover:bg-button-hover"
               onClick={() =>
-                ICP_BLINK_PREFIX.test(tempUrl) ? setUrl(tempUrl) : null
+                ICP_BLINK_PREFIX.test(
+                  new URL(tempUrl).searchParams.get("action") ?? ""
+                )
+                  ? setUrl(tempUrl)
+                  : null
               }
             >
               Unfurl

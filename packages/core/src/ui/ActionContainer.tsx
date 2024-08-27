@@ -257,7 +257,6 @@ export const ActionContainer = ({
     component: AbstractActionComponent,
     params?: Record<string, string | string[]>,
   ) => {
-    console.log(`executing actions`);
     if (params) {
       if (component instanceof FormActionComponent) {
         Object.entries(params).forEach(([name, value]) =>
@@ -278,7 +277,6 @@ export const ActionContainer = ({
         component.setValue(value);
       }
     }
-    console.log(actionState);
     if (!actionState) {
       return;
     }
@@ -307,7 +305,6 @@ export const ActionContainer = ({
 
     try {
       const principal = await action.adapter.connect(context);
-      console.log(principal);
       if (!principal) {
         dispatch({ type: ExecutionType.RESET });
         return;
@@ -336,16 +333,16 @@ export const ActionContainer = ({
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error
         const input = actionData.signatures.input.map((i) => IDL[i]);
+
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error
         const output = actionData.signatures.output.map((i) => IDL[i]);
         return IDL.Service({
-          hello: IDL.Func(input, output, [
+          [actionData.method]: IDL.Func(input, output, [
             actionData.type === 'query' ? 'query' : '',
           ]),
         });
       };
-
       // Create actor
       const actorResult = await action.adapter.createActor(
         action.canisterId,
@@ -372,15 +369,15 @@ export const ActionContainer = ({
         } else {
           value = parameter;
         }
-        switch (type) {
+        switch (type.toLowerCase()) {
           case 'principal':
             parameters.push(Principal.fromText(value));
             break;
-          case 'string':
+          case 'text':
             parameters.push(value);
             break;
           default:
-            throw new Error('Unknown type');
+            throw new Error(`Unknown type: ${type}`);
         }
       }
 

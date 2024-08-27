@@ -4,6 +4,6 @@
   "parameters": [],
   "signatures": {
     "input": [],
-    "output": ["String"]
+    "output": ["Text"]
   }
 }

@@ -50,9 +50,7 @@ export const createAuthMachine = (initialContext: RootContext) => {
               isConnected ? resolve(p) : reject();
             })
         );
-        console.log(connectedProviders);
         const connectedProvider = await Promise.any(connectedProviders);
-        console.log(connectedProvider);
         return {
           activeProvider: connectedProvider,
           principal: connectedProvider.principal!,

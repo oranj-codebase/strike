@@ -38,22 +38,10 @@ type ClientOptions = {
 class Client {
   public _service: Actor<ReturnType<typeof createAuthMachine>>;
   public config;
-  private _emitter: EventEmitter;
 
-  constructor(service: any, emitter: EventEmitter, config: Config) {
+  constructor(service: any, config: Config) {
     this._service = service;
-    this._emitter = emitter;
     this.config = config;
-  }
-
-  on(evt: string, fn: (...args: any[]) => void) {
-    this._emitter.on(evt, fn);
-    return () => this._emitter.off(evt, fn);
-  }
-
-  subscribe(fn: (...args: any[]) => void) {
-    const sub = this._service.subscribe(fn);
-    return sub.unsubscribe;
   }
 
   connect(provider?: string) {
@@ -127,17 +115,15 @@ const createClient = ({
     agent.fetchRootKey().catch((e) => console.error(e));
   }
 
-  const emitter = new EventEmitter();
-
   const actor = createActor(createAuthMachine({ ...config, providers }), {
     inspect(inspectionEvent) {
-      console.log(inspectionEvent);
+      console.debug(inspectionEvent);
     },
   });
 
   actor.start();
 
-  return new Client(actor, emitter, config);
+  return new Client(actor, config);
 };
 
 export { createClient, Client };

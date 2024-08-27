@@ -22,7 +22,6 @@ export function useActionICPWalletAdapter({ agent }: { agent: HttpAgent }) {
   const adapter = useMemo(() => {
     return new ActionConfig(agent, {
       connect: async () => {
-        console.log(isConnected, principal);
         if (isConnected) {
           return principal!;
         }
