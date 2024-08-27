@@ -13,8 +13,6 @@ export const provider =
     ? 'https://identity.ic0.app'
     : 'http://rdmx6-jaaaa-aaaaa-aaadq-cai.localhost:4943';
 
-let count = 1;
-
 const adapter = (wallet: string) => {
   const client = createClient({
     providers: defaultProviders({
@@ -46,7 +44,7 @@ const adapter = (wallet: string) => {
       if (client.status === 'connected') {
         return client.activeProvider!.principal!;
       }
-      const { activeProvider } = await client.connectAsync('ii');
+      const { activeProvider } = await client.connectAsync(wallet);
       return activeProvider.principal ?? null;
     },
   });

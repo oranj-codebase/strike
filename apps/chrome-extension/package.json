@@ -1,9 +1,9 @@
 {
   "name": "@blinks-icp/chrome-extension",
-  "displayName": "Dialect Blinks",
-  "version": "0.0.9",
-  "author": "dialect",
-  "description": "Enable Solana Blinks on Twitter, with wallet support for Phantom, Backpack and Solflare.",
+  "displayName": "STRIKE by Oranj",
+  "version": "0.0.1",
+  "author": "Edward Lee",
+  "description": "Enable Solana Blinks on Twitter, with support for Internet Identity and Plug.",
   "type": "module",
   "license": "MIT",
   "keywords": [
