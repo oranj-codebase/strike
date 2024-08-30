@@ -1,4 +1,4 @@
-import { assign, setup, fromPromise, log, emit } from "xstate";
+import { assign, setup, fromPromise, emit } from "xstate";
 import { type DisconnectResult, type IConnector } from "./providers";
 
 type Provider = IConnector;
@@ -14,8 +14,7 @@ export type RootContext = {
   connectingProvider?: string;
 };
 
-// TODO: options type
-type ConnectEvent = { type: "CONNECT"; data: { provider?: string } };
+export type ConnectEvent = { type: "CONNECT"; data: { provider?: string } };
 export type CancelConnectEvent = { type: "CANCEL_CONNECT" };
 export type DisconnectEvent = { type: "DISCONNECT" };
 
@@ -93,10 +92,7 @@ export const createAuthMachine = (initialContext: RootContext) => {
         DisconnectResult,
         { activeProvider: Provider }
       >(async ({ input: { activeProvider } }) => {
-        console.log("handleDisconnectRequest", activeProvider);
-
         const result = await activeProvider.disconnect();
-        console.log(result);
         return result;
       }),
     },
@@ -135,6 +131,11 @@ export const createAuthMachine = (initialContext: RootContext) => {
             target: "connecting",
           },
         },
+        entry: [
+          assign({
+            activeProvider: () => undefined,
+          }),
+        ],
       },
       connecting: {
         id: "connecting",
@@ -182,7 +183,6 @@ export const createAuthMachine = (initialContext: RootContext) => {
             type: "CONNECTED",
             data: { activeProvider: context.activeProvider! },
           })),
-          log("Connected"),
         ],
       },
       disconnecting: {
@@ -196,11 +196,7 @@ export const createAuthMachine = (initialContext: RootContext) => {
           }),
           onDone: {
             target: "idle",
-            actions: [
-              // assign({
-              //   activeProvider: () => undefined,
-              // }),
-            ],
+            actions: [],
           },
           onError: {
             target: "connected",
