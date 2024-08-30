@@ -1,13 +1,12 @@
 import { ReactNode } from 'react';
-import PhantomLogo from '../assets/PhantomLogo';
-import SolflareLogo from '../assets/SolflareLogo';
-import BackpackLogo from '../assets/BackpackLogo';
+import InternetIdentityLogo from '../assets/InternetIdentityLogo';
+import PlugLogo from '../assets/PlugLogo';
 import ArrowFromSquareIcon from '../icons/ArrowFromSquareIcon';
 import { Checkbox } from './Checkbox';
 
 enum Wallets {
-  Solflare = 'solflare',
-  Phantom = 'phantom',
+  Plug = 'plug',
+  InternetIdentity = 'internetIdentity'
 }
 interface WalletProps {
   title: string;
@@ -101,32 +100,27 @@ export const WalletSelector = ({
     setSelectedWallet(null);
     chrome.storage.local.remove('selectedWallet');
   }
-  const isWalletSolflare = selectedWallet === Wallets.Solflare;
-  const isWalletPhantom = selectedWallet === Wallets.Phantom;
+
+  const isInternetIdentity = selectedWallet === Wallets.InternetIdentity;
+  const isPlug = selectedWallet === Wallets.Plug;
+
   return (
     <div className="flex flex-col flex-1 gap-2 w-full">
       <WalletSelect
-        isSelected={isWalletPhantom}
-        title="Phantom"
-        subtitle="Blinks are also natively supported in Phantom"
-        icon={<PhantomLogo />}
+        isSelected={isInternetIdentity}
+        title="Internet Identity"
+        icon={<InternetIdentityLogo />}
         onChange={(isChecked: boolean) =>
-          isChecked ? selectWallet(Wallets.Phantom) : unselectWallet()
+          isChecked ? selectWallet(Wallets.InternetIdentity) : unselectWallet()
         }
       />
       <WalletSelect
-        isSelected={isWalletSolflare}
-        title="Solflare"
-        icon={<SolflareLogo />}
+        isSelected={isPlug}
+        title="Plug"
+        icon={<PlugLogo />}
         onChange={(isChecked: boolean) =>
-          isChecked ? selectWallet(Wallets.Solflare) : unselectWallet()
+          isChecked ? selectWallet(Wallets.Plug) : unselectWallet()
         }
-      />
-      <WalletLink
-        title="Backpack"
-        subtitle="Blinks are natively supported in Backpack"
-        icon={<BackpackLogo />}
-        url="https://chromewebstore.google.com/detail/backpack/aflkmfhebedbjioipglgcbcmnbpgliof"
       />
     </div>
   );
