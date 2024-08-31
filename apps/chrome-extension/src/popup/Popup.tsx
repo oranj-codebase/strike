@@ -9,7 +9,7 @@ export const Popup = () => {
 
   useEffect(() => {
     chrome.storage.local.get('strikeProvider', (result) => {
-      const storedWallet = result.strikeProvider ?? null;
+      const storedWallet = result.strikeProvider ?? 'ii';
       setSelectedWallet(storedWallet);
       setLoading(false);
     });
