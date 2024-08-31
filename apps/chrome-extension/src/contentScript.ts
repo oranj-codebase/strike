@@ -41,8 +41,12 @@ const adapter = (wallet: string) => {
       return { actor };
     },
     connect: async () => {
-      if (client.status === 'connected') {
-        return client.activeProvider!.principal!;
+      if (
+        client.activeProvider &&
+        client.status === 'connected' &&
+        client.activeProvider.meta.id === wallet
+      ) {
+        return client.activeProvider.principal!;
       }
       const { activeProvider } = await client.connectAsync(wallet);
       return activeProvider.principal ?? null;

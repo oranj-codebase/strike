@@ -41,7 +41,8 @@ export const createAuthMachine = (initialContext: RootContext) => {
         { activeProvider: Provider; principal: string },
         { providers: Provider[] }
       >(async ({ input: { providers } }) => {
-        await Promise.all(providers.map((p) => p.init()));
+        const initResult = await Promise.all(providers.map((p) => p.init()));
+        console.debug("initResult", initResult);
         let connectedProviders = providers.map(
           (p) =>
             new Promise<Provider>(async (resolve, reject) => {
@@ -174,6 +175,9 @@ export const createAuthMachine = (initialContext: RootContext) => {
       connected: {
         id: "connected",
         on: {
+          CONNECT: {
+            target: "connecting",
+          },
           DISCONNECT: {
             target: "disconnecting",
           },

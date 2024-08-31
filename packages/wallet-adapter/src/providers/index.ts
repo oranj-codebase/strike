@@ -11,7 +11,6 @@ export type WalletProvider = IConnector & IWalletConnector;
 export type Config = {
   whitelist?: Array<string>;
   host?: string;
-  dev?: boolean;
   autoConnect?: boolean;
   providerUrl?: string;
   ledgerCanisterId?: string;
