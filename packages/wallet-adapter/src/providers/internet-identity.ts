@@ -32,7 +32,6 @@ class InternetIdentity implements IConnector {
     whitelist: Array<string>;
     host: string;
     providerUrl: string;
-    dev: boolean;
   };
   #identity: Identity;
   #principal?: string;
@@ -49,9 +48,8 @@ class InternetIdentity implements IConnector {
   constructor(userConfig = {}) {
     this.#config = {
       whitelist: [],
-      host: window.location.origin,
+      host: "https://icp0.io",
       providerUrl: "https://identity.ic0.app",
-      dev: true,
       ...userConfig,
     };
     this.#identity = new AnonymousIdentity();
@@ -94,15 +92,12 @@ class InternetIdentity implements IConnector {
 
   async createActor<Service>(canisterId: string, idlFactory: any) {
     try {
-      // TODO: pass identity?
       const agent = new HttpAgent({
         ...this.#config,
         identity: this.#identity,
       });
 
-      if (this.#config.dev) {
-        // Fetch root key for certificate validation during development
-        // Fetch root key for certificate validation during development
+      if (agent.isLocal()) {
         const res = await agent
           .fetchRootKey()
           .then(() => ok(true))
@@ -111,7 +106,6 @@ class InternetIdentity implements IConnector {
           return res;
         }
       }
-      // TODO: add actorOptions?
       const actor = Actor.createActor<Service>(idlFactory, {
         agent,
         canisterId,
@@ -127,7 +121,6 @@ class InternetIdentity implements IConnector {
     try {
       await new Promise<void>((resolve, reject) => {
         this.#client?.login({
-          // TODO: local
           identityProvider: this.#config.providerUrl,
           onSuccess: resolve,
           onError: reject,
