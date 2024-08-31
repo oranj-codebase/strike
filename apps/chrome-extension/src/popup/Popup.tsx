@@ -8,8 +8,8 @@ export const Popup = () => {
   const [selectedWallet, setSelectedWallet] = useState<string | null>();
 
   useEffect(() => {
-    chrome.storage.local.get(['selectedWallet'], (result) => {
-      const storedWallet = result.selectedWallet ?? null;
+    chrome.storage.local.get('strikeProvider', (result) => {
+      const storedWallet = result.strikeProvider ?? null;
       setSelectedWallet(storedWallet);
       setLoading(false);
     });
@@ -20,14 +20,16 @@ export const Popup = () => {
     <div className="h-full flex flex-1 flex-col items-center px-4 pb-4">
       <Header />
       <div className="flex flex-col mt-20 items-center h-full">
-        <h1 className="text-highlight font-bold mb-2">Enable Blinks</h1>
+        <h1 className="text-highlight font-bold mb-2">Enable Strike</h1>
         <p className="text-tertiary text-subtext mb-8 text-center font-normal">
-          Choose a wallet you would like to enable Blinks for. What are Blinks?{' '}
+          Choose a wallet you would like to enable Strike for.
+          <br />
+          What are Strike?{' '}
           <button
             className="hover:underline text-primary"
             onClick={() =>
               chrome.tabs.create({
-                url: 'https://www.dialect.to/',
+                url: 'https://strike.oranj.co.in/',
               })
             }
           >
@@ -45,8 +47,8 @@ export const Popup = () => {
               <CircleExclamationIcon />
             </div>
             <span className="text-caption font-normal text-start">
-              Blinks should only be enabled for one wallet at a time. Before
-              enabling support here, be sure you haven’t enabled native Blinks
+              Strike should only be enabled for one wallet at a time. Before
+              enabling support here, be sure you haven’t enabled native Strike
               in any wallets.
             </span>
           </div>

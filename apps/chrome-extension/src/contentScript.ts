@@ -51,7 +51,11 @@ const adapter = (wallet: string) => {
 };
 
 function initTwitterObserver() {
-  setupTwitterObserver(adapter('ii'));
+  chrome.storage.local.get('strikeProvider', (result) => {
+    const storedWallet: string = result?.strikeProvider ?? 'ii';
+    console.debug(`Initializing twitter observer with wallet: ${storedWallet}`);
+    setupTwitterObserver(adapter(storedWallet));
+  });
 }
 
 initTwitterObserver();

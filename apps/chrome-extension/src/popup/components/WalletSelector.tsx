@@ -6,8 +6,9 @@ import { Checkbox } from './Checkbox';
 
 enum Wallets {
   Plug = 'plug',
-  InternetIdentity = 'internetIdentity'
+  InternetIdentity = 'ii',
 }
+
 interface WalletProps {
   title: string;
   subtitle?: string;
@@ -93,12 +94,12 @@ export const WalletSelector = ({
 }) => {
   function selectWallet(wallet: string) {
     setSelectedWallet(wallet);
-    chrome.storage.local.set({ selectedWallet: wallet });
+    chrome.storage.local.set({ strikeProvider: wallet });
   }
 
   function unselectWallet() {
     setSelectedWallet(null);
-    chrome.storage.local.remove('selectedWallet');
+    chrome.storage.local.remove('strikeProvider');
   }
 
   const isInternetIdentity = selectedWallet === Wallets.InternetIdentity;
