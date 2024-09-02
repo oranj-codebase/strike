@@ -322,13 +322,7 @@ export const ActionContainer = ({
         });
         return;
       }
-      // Fetch did and construct idlFactory
-      const agent = action.adapter.agent;
-      if (agent.isLocal()) {
-        await agent.fetchRootKey();
-      }
-
-      // idlFactory
+      // construct idlFactory
       const idlFactory: IDL.InterfaceFactory = ({ IDL }) => {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-expect-error

@@ -101,7 +101,7 @@ const createClient = ({
   const config = {
     dev: true,
     autoConnect: true,
-    host: window.location.origin,
+    host: "https://icp0.io",
     ...globalProviderConfig,
     whitelist: globalProviderConfig.whitelist || [],
     principal: undefined,
@@ -109,11 +109,6 @@ const createClient = ({
   const providers = typeof p === "function" ? p(config) : p;
 
   providers.forEach((p) => (p.config = config));
-
-  const agent = new HttpAgent({ host: config.host });
-  if (config.dev) {
-    agent.fetchRootKey().catch((e) => console.error(e));
-  }
 
   const actor = createActor(createAuthMachine({ ...config, providers }), {
     inspect(inspectionEvent) {
