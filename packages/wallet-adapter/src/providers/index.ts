@@ -33,7 +33,7 @@ export function defaultProviders(
 export function walletProviders(
   config: Config | undefined = {}
 ): Array<WalletProvider> {
-  return [];
+  return [new PlugWallet(config)];
 }
 
 export { InternetIdentity, NFID };
