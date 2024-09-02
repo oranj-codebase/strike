@@ -1,18 +1,21 @@
-# @dialectlabs/blinks &mdash; the [Actions](https://github.com/dialectlabs/actions) Interface
+# @blinks-icp/core &mdash; the [Actions](https://github.com/dialectlabs/actions) Interface
 
 ## Usage
+
 ### Style Presets & Overriding Theme
 
 #### Style Presets
+
 `Blink` component contains a `stylePreset` prop that accepts the following values:
-* `default` - [dial.to](https://dial.to)-styled blink (light)
-* `x-dark` - [X](https://x.com/)-styled blink (dark)
-* `x-light` - [X](https://x.com/)-styled blink (light)
-* `custom` - clean slate, no colors, radii at all, use CSS Variables to style. See [Overriding Theme](#overriding-theme). 
+
+- `default` - [dial.to](https://dial.to)-styled blink (light)
+- `x-dark` - [X](https://x.com/)-styled blink (dark)
+- `x-light` - [X](https://x.com/)-styled blink (light)
+- `custom` - clean slate, no colors, radii at all, use CSS Variables to style. See [Overriding Theme](#overriding-theme).
 
 ```tsx
-import '@dialectlabs/blinks/index.css';
-import { Blink } from "@dialectlabs/blinks";
+import '@blinks-icp/core/index.css';
+import { Blink } from "@blinks-icp/core";
 
 <Blink stylePreset="x-dark" ... />
 ```
@@ -72,11 +75,12 @@ In your CSS, you can override the following CSS Variables to customize the look 
   --blink-border-radius-rounded-input: 624.9375rem;
 
   /* box-shadow */
-  --blink-shadow-container: 0px 2px 8px 0px rgba(59, 176, 255, 0.22), 0px 1px 48px 0px rgba(29, 155, 240, 0.24);
+  --blink-shadow-container: 0px 2px 8px 0px rgba(59, 176, 255, 0.22),
+    0px 1px 48px 0px rgba(29, 155, 240, 0.24);
 }
 ```
 
-> be sure to import these overrides after @dialectlabs/blinks styles (or by [CSS Specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) as suggested above)
+> be sure to import these overrides after @blinks-icp/core styles (or by [CSS Specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) as suggested above)
 
 ### Chrome Extension
 
@@ -84,23 +88,22 @@ Package provides an entrypoint function with styled for X Blink components
 
 ```ts
 // contentScript.ts
-import { setupTwitterObserver } from "@dialectlabs/blinks/ext/twitter";
-import { ActionConfig } from "@dialectlabs/blinks";
+import { setupTwitterObserver } from "@blinks-icp/core/ext/twitter";
+import { ActionConfig } from "@blinks-icp/core";
 
 // your RPC_URL is used to create a connection to confirm the transaction after action execution
 setupTwitterObserver(new ActionConfig(RPC_URL, {
-  signTransaction: async (tx: string) => { ... },
+  createActor: (canisterId: string, idlFactory: IDL.InterfaceFactory, context: ActionContext) {...}
   connect: async () => { ... }
 }))
 
 // or
 
-import { type ActionAdapter } from "@dialectlabs/blinks";
+import { type ActionAdapter } from "@blinks-icp/core";
 
 class MyActionAdapter implements ActionAdapter {
-  async signTransaction(tx: string) { ... }
+  async createActor(tx: string) { ... }
   async connect() { ... }
-  async confirmTransaction(sig: string) { ... }
 }
 
 setupTwitterObserver(new MyActionAdapter());
