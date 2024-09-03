@@ -1,20 +1,12 @@
-import DialectLogo from '../assets/DialectLogo';
-import CircleInfoIcon from '../icons/CircleInfoIcon';
+import StrikeLogo from '../assets/StrikeLogo';
 
 export const Header = () => {
   return (
-    <div className="flex justify-center items-center py-[18px]">
-      <DialectLogo />
-      <button
-        className="absolute right-4 top-4 text-icon-secondary hover:text-icon-primary"
-        onClick={() =>
-          chrome.tabs.create({
-            url: 'https://www.dialect.to/',
-          })
-        }
-      >
-        <CircleInfoIcon />
-      </button>
+    <div className="flex justify-center items-center pt-[50px]">
+      <div className='flex items-center gap-3'>
+        <StrikeLogo />
+        <h1 className='text-highlight font-bold'>STRIKE</h1>
+      </div>
     </div>
   );
 };
