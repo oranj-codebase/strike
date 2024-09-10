@@ -5,16 +5,16 @@ function SvgComponent() {
             <path d="M20.8604 65.2271C16.5734 61.7562 22.296 56.3081 27.2505 59.1436L172.802 142.443C180.687 146.955 176.726 156.966 167.056 156.966H141.289C121.552 156.966 102.021 160.204 83.8855 166.483L58.2741 175.35C57.0365 175.779 55.7036 176 54.3566 176H17.0181C6.89684 176 3.268 165.221 12.0009 161.097L17.1956 158.644C33.4855 150.952 47.8063 140.827 59.3904 128.81C69.4152 118.412 68.2898 103.628 56.7629 94.2955L20.8604 65.2271Z" fill="url(#paint1_linear_22_41)" />
             <defs>
                 <linearGradient id="paint0_linear_22_41" x1="114.351" y1="-5.46594e-06" x2="42.2093" y2="166.723" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#00E6FE" />
-                    <stop offset="0.385" stop-color="#3670FF" />
-                    <stop offset="0.675" stop-color="#3E95FF" />
-                    <stop offset="1" stop-color="#2A48FF" />
+                    <stop stopColor="#00E6FE" />
+                    <stop offset="0.385" stopColor="#3670FF" />
+                    <stop offset="0.675" stopColor="#3E95FF" />
+                    <stop offset="1" stopColor="#2A48FF" />
                 </linearGradient>
                 <linearGradient id="paint1_linear_22_41" x1="114.351" y1="-5.46594e-06" x2="42.2093" y2="166.723" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="#00E6FE" />
-                    <stop offset="0.385" stop-color="#3670FF" />
-                    <stop offset="0.675" stop-color="#3E95FF" />
-                    <stop offset="1" stop-color="#2A48FF" />
+                    <stop stopColor="#00E6FE" />
+                    <stop offset="0.385" stopColor="#3670FF" />
+                    <stop offset="0.675" stopColor="#3E95FF" />
+                    <stop offset="1" stopColor="#2A48FF" />
                 </linearGradient>
             </defs>
         </svg>
