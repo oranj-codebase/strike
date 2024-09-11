@@ -13,7 +13,7 @@ export function isInterstitial(url: string | URL): IsInterstitialResult {
   try {
     const urlObj = new URL(url);
 
-    const actionUrl = urlObj.searchParams.get('action');
+    const actionUrl = urlObj.searchParams.get('url');
     if (!actionUrl) {
       return { isInterstitial: false };
     }

@@ -15,7 +15,7 @@ export async function generateMetadata(
   { searchParams }: Props,
   parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const actionUrl = searchParams['action'];
+  const actionUrl = searchParams['url'];
 
   if (typeof actionUrl !== 'string') {
     throw new Error('Invalid action url');
@@ -26,7 +26,7 @@ export async function generateMetadata(
   const action = await Action.fetch(actionApiUrl);
 
   return {
-    title: action.title,
+    title: `STRIKE | ${action.title}`,
     description: action.description,
     openGraph: {
       images: [action.icon],
