@@ -39,7 +39,7 @@ export default async function ActionPage({
 }: {
   searchParams: { [key: string]: string };
 }) {
-  const actionUrl = searchParams['action'];
+  const actionUrl = searchParams['url'];
 
   return <StrikePage url={actionUrl} />;
 }
