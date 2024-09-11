@@ -108,7 +108,7 @@ class PlugWallet implements IConnector, IWalletConnector {
   constructor(userConfig = {}) {
     this.#config = {
       whitelist: [],
-      host: window.location.origin,
+      host: "https://icp0.io",
       dev: true,
       onConnectionUpdate: () => {
         // TODO:
