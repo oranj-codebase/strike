@@ -110,11 +110,7 @@ const createClient = ({
 
   providers.forEach((p) => (p.config = config));
 
-  const actor = createActor(createAuthMachine({ ...config, providers }), {
-    inspect(inspectionEvent) {
-      console.debug(inspectionEvent);
-    },
-  });
+  const actor = createActor(createAuthMachine({ ...config, providers }));
 
   actor.start();
 

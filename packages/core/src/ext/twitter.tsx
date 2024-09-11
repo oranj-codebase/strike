@@ -9,11 +9,7 @@ import { type SecurityLevel } from '../shared/index.ts';
 import { ActionContainer, type StylePreset } from '../ui/index.ts';
 import { noop } from '../utils/constants.ts';
 import { isInterstitial } from '../utils/interstitial-url.ts';
-import { proxify } from '../utils/proxify.ts';
-import {
-  ActionsURLMapper,
-  type ActionsJsonConfig,
-} from '../utils/url-mapper.ts';
+import { unfurlUrlToActionApiUrl } from '../utils/url-mapper.ts';
 
 type ObserverSecurityLevel = SecurityLevel;
 
@@ -68,7 +64,6 @@ export function setupTwitterObserver(
   callbacks: Partial<ActionCallbacksConfig> = {},
   options: Partial<ObserverOptions> = DEFAULT_OPTIONS,
 ) {
-  console.log(`setupTwitterObserver`);
   const mergedOptions = normalizeOptions(options);
   const twitterReactRoot = document.getElementById('react-root')!;
 
@@ -132,19 +127,7 @@ async function handleNewNode(
   const actionUrl = await resolveTwitterShortenedUrl(shortenedUrl);
 
   const interstitialData = isInterstitial(actionUrl);
-  let actionApiUrl: string | null;
-  if (interstitialData.isInterstitial) {
-    actionApiUrl = interstitialData.decodedActionUrl;
-  } else {
-    const actionsJsonUrl = actionUrl.origin + '/actions.json';
-    const actionsJson = await fetch(proxify(actionsJsonUrl)).then(
-      (res) => res.json() as Promise<ActionsJsonConfig>,
-    );
-
-    const actionsUrlMapper = new ActionsURLMapper(actionsJson);
-
-    actionApiUrl = actionsUrlMapper.mapUrl(actionUrl);
-  }
+  let actionApiUrl = await unfurlUrlToActionApiUrl(actionUrl);
 
   if (!actionApiUrl) {
     return;
