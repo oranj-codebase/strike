@@ -26,17 +26,17 @@ interface ActionMetadata {
 
 type ActionChainMetadata =
   | {
-    isChained: true;
-    isInline: boolean;
-  }
+      isChained: true;
+      isInline: boolean;
+    }
   | {
-    isChained: false;
-  };
+      isChained: false;
+    };
 
 export class Action {
   private readonly _actions: AbstractActionComponent[];
 
-  public constructor(
+  private constructor(
     private readonly _url: string,
     private readonly _data: NextAction,
     private readonly _metadata: ActionMetadata,
