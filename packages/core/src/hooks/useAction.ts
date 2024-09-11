@@ -1,4 +1,3 @@
-'use client';
 import { useEffect, useState } from 'react';
 
 import { Action, type ActionAdapter } from '../api/index.ts';

@@ -1,5 +1,3 @@
-'use client';
-
 import { useConnect, useDialog } from '@blinks-icp/wallet-adapter-react';
 import { Actor, HttpAgent } from '@dfinity/agent';
 import type { IDL } from '@dfinity/candid';

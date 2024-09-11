@@ -22,7 +22,3 @@ export const candidToJS = async (candid_source: string) => {
   }
   return js[0];
 };
-
-// export const fetchCandid = async (canisterId: string, agent: HttpAgent) => {
-
-// };

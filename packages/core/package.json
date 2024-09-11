@@ -27,10 +27,20 @@
       "require": "./dist/hooks/index.cjs",
       "types": "./dist/hooks/index.d.ts"
     },
-    "./hooks/solana": {
-      "import": "./dist/hooks/solana/index.js",
-      "require": "./dist/hooks/solana/index.cjs",
-      "types": "./dist/hooks/solana/index.d.ts"
+    "./api": {
+      "import": "./dist/api/index.js",
+      "require": "./dist/api/index.cjs",
+      "types": "./dist/api/index.d.ts"
+    },
+    "./utils": {
+      "import": "./dist/utils/index.js",
+      "require": "./dist/utils/index.cjs",
+      "types": "./dist/utils/index.d.ts"
+    },
+    "./hooks/icp": {
+      "import": "./dist/hooks/icp/index.js",
+      "require": "./dist/hooks/icp/index.cjs",
+      "types": "./dist/hooks/icp/index.d.ts"
     },
     ".": {
       "import": "./dist/index.js",

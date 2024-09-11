@@ -15,6 +15,8 @@ export default defineConfig([
       'src/index.ts',
       'src/index.css',
       'src/ext/twitter.tsx',
+      'src/utils/index.ts',
+      'src/api/index.ts',
       'src/hooks/index.ts',
       'src/hooks/icp/index.ts',
       'src/index.css',
@@ -23,6 +25,8 @@ export default defineConfig([
       entry: [
         'src/index.ts',
         'src/ext/twitter.tsx',
+        'src/utils/index.ts',
+        'src/api/index.ts',
         'src/hooks/index.ts',
         'src/hooks/icp/index.ts',
       ],
