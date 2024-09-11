@@ -6,16 +6,21 @@ import '@blinks-icp/core/index.css';
 import '@blinks-icp/wallet-adapter-react/index.css';
 import { host, provider } from '../config';
 
+const isServer = typeof window === 'undefined';
+
+const providers = isServer
+  ? []
+  : defaultProviders({
+      host,
+      providerUrl: provider,
+    });
+
 const client = createClient({
-  providers: defaultProviders({
-    host,
-    providerUrl: provider,
-  }),
+  providers,
   globalProviderConfig: {
     host,
   },
 });
-
 export default function ConnectProvider({
   children,
 }: {
