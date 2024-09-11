@@ -1,0 +1,44 @@
+'use server';
+import type { Metadata, ResolvingMetadata } from 'next';
+
+import { unfurlUrlToActionApiUrl } from '@blinks-icp/core/utils';
+import { Action } from '@blinks-icp/core/api';
+
+import { StrikePage } from '@/views';
+
+type Props = {
+  searchParams: { [key: string]: string | string[] | undefined };
+};
+
+export async function generateMetadata(
+  { searchParams }: Props,
+  parent: ResolvingMetadata,
+): Promise<Metadata> {
+  const actionUrl = searchParams['action'];
+
+  if (typeof actionUrl !== 'string') {
+    throw new Error('Invalid action url');
+  }
+
+  const actionApiUrl = await unfurlUrlToActionApiUrl(actionUrl);
+
+  const action = await Action.fetch(actionApiUrl);
+
+  return {
+    title: action.title,
+    description: action.description,
+    openGraph: {
+      images: [action.icon],
+    },
+  };
+}
+
+export default async function ActionPage({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string };
+}) {
+  const actionUrl = searchParams['action'];
+
+  return <StrikePage url={actionUrl} />;
+}
