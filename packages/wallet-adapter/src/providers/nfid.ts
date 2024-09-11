@@ -50,7 +50,7 @@ class NFID implements IConnector {
   constructor(userConfig = {}) {
     this.#config = {
       whitelist: [],
-      host: window.location.origin,
+      host: "https://icp0.io",
       providerUrl: "https://nfid.one",
       appName: "my-ic-app",
       dev: true,

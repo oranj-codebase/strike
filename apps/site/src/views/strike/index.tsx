@@ -1,25 +1,17 @@
-import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import { ICP_BLINK_PREFIX } from "@blinks-icp/core";
-import { ConnectButton, ConnectDialog } from "@blinks-icp/wallet-adapter-react";
+'use client';
 
-import "@blinks-icp/core/index.css";
-import "@blinks-icp/wallet-adapter-react/index.css";
+import { useEffect, useState } from 'react';
+import { ICP_BLINK_PREFIX } from '@blinks-icp/core';
+import { ConnectButton, ConnectDialog } from '@blinks-icp/wallet-adapter-react';
 
-import StrikeRenderer from "./strike-renderer";
+import '@blinks-icp/core/index.css';
+import '@blinks-icp/wallet-adapter-react/index.css';
 
-export function StrikePage() {
-  const [searchParams] = useSearchParams();
-  const [tempUrl, setTempUrl] = useState("");
-  const [url, setUrl] = useState<string | null>(null);
+import StrikeRenderer from './strike-renderer';
 
-  useEffect(() => {
-    const actionUrl = searchParams.get("action");
-
-    if (actionUrl && ICP_BLINK_PREFIX.test(actionUrl)) {
-      setUrl(actionUrl);
-    }
-  }, [searchParams]);
+export function StrikePage({ url: initialUrl }: { url: string }) {
+  const [url, setUrl] = useState<string | null>(initialUrl);
+  const [tempUrl, setTempUrl] = useState('');
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -43,7 +35,7 @@ export function StrikePage() {
               className="flex w-full items-center justify-center text-nowrap rounded-button px-4 py-3 text-text font-semibold transition-colors motion-reduce:transition-none bg-[#232327] text-white rounded-md hover:bg-button-hover"
               onClick={() =>
                 ICP_BLINK_PREFIX.test(
-                  new URL(tempUrl).searchParams.get("action") ?? ""
+                  new URL(tempUrl).searchParams.get('action') ?? '',
                 )
                   ? setUrl(tempUrl)
                   : null

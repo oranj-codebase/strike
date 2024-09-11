@@ -1,8 +1,10 @@
-import React from "react";
-import { HttpAgent } from "@dfinity/agent";
-import { Blink, useAction, useActionICPWalletAdapter } from "@blinks-icp/core";
+'use client';
 
-import { host } from "../../config";
+import React from 'react';
+import { HttpAgent } from '@dfinity/agent';
+import { Blink, useAction, useActionICPWalletAdapter } from '@blinks-icp/core';
+
+import { host } from '@/config';
 
 export default function StrikeRenderer({ url }: { url: string }) {
   // TODO: update this

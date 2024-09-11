@@ -62,7 +62,7 @@ class InfinityWallet implements IConnector {
   constructor(userConfig: Partial<Config> = {}) {
     this.#config = {
       whitelist: [],
-      host: window.location.origin,
+      host: "https://icp0.io",
       dev: true,
       providerUrl: "https://identity.ic0.app",
       ledgerCanisterId: "",
