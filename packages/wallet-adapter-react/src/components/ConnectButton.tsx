@@ -1,10 +1,5 @@
-"use client";
-
 import React, { type CSSProperties, type PropsWithChildren } from "react";
 import { useConnect, useDialog } from "../index";
-
-//@ts-ignore
-const isICX = !!window.icx;
 
 type Props = {
   style?: CSSProperties;
@@ -12,15 +7,13 @@ type Props = {
   onConnect?: () => void;
   onDisconnect?: () => void;
 };
-const ConnectButton: React.FC<PropsWithChildren<Props>> = (props) => {
-  const {
-    style = {},
-    dark = false,
-    onConnect = () => {},
-    onDisconnect = () => {},
-    children,
-  } = props;
-
+const ConnectButton: React.FC<PropsWithChildren<Props>> = ({
+  style = {},
+  dark = false,
+  onConnect = () => {},
+  onDisconnect = () => {},
+  children,
+}) => {
   const dialog = useDialog();
   const { disconnect, isConnected, connect } = useConnect({
     onConnect,
@@ -29,20 +22,19 @@ const ConnectButton: React.FC<PropsWithChildren<Props>> = (props) => {
 
   return (
     <>
-      {!isConnected ? (
+      {isConnected ? (
+        <button onClick={disconnect} style={style} className="connect-button">
+          {children ?? "Disconnect"}
+        </button>
+      ) : (
         <button
-          onClick={() => (isICX ? connect("icx") : dialog.open())}
+          onClick={() => dialog.open()}
           style={style}
           className="connect-button"
         >
           {children ?? "Connect"}
         </button>
-      ) : null}
-      {isConnected ? (
-        <button onClick={disconnect} style={style} className="connect-button">
-          {children ?? "Disconnect"}
-        </button>
-      ) : null}
+      )}
     </>
   );
 };
