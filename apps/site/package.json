@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "fmt": "prettier --write '**/*.{tsx,ts,json,css,scss,md}'"
   },
   "dependencies": {
     "@blinks-icp/core": "*",
@@ -31,6 +32,7 @@
     "eslint-plugin-react-refresh": "^0.4.9",
     "globals": "^15.9.0",
     "postcss": "^8.4.41",
+    "prettier": "^3.3.3",
     "tailwindcss": "^3.4.9",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.0"

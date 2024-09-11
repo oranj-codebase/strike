@@ -1,3 +1,5 @@
+"use client";
+
 import React, { type CSSProperties, type PropsWithChildren } from "react";
 import { useConnect, useDialog } from "../index";
 

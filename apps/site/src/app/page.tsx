@@ -1,13 +1,12 @@
-import StrikeDashBoard from "./home/StrikeDashBoard";
-import { getActionData } from "@/utils";
+'use server';
 
-export default async function Home({ searchParams }: {
-    searchParams: { [key: string]: string }
+import { StrikePage } from '@/views';
+
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string };
 }) {
-
-    const actionData = await getActionData(searchParams['action']);
-
-    return (
-        <StrikeDashBoard {...actionData} />
-    );
+  const actionUrl = searchParams['action'];
+  return <StrikePage url={actionUrl} />;
 }
