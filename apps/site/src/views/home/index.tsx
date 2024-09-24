@@ -61,7 +61,11 @@ export function Home() {
   const handlerUnFurlBtnClick = () => {
     if (!tempUrl) return;
     if (ICP_BLINK_PREFIX.test(new URL(tempUrl).searchParams.get('url') ?? '')) {
-      router.push(tempUrl);
+      const url =
+        window.location.origin +
+        '/action?url=' +
+        new URL(tempUrl).searchParams.get('url');
+      router.push(url);
     }
   };
 
