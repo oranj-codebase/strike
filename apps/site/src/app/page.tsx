@@ -1,12 +1,12 @@
 'use server';
 
-import { StrikePage } from '@/views';
+import { Home } from "@/views";
 
-export default async function Home({
+export default async function HomePage({
   searchParams,
 }: {
   searchParams: { [key: string]: string };
 }) {
   const actionUrl = searchParams['url'];
-  return <StrikePage url={actionUrl} />;
+  return <Home />;
 }
