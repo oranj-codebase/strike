@@ -64,7 +64,16 @@ export function StrikePage({ url: initialUrl }: { url: string }) {
               </div>
               <div className='flex flex-row items-center text-[14px] leading-[24px] gap-[32px]'>
                 <span>Get Chrome Extension</span>
-                <ConnectButton />
+                <ConnectButton style={{
+                  borderRadius: 12,
+                  padding: `8px 12px`,
+                  borderColor: '#2B5ACC',
+                  backgroundColor: '#3670FF',
+                  fontWeight: 600,
+                  fontSize: 14,
+                  borderWidth: 1,
+                  borderStyle: 'solid'
+                }} />
               </div>
             </div>
             <div className='flex flex-col gap-[48px] pb-[48px]'>
