@@ -11,6 +11,7 @@ import {
   BetBTCIcon,
   LinkIcon
 } from '@/assets';
+import CheckBox from '@/components/CheckBox';
 
 import '@blinks-icp/core/index.css';
 import '@blinks-icp/wallet-adapter-react/index.css';
@@ -188,15 +189,15 @@ export function StrikePage({ url: initialUrl }: { url: string }) {
             </div>
             <div className='flex flex-col gap-[16px] font-normal'>
               <div className='flex gap-[12px] text-[16px] leading-[24px] items-center'>
-                <input type='checkbox' className='w-[21px] h-[21px]' />
+                <CheckBox />
                 <span >Superfast using ICP</span>
               </div>
               <div className='flex gap-[12px] text-[16px] leading-[24px] items-center'>
-                <input type='checkbox' className='w-[21px] h-[21px]' />
+                <CheckBox />
                 <span >Embedded actions</span>
               </div>
               <div className='flex gap-[12px] text-[16px] leading-[24px] items-center'>
-                <input type='checkbox' className='w-[21px] h-[21px] ' />
+                <CheckBox />
                 <span >Directly share to social media</span>
               </div>
             </div>

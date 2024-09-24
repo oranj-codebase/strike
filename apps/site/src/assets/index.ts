@@ -4,3 +4,4 @@ export * from './TelegramIcon';
 export * from './TwitterIcon';
 export * from './Vector';
 export * from './LinkIcon';
+export * from './CheckBox';
