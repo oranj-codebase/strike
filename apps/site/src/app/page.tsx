@@ -1,6 +1,6 @@
 'use server';
 
-import { Home } from "@/views";
+import { Home } from '@/views';
 
 export default async function HomePage({
   searchParams,
