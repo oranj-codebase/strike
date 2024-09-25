@@ -1,12 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { ICP_BLINK_PREFIX } from '@blinks-icp/core';
-import { ConnectButton, ConnectDialog } from '@blinks-icp/wallet-adapter-react';
-
-import '@blinks-icp/core/index.css';
-import '@blinks-icp/wallet-adapter-react/index.css';
-
+import { useState } from 'react';
+import { ICP_BLINK_PREFIX } from '@oranjlabs/strike';
+import {
+  ConnectButton,
+  ConnectDialog,
+} from '@oranjlabs/icp-wallet-adapter-react';
+import '@oranjlabs/strike/index.css';
+import '@oranjlabs/icp-wallet-adapter-react/index.css';
 import StrikeRenderer from './strike-renderer';
 
 export function StrikePage({ url: initialUrl }: { url: string }) {
