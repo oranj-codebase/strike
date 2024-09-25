@@ -5,6 +5,7 @@
   "author": "Edward Lee",
   "description": "Enable Internet Computer Blinks on Twitter, with support for Internet Identity and Plug.",
   "private": true,
+  "type": "module",
   "license": "MIT",
   "keywords": [
     "chrome-extension",
