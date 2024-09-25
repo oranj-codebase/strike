@@ -2,7 +2,7 @@ import { StrikeLogo } from '@/assets';
 
 export default function PrivacyPage() {
   return (
-    <div className="max-w-[1440px] mx-auto py-[50px] leading-[27px]">
+    <div className="max-w-[1440px] mx-auto py-[50px] px-[160px] leading-[27px]">
       <div className="flex flex-row gap-[4.36px] items-center ">
         <StrikeLogo width={24} height={24} />
         <span className="font-bold text-[19.64px] leading-[19.64px]">

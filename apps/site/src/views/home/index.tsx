@@ -71,7 +71,7 @@ export function Home() {
 
   return (
     <div>
-      <main className="container max-w-[1440px] mx-auto font-inter">
+      <main className="container max-w-[1440px] mx-auto font-inter px-[160px]">
         <section className="flex flex-row gap-[64px] mt-[32px]">
           <div className="flex flex-col justify-between w-[576px]">
             <div className="flex flex-row justify-between">
