@@ -1,9 +1,39 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import {
+  Inter,
+  Syne,
+  Space_Grotesk,
+  Sora,
+  Instrument_Sans,
+} from 'next/font/google';
 import ConnectProvider from '@/provider/ConnectProvider';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
+const syne = Syne({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-syne',
+});
+const sora = Sora({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-sora',
+});
+const spaceGrotesk = Space_Grotesk({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-space_grotesk',
+});
+const instrumentSans = Instrument_Sans({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-instrument_sans',
+});
 
 export const metadata: Metadata = {
   title: 'STRIKE | Blinks on ICP',
@@ -15,7 +45,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${inter.variable} ${syne.variable} ${sora.variable} ${spaceGrotesk.variable} ${instrumentSans.variable} font-inter`}
+    >
       <head>
         <meta charSet="UTF-8" />
         <link rel="icon" type="image/svg+xml" href="/strike.svg" />

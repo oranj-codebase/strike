@@ -16,20 +16,20 @@ import {
 import '@blinks-icp/core/index.css';
 import '@blinks-icp/wallet-adapter-react/index.css';
 
-const StrikeCard = () => {
+const StrikeCard = ({ image }: { image?: string }) => {
   return (
     <div className="flex flex-col gap-[16px] p-[16px] border-[0.5px] rounded-[6px] bg-[#F4F4F5] ">
       <div className="flex flex-row gap-[1px] items-center leading-[9.82px] text-[9.82px] font-medium">
         <StrikeLogo width={12} height={12} />
-        <span>STRIKE</span>
+        <span className="font-syne font-bold">STRIKE</span>
       </div>
       <div className="flex flex-col gap-[12px] p-[12px] rounded-[6px] border-[0.38px] bg-[#FAFAFA] relative">
-        <p className="font-normal text-[8px] leading-[12px]">
+        <p className="font-normal text-[8px] leading-[12px] font-inter">
           Who will become the next President of the United States?
         </p>
         <div className="relative">
           <img
-            src="/card.png"
+            src={image ? image : 'card0.png'}
             className="rounded-[6px] w-[240px] h-[232px]"
             alt="CardImg"
           />
@@ -46,7 +46,7 @@ const StrikeCard = () => {
           </div>
         </div>
       </div>
-      <button className="rounded-[6px] text-[8px] leading-[12px] bg-[#3670FF] text-white px-[6px] py-[9px]">
+      <button className="rounded-[6px] text-[8px] leading-[12px] bg-[#3670FF] text-white px-[6px] py-[9px] font-semibold font-inter">
         Click Here to Bet
       </button>
     </div>
@@ -71,17 +71,17 @@ export function Home() {
 
   return (
     <div>
-      <main className="container max-w-[1440px] mx-auto">
+      <main className="container max-w-[1440px] mx-auto font-inter">
         <section className="flex flex-row gap-[64px] mt-[32px]">
           <div className="flex flex-col justify-between w-[576px]">
             <div className="flex flex-row justify-between">
-              <div className="flex flex-row gap-[4.36px] items-center">
+              <a className="flex flex-row gap-[4.36px] items-center" href="/">
                 <StrikeLogo width={24} height={24} />
-                <span className="font-bold text-[19.64px] leading-[19.64px]">
+                <span className="font-syne font-bold text-[19.64px] leading-[19.64px]">
                   STRIKE
                 </span>
-              </div>
-              <div className="flex flex-row font-normal items-center text-[18px] leading-[24px] gap-[32px]">
+              </a>
+              <div className="flex flex-row font-medium items-center text-[18px] leading-[24px] gap-[32px]">
                 <a href="/">Get Chrome Extension</a>
                 {/* <ConnectButton style={{
                                     borderRadius: 12,
@@ -102,11 +102,11 @@ export function Home() {
                 </span>
                 <BetBTCIcon width={92} height={22} />
               </div>
-              <div className="flex flex-col gap-[12px] font-medium text-[72px] leading-[72px]">
+              <div className="flex flex-col gap-[12px] font-medium font-sans text-[72px] leading-[72px]">
                 <span>Share actionable</span>
-                <div className="flex items-center">
+                <div className="flex flex-row justify-between items-center">
                   links
-                  <button className="w-[80px] h-[52px] mx-[16px] bg-[#3670FF] text-white rounded-[12px] py-[14px] px-[28px]">
+                  <button className="w-[80px] h-[52px] bg-[#3670FF] text-white rounded-[12px] py-[14px] px-[28px]">
                     <LinkIcon width={24} height={24} />
                   </button>
                   with ease
@@ -138,13 +138,13 @@ export function Home() {
           </div>
           <div className="flex flex-row gap-[20px]">
             <div className="flex flex-col gap-[40px] h-[777px] overflow-auto">
-              <StrikeCard />
-              <StrikeCard />
-              <StrikeCard />
+              <StrikeCard image="card1.png" />
+              <StrikeCard image="card2.png" />
+              <StrikeCard image="card3.png" />
             </div>
             <div className="flex flex-col gap-[40px]">
-              <StrikeCard />
-              <StrikeCard />
+              <StrikeCard image="card2.png" />
+              <StrikeCard image="card3.png" />
             </div>
           </div>
           <ConnectDialog />
@@ -152,10 +152,10 @@ export function Home() {
         <section className="flex flex-col gap-[96px] text-center font-medium py-[96px]">
           <div>
             <div>
-              <a className="text-[#3670FF]" href="/">
+              <a className="text-[#3670FF] font-medium" href="/">
                 Steps
               </a>
-              <p className="text-[48px]">How STRIKE works</p>
+              <p className="text-[48px] font-sans">How STRIKE works</p>
             </div>
             <div className="mt-[12px]">
               <p className="text-[18px] leading-[27px] font-normal">
@@ -164,13 +164,15 @@ export function Home() {
               </p>
             </div>
           </div>
-          <div className="flex flex-row gap-[32px]">
+          <div className="flex flex-row gap-[32px] font-normal">
             <div className="rounded-[12px] p-[32px] flex flex-col gap-[32px] bg-[#FFFFFF] w-1/3">
               <div className="flex justify-center items-center w-[64px] h-[64px] rounded-[12px] border-2] bg-[#F4F4F5]">
-                <span className="text-[30px] leading[38px]">1</span>
+                <span className="text-[30px] leading[38px] font-sans font-medium">
+                  1
+                </span>
               </div>
               <div className="flex flex-col justfiy-between text-left">
-                <p className="text-[32px]">Lorem Ipsum</p>
+                <p className="text-[32px] font-medium font-sans">Lorem Ipsum</p>
                 <p className="text-[24px] font-normal">
                   Lorem ipsum dolor sit amet consectetur. Et tortor cras massa
                   bibendum consectetur ut volutpat non massa. Cum dui aliquam
@@ -180,10 +182,12 @@ export function Home() {
             </div>
             <div className="rounded-[12px] p-[32px] flex flex-col gap-[32px] bg-[#FFFFFF] w-1/3">
               <div className="flex justify-center items-center w-[64px] h-[64px] rounded-[12px] border-2] bg-[#F4F4F5]">
-                <span className="text-[30px] leading[38px]">2</span>
+                <span className="text-[30px] leading[38px] font-sans font-medium">
+                  2
+                </span>
               </div>
               <div className="flex flex-col justfiy-between text-left">
-                <p className="text-[32px]">Lorem Ipsum</p>
+                <p className="text-[32px] font-sans font-medium">Lorem Ipsum</p>
                 <p className="text-[24px] font-normal">
                   Lorem ipsum dolor sit amet consectetur. Et tortor cras massa
                   bibendum consectetur ut volutpat non massa. Cum dui aliquam
@@ -193,10 +197,12 @@ export function Home() {
             </div>
             <div className="rounded-[12px] p-[32px] flex flex-col gap-[32px] bg-[#FFFFFF] w-1/3">
               <div className="flex justify-center items-center w-[64px] h-[64px] rounded-[12px] border-2] bg-[#F4F4F5]">
-                <span className="text-[30px] leading[38px]">3</span>
+                <span className="text-[30px] leading[38px] font-sans font-medium">
+                  3
+                </span>
               </div>
               <div className="flex flex-col justfiy-between text-left">
-                <p className="text-[32px]">Lorem Ipsum</p>
+                <p className="text-[32px] font-sans font-medium">Lorem Ipsum</p>
                 <p className="text-[24px] font-normal">
                   Lorem ipsum dolor sit amet consectetur. Et tortor cras massa
                   bibendum consectetur ut volutpat non massa. Cum dui aliquam
@@ -206,13 +212,15 @@ export function Home() {
             </div>
           </div>
         </section>
-        <section className="flex flex-row gap-[64px] py-[96px] items-center">
+        <section className="flex flex-row gap-[64px] py-[96px] items-center font-normal">
           <div className="flex flex-col gap-[16px] w-[592px]">
             <div className="font-medium">
               <a className="text-[#3670FF] text-[16px] leading-[24px]" href="/">
                 Features
               </a>
-              <p className="text-[48px] leading-[60px]">Features of STRIKE</p>
+              <p className="font-sans text-[48px] leading-[60px]">
+                Features of STRIKE
+              </p>
             </div>
             <div>
               <p className="text-[18px] leading-[27px]">
@@ -221,7 +229,7 @@ export function Home() {
                 venenatis dictum nisl cum. Lobortis.
               </p>
             </div>
-            <div className="flex flex-col gap-[16px] font-normal">
+            <div className="flex flex-col gap-[16px] font-medium">
               <div className="flex gap-[12px] text-[16px] leading-[24px] items-center">
                 <CheckBoxIcon height={21} width={21} />
                 <span>Superfast using ICP</span>
@@ -240,7 +248,7 @@ export function Home() {
             <div className="flex flex-col gap-[16px] p-[16px] border-[0.5px] rounded-[6px] bg-[#F4F4F5] ">
               <div className="flex flex-row gap-[1px] items-center leading-[9.82px] text-[9.82px] font-medium">
                 <StrikeLogo width={12} height={12} />
-                <span>STRIKE</span>
+                <span className="font-syne font-bold">STRIKE</span>
               </div>
               <div className="flex flex-col gap-[12px] p-[12px] rounded-[6px] border-[0.38px] bg-[#FAFAFA] relative">
                 <p className="font-normal text-[8px] leading-[12px]">
@@ -248,7 +256,7 @@ export function Home() {
                 </p>
                 <div className="relative">
                   <img
-                    src="/card.png"
+                    src="/card0.png"
                     className="rounded-[6px] w-[240px] h-[232px]"
                     alt="CardImg"
                   />
@@ -274,7 +282,7 @@ export function Home() {
                   Directly share to social media
                 </button>
               </div>
-              <button className="rounded-[6px] text-[8px] leading-[12px] bg-[#3670FF] text-white px-[6px] py-[9px]">
+              <button className="rounded-[6px] text-[8px] leading-[12px] bg-[#3670FF] text-white px-[6px] py-[9px] font-semibold">
                 Click Here to Bet
               </button>
             </div>
@@ -283,8 +291,12 @@ export function Home() {
         <section className="flex flex-col gap-[96px] py-[96px]">
           <div className="px-[200px] flex flex-col gap-[16px]">
             <div className="flex flex-col gap-[12px] text-center font-medium">
-              <a className="text-[#3670FF] text-[16px] leading-[24px]">Demo</a>
-              <p className="text-[48px] leading-[60px]">See STRIKE in action</p>
+              <a className="text-[#3670FF] text-[16px] leading-[24px]" href="/">
+                Demo
+              </a>
+              <p className="font-sans text-[48px] leading-[60px]">
+                See STRIKE in action
+              </p>
             </div>
             <div className="font-normal text-[18px] leading-[27px] text-center">
               <p>
@@ -301,7 +313,7 @@ export function Home() {
         <footer className="flex flex-row justify-between py-[48px]">
           <div className="flex items-center gap-[4.23px]">
             <StrikeLogo width={24} height={24} />
-            <span className="font-bold text-[19.64px] leading-[19.64px]">
+            <span className="font-bold font-syne text-[19.64px] leading-[19.64px]">
               STRIKE
             </span>
           </div>

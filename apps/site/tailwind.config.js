@@ -1,9 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./src/**/*.{js,ts,jsx,tsx}"],
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
   safelist: process.env.NODE_ENV === 'development' ? [{ pattern: /./ }] : [],
   theme: {
     extend: {
+      fontFamily: {
+        inter: ['var(--font-inter)'],
+        syne: ['var(--font-syne)'],
+        sora: ['var(--font-sora)'],
+        grotesk: ['var(--font-space_grotesk)'],
+        sans: ['var(--font-instrument_sans)'],
+      },
       colors: {
         accent: {
           brand: '#09CBBF',

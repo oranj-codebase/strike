@@ -7,14 +7,14 @@ import { StrikeLogo } from '@/assets';
 
 export function StrikePage({ url: initialUrl }: { url: string }) {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col font-inter">
       <header className="flex items-center justify-between p-2 border border-b px-[20px]">
-        <div className="flex flex-row gap-[4.36px] items-center">
+        <a className="flex flex-row gap-[4.36px] items-center" href="/">
           <StrikeLogo width={24} height={24} />
-          <span className="font-bold text-[19.64px] leading-[19.64px]">
+          <span className="font-bold font-syne text-[19.64px] leading-[19.64px]">
             STRIKE
           </span>
-        </div>
+        </a>
         <ConnectButton
           style={{
             borderRadius: 12,
