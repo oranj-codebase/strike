@@ -50,12 +50,4 @@ Key functions of the Strike Chrome extension:
 
 Strike uses **Internet Identity** to securely authenticate users before they interact with canisters. Internet Identity is a decentralized identity solution that ensures only authorized users can perform actions, such as updating ownership or executing canister functions.
 
-* **How it works**:\
-  Users authenticate via Internet Identity when interacting with a Strike URL that contains actions requiring verification (e.g., "Set Owner"). The authentication ensures the user’s identity is securely linked to their actions.
-* **Security**:\
-  This decentralized identity verification process provides a secure way to manage user interactions with canisters without needing traditional login systems or centralized authentication methods.
-
-### **Cross-Platform Compatibility**
-
-Although Strike is currently integrated with **Twitter (X)**, its design allows it to expand to other platforms, making it versatile for different use cases. Future integrations will include platforms such as **LinkedIn** or **web-based applications**, enabling users to interact with canisters from various digital environments.\
-Strike’s structure allows it to function on any platform that supports the sharing and unfurling of links. As new platforms adopt Strike, it will enable users to perform blockchain interactions directly within those environments.
+Users authenticate via Internet Identity when interacting with a Strike URL that contains actions requiring verification (e.g., "Set Owner"). The authentication ensures the user’s identity is securely linked to their actions.
