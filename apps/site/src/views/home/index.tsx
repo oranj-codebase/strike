@@ -15,22 +15,23 @@ import {
 } from '@/assets';
 import '@blinks-icp/core/index.css';
 import '@blinks-icp/wallet-adapter-react/index.css';
+import StrikeCardSlider from './StrikeCardSlider';
 
 const StrikeCard = ({ image }: { image?: string }) => {
   return (
-    <div className="flex flex-col gap-[16px] p-[16px] border-[0.5px] rounded-[6px] bg-[#F4F4F5] ">
+    <div className="flex flex-col gap-[16px] p-[16px] rounded-[6px] bg-[#F4F4F5]">
       <div className="flex flex-row gap-[1px] items-center leading-[9.82px] text-[9.82px] font-medium">
         <StrikeLogo width={12} height={12} />
         <span className="font-syne font-bold">STRIKE</span>
       </div>
-      <div className="flex flex-col gap-[12px] p-[12px] rounded-[6px] border-[0.38px] bg-[#FAFAFA] relative">
+      <div className="flex flex-col gap-[8px] p-[8px] rounded-[6px] bg-[#FAFAFA] relative">
         <p className="font-normal text-[8px] leading-[12px] font-inter">
           Who will become the next President of the United States?
         </p>
         <div className="relative">
           <img
             src={image ? image : 'card0.png'}
-            className="rounded-[6px] w-[240px] h-[232px]"
+            className="rounded-[6px] max-w-[240px] max-h-[232px]"
             alt="CardImg"
           />
           <div className="flex gap-[8px] absolute right-[4px] bottom-[4px]">
@@ -46,7 +47,7 @@ const StrikeCard = ({ image }: { image?: string }) => {
           </div>
         </div>
       </div>
-      <button className="rounded-[6px] text-[8px] leading-[12px] bg-[#3670FF] text-white px-[6px] py-[9px] font-semibold font-inter">
+      <button className="rounded-[6px] text-[8px] leading-[12px] bg-[#3670FF] text-white px-[9px] py-[6px] font-semibold font-inter">
         Click Here to Bet
       </button>
     </div>
@@ -71,9 +72,9 @@ export function Home() {
 
   return (
     <div>
-      <main className="container max-w-[1440px] mx-auto font-inter px-[160px]">
-        <section className="flex flex-row gap-[64px] mt-[32px]">
-          <div className="flex flex-col justify-between w-[576px]">
+      <main className="container max-w-[1440px] mx-auto font-inter ">
+        <section className="flex flex-row gap-[64px] mt-[32px] pl-[160px]">
+          <div className="flex flex-col justify-between w-full">
             <div className="flex flex-row justify-between">
               <a className="flex flex-row gap-[4.36px] items-center" href="/">
                 <StrikeLogo width={24} height={24} />
@@ -83,16 +84,6 @@ export function Home() {
               </a>
               <div className="flex flex-row font-medium items-center text-[18px] leading-[24px] gap-[32px]">
                 <a href="/">Get Chrome Extension</a>
-                {/* <ConnectButton style={{
-                                    borderRadius: 12,
-                                    padding: `8px 12px`,
-                                    borderColor: '#2B5ACC',
-                                    backgroundColor: '#3670FF',
-                                    fontWeight: 600,
-                                    fontSize: 14,
-                                    borderWidth: 1,
-                                    borderStyle: 'solid'
-                                }} /> */}
               </div>
             </div>
             <div className="flex flex-col gap-[48px] pb-[48px]">
@@ -103,7 +94,7 @@ export function Home() {
                 <BetBTCIcon width={92} height={22} />
               </div>
               <div className="flex flex-col gap-[12px] font-medium font-sans text-[72px] leading-[72px]">
-                <span>Share actionable</span>
+                <span>Share actionable </span>
                 <div className="flex flex-row justify-between items-center">
                   links
                   <button className="w-[80px] h-[52px] bg-[#3670FF] text-white rounded-[12px] py-[14px] px-[28px]">
@@ -136,20 +127,22 @@ export function Home() {
               </div>
             </div>
           </div>
-          <div className="flex flex-row gap-[20px]">
-            <div className="flex flex-col gap-[40px] h-[777px] overflow-auto">
-              <StrikeCard image="card1.png" />
-              <StrikeCard image="card2.png" />
-              <StrikeCard image="card3.png" />
-            </div>
-            <div className="flex flex-col gap-[40px]">
-              <StrikeCard image="card2.png" />
-              <StrikeCard image="card3.png" />
+          <div className="flex flex-row gap-[20px] w-full">
+            <div className="relative h-[777px] w-full overflow-hidden pr-[44px]">
+              <StrikeCardSlider direction="up">
+                <StrikeCard key={0} image="card1.png" />
+                <StrikeCard key={1} image="card2.png" />
+              </StrikeCardSlider>
+              <StrikeCardSlider direction="down">
+                <StrikeCard key={0} image="card2.png" />
+                <StrikeCard key={1} image="card3.png" />
+                <StrikeCard key={2} image="card3.png" />
+              </StrikeCardSlider>
             </div>
           </div>
           <ConnectDialog />
         </section>
-        <section className="flex flex-col gap-[96px] text-center font-medium py-[96px]">
+        <section className="flex flex-col gap-[96px] text-center font-medium py-[96px] px-[160px]">
           <div>
             <div>
               <a className="text-[#3670FF] font-medium" href="/">
@@ -212,8 +205,8 @@ export function Home() {
             </div>
           </div>
         </section>
-        <section className="flex flex-row gap-[64px] py-[96px] items-center font-normal">
-          <div className="flex flex-col gap-[16px] w-[592px]">
+        <section className="flex flex-row gap-[64px] py-[96px] items-center font-normal px-[160px]">
+          <div className="flex flex-col gap-[16px] w-full">
             <div className="font-medium">
               <a className="text-[#3670FF] text-[16px] leading-[24px]" href="/">
                 Features
@@ -245,19 +238,19 @@ export function Home() {
             </div>
           </div>
           <div className="px-[88px] py-[112px]">
-            <div className="flex flex-col gap-[16px] p-[16px] border-[0.5px] rounded-[6px] bg-[#F4F4F5] ">
+            <div className="flex flex-col gap-[16px] p-[16px] rounded-[6px] bg-[#F4F4F5] w-[288px]">
               <div className="flex flex-row gap-[1px] items-center leading-[9.82px] text-[9.82px] font-medium">
                 <StrikeLogo width={12} height={12} />
                 <span className="font-syne font-bold">STRIKE</span>
               </div>
-              <div className="flex flex-col gap-[12px] p-[12px] rounded-[6px] border-[0.38px] bg-[#FAFAFA] relative">
+              <div className="flex flex-col gap-[12px] p-[12px] rounded-[6px] bg-[#FAFAFA] relative">
                 <p className="font-normal text-[8px] leading-[12px]">
                   Who will become the next President of the United States?
                 </p>
                 <div className="relative">
                   <img
                     src="/card0.png"
-                    className="rounded-[6px] w-[240px] h-[232px]"
+                    className="rounded-[6px] max-w-[240px] max-h-[232px]"
                     alt="CardImg"
                   />
                   <div className="flex gap-[8px] absolute right-[4px] bottom-[4px]">
@@ -282,13 +275,13 @@ export function Home() {
                   Directly share to social media
                 </button>
               </div>
-              <button className="rounded-[6px] text-[8px] leading-[12px] bg-[#3670FF] text-white px-[6px] py-[9px] font-semibold">
+              <button className="rounded-[6px] text-[8px] leading-[12px] bg-[#3670FF] text-white px-[9px] py-[6px] font-semibold">
                 Click Here to Bet
               </button>
             </div>
           </div>
         </section>
-        <section className="flex flex-col gap-[96px] py-[96px]">
+        <section className="flex flex-col gap-[96px] py-[96px] px-[160px]">
           <div className="px-[200px] flex flex-col gap-[16px]">
             <div className="flex flex-col gap-[12px] text-center font-medium">
               <a className="text-[#3670FF] text-[16px] leading-[24px]" href="/">
@@ -310,7 +303,7 @@ export function Home() {
             <Vector />
           </div>
         </section>
-        <footer className="flex flex-row justify-between py-[48px]">
+        <footer className="flex flex-row justify-between py-[48px] px-[160px]">
           <a className="flex items-center gap-[4.23px]" href="/">
             <StrikeLogo width={24} height={24} />
             <span className="font-bold font-syne text-[19.64px] leading-[19.64px]">
