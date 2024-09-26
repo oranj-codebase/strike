@@ -141,12 +141,19 @@ export function Home() {
             </div>
           </div>
           <div className="flex flex-row gap-[20px] w-full">
-            <div className="h-[777px] w-[288px] w-full flex flex-row gap-[20px]">
-              <Slider className="slider-container " {...settings}>
+            <div className="h-[777px] w-full flex flex-row gap-[20px]">
+              <Slider
+                className="slider-container m-0 p-0 w-[288px]"
+                {...settings}
+              >
                 <StrikeCard key={0} image="card1.png" />
                 <StrikeCard key={1} image="card2.png" />
               </Slider>
-              <Slider className="slider-container" {...settings} rtl={true}>
+              <Slider
+                className="slider-container m-0 p-0 w-[288px]"
+                {...settings}
+                rtl={true}
+              >
                 <StrikeCard key={0} image="card3.png" />
                 <StrikeCard key={1} image="card4.png" />
               </Slider>
