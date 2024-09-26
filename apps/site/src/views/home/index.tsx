@@ -15,7 +15,9 @@ import {
 } from '@/assets';
 import '@blinks-icp/core/index.css';
 import '@blinks-icp/wallet-adapter-react/index.css';
-import StrikeCardSlider from './StrikeCardSlider';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import Slider from 'react-slick';
 
 const StrikeCard = ({ image }: { image?: string }) => {
   return (
@@ -56,7 +58,18 @@ const StrikeCard = ({ image }: { image?: string }) => {
 
 export function Home() {
   const router = useRouter();
-
+  const settings = {
+    dots: false,
+    infinite: true,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 4000,
+    autoplaySpeed: 4000,
+    cssEase: 'linear',
+    vertical: true,
+    verticalSwiping: true,
+  };
   const [tempUrl, setTempUrl] = useState('');
 
   const handlerUnFurlBtnClick = () => {
@@ -128,16 +141,14 @@ export function Home() {
             </div>
           </div>
           <div className="flex flex-row gap-[20px] w-full">
-            <div className="relative h-[777px] w-full overflow-hidden pr-[44px]">
-              <StrikeCardSlider direction="up">
+            <div className="h-[777px] w-full flex flex-row gap-[20px]">
+              <Slider className="slider-container" {...settings}>
+                <StrikeCard key={0} image="card1.png" />
+              </Slider>
+              <Slider className="slider-container" {...settings} rtl={true}>
                 <StrikeCard key={0} image="card1.png" />
                 <StrikeCard key={1} image="card2.png" />
-              </StrikeCardSlider>
-              <StrikeCardSlider direction="down">
-                <StrikeCard key={0} image="card2.png" />
-                <StrikeCard key={1} image="card3.png" />
-                <StrikeCard key={2} image="card3.png" />
-              </StrikeCardSlider>
+              </Slider>
             </div>
           </div>
           <ConnectDialog />
