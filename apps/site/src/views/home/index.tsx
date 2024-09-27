@@ -138,9 +138,8 @@ export function Home() {
               <div className="flex flex-col justfiy-between text-left">
                 <p className="text-[32px] font-sans font-medium">Lorem Ipsum</p>
                 <p className="text-[24px] font-normal">
-                  Lorem ipsum dolor sit amet consectetur. Et tortor cras massa
-                  bibendum consectetur ut volutpat non massa. Cum dui aliquam
-                  nam.
+                  Lorem ipsum dolor sit amet consectetur. Nisi phasellus eu
+                  pharetra vulputate scelerisque bibendum. Diam tempor faucibus.
                 </p>
               </div>
             </div>
@@ -153,9 +152,9 @@ export function Home() {
               <div className="flex flex-col justfiy-between text-left">
                 <p className="text-[32px] font-sans font-medium">Lorem Ipsum</p>
                 <p className="text-[24px] font-normal">
-                  Lorem ipsum dolor sit amet consectetur. Et tortor cras massa
-                  bibendum consectetur ut volutpat non massa. Cum dui aliquam
-                  nam.
+                  Lorem ipsum dolor sit amet consectetur. Lobortis vivamus dui
+                  dui purus sit egestas vitae est tellus. At penatibus tellus
+                  nibh duis ultricies.
                 </p>
               </div>
             </div>
