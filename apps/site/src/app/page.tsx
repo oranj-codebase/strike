@@ -4,10 +4,9 @@ import { Home } from '@/views';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title:
-      'STRIKE | Empowering Actionable Links on ICP | Interact with Canisters Seamlessly',
+    title: 'Empowering Actionable Links on ICP',
     description:
-      'Strike enables seamless interaction with canisters via actionable links on the Internet Computer Protocol (ICP). Share links that unfurl into interactive Strike Cards for effortless engagement with smart contracts.',
+      'Strike enables seamless interaction with canisters via actionable links on the Internet Computer Protocol.',
   };
 }
 
