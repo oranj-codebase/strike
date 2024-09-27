@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import InternetIdentityLogo from '../assets/InternetIdentityLogo';
+import PlugLogo from '../assets/PlugLogo';
 import ArrowFromSquareIcon from '../icons/ArrowFromSquareIcon';
 import { Checkbox } from './Checkbox';
 
@@ -112,6 +113,14 @@ export const WalletSelector = ({
         icon={<InternetIdentityLogo />}
         onChange={(isChecked: boolean) =>
           isChecked ? selectWallet(Wallets.InternetIdentity) : unselectWallet()
+        }
+      />
+      <WalletSelect
+        isSelected={isPlug}
+        title="Plug"
+        icon={<PlugLogo />}
+        onChange={(isChecked: boolean) =>
+          isChecked ? selectWallet(Wallets.Plug) : unselectWallet()
         }
       />
     </div>
