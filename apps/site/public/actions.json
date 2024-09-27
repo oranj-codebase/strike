@@ -1,5 +1,5 @@
 {
-  "icon": "/action.png",
+  "icon": "https://strike.oranj.co/hello-strike.png",
   "label": "Simple ownership",
   "title": "Simple ownership",
   "description": "demo canister integration with STRIKE",
