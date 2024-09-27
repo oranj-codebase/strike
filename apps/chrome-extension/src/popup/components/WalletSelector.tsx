@@ -115,14 +115,14 @@ export const WalletSelector = ({
           isChecked ? selectWallet(Wallets.InternetIdentity) : unselectWallet()
         }
       />
-      <WalletSelect
+      {/* <WalletSelect
         isSelected={isPlug}
         title="Plug"
         icon={<PlugLogo />}
         onChange={(isChecked: boolean) =>
           isChecked ? selectWallet(Wallets.Plug) : unselectWallet()
         }
-      />
+      /> */}
     </div>
   );
 };
