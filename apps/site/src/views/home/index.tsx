@@ -71,7 +71,7 @@ export function Home() {
               <div className="font-normal text-[18px] leading-[27px]">
                 <p>
                   STRIKE helps you share superlinks on social media sites such
-                  as Telegram or X with embedded actions.{' '}
+                  as Telegram or X with embedded actions.
                 </p>
               </div>
               <div className="flex flex-row justify-between">
@@ -99,14 +99,16 @@ export function Home() {
           <ConnectDialog />
         </section>
         <section className="flex flex-col gap-[96px] text-center font-medium py-[96px] px-[160px]">
-          <div>
+          <div className="flex flex-col gap-[16px]">
             <div>
-              <a className="text-[#3670FF] font-medium" href="/">
+              <a className="text-[#3670FF] text-[16px] leading-[24px]" href="/">
                 Steps
               </a>
-              <p className="text-[48px] font-sans">How STRIKE works</p>
+              <p className="text-[48px] leading-[60px] font-sans">
+                How STRIKE works
+              </p>
             </div>
-            <div className="mt-[12px]">
+            <div>
               <p className="text-[18px] leading-[27px] font-normal">
                 Let's explore how STRIKE operates to better understand its
                 operation.
@@ -122,12 +124,14 @@ export function Home() {
               </div>
               <div className="flex flex-col justfiy-between text-left">
                 <p className="text-[24px] leading-[32px]  font-medium font-sans">
-                  Lorem Ipsum
+                  Install the Chrome Extension
                 </p>
                 <p className="text-[16px] leading-[24px] font-normal">
-                  Lorem ipsum dolor sit amet consectetur. Et tortor cras massa
-                  bibendum consectetur ut volutpat non massa. Cum dui aliquam
-                  nam.
+                  Start by downloading the Strike Chrome extension. This
+                  extension is necessary to interact with Strike, allowing you
+                  to authenticate and execute actions directly from Strike
+                  supported social platforms, powered by the Internet Computer
+                  Protocol (ICP).
                 </p>
               </div>
             </div>
@@ -139,11 +143,13 @@ export function Home() {
               </div>
               <div className="flex flex-col justfiy-between text-left">
                 <p className="text-[24px] leading-[32px] font-sans font-medium">
-                  Lorem Ipsum
+                  Create and Host the Actions File
                 </p>
                 <p className="text-[16px] leading-[24px] font-normal">
-                  Lorem ipsum dolor sit amet consectetur. Nisi phasellus eu
-                  pharetra vulputate scelerisque bibendum. Diam tempor faucibus.
+                  Define your actions in a JSON file and host it where publicly
+                  accessible via URL. You can easily test your link by using the
+                  Strike website to unfurl the link and preview your actions
+                  before sharing them on social platforms.
                 </p>
               </div>
             </div>
@@ -155,12 +161,14 @@ export function Home() {
               </div>
               <div className="flex flex-col justfiy-between text-left">
                 <p className="text-[24px] leading-[32px] font-sans font-medium">
-                  Lorem Ipsum
+                  Share and Engage with Strike Cards
                 </p>
                 <p className="text-[16px] leading-[24px] font-normal">
-                  Lorem ipsum dolor sit amet consectetur. Lobortis vivamus dui
-                  dui purus sit egestas vitae est tellus. At penatibus tellus
-                  nibh duis ultricies.
+                  Once your hosted link is ready, share it on platforms like X
+                  (formerly Twitter). The link will unfurl into a Strike Card,
+                  giving users a one-click option to engage with the actions
+                  you’ve created, all powered by the Internet Computer Protocol
+                  (ICP).
                 </p>
               </div>
             </div>
@@ -254,9 +262,11 @@ export function Home() {
             </div>
             <div className="font-normal text-[18px] leading-[27px] text-center">
               <p>
-                Lorem ipsum dolor sit amet consectetur. Turpis arcu sem turpis
-                dictumst euismod rhoncus. Pellentesque eget vestibulum lorem
-                venenatis dictum nisl cum. Lobortis.
+                Strike is a platform that enhances user engagement with
+                canisters on the Internet Computer by utilizing interactive
+                Strike Cards. These cards are created from a structured JSON
+                file, allowing users to interact seamlessly through shared URLs
+                across social media platforms.
               </p>
             </div>
           </div>
