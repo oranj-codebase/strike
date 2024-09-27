@@ -262,11 +262,10 @@ export function Home() {
             </div>
             <div className="font-normal text-[18px] leading-[27px] text-center">
               <p>
-                Strike is a platform that enhances user engagement with
-                canisters on the Internet Computer by utilizing interactive
-                Strike Cards. These cards are created from a structured JSON
-                file, allowing users to interact seamlessly through shared URLs
-                across social media platforms.
+                Strike is a platform that enhances user engagement on the
+                Internet Computer by utilizing interactive Strike Cards. These
+                cards are allowing users to interact seamlessly through shared
+                URLs across social media platforms.
               </p>
             </div>
           </div>
