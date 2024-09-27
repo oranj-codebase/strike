@@ -18,6 +18,7 @@ import '@blinks-icp/wallet-adapter-react/index.css';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
+import { LazyLoadTypes } from 'react-slick';
 
 const StrikeCard = ({ image }: { image?: string }) => {
   return (
@@ -63,6 +64,9 @@ export function Home() {
     infinite: true,
     slidesToShow: 2,
     slidesToScroll: 1,
+    pauseOnFocus: false,
+    pauseOnHover: false,
+    pauseOnDotsHover: false,
     autoplay: true,
     speed: 8000,
     autoplaySpeed: 2000,
@@ -126,7 +130,7 @@ export function Home() {
               <div className="flex flex-row justify-between">
                 <input
                   type="text"
-                  className="outline-none min-w-[475px] rounded-[12px] border-1 py-[12px] px-[14px]"
+                  className="outline-none min-w-[475px] rounded-[12px] border-[1px] border-[#D4D4D8] py-[12px] px-[14px]"
                   placeholder="Enter URL to unfurl"
                   value={tempUrl}
                   onChange={(e) => setTempUrl(e.target.value)}
@@ -144,6 +148,7 @@ export function Home() {
             <div className="h-[777px] w-full flex flex-row gap-[20px]">
               <Slider
                 className="slider-container m-0 p-0 w-[288px]"
+                lazyLoad="ondemand"
                 {...settings}
               >
                 <StrikeCard key={0} image="card1.png" />
@@ -152,6 +157,7 @@ export function Home() {
               <Slider
                 className="slider-container m-0 p-0 w-[288px]"
                 {...settings}
+                lazyLoad="ondemand"
                 rtl={true}
               >
                 <StrikeCard key={0} image="card3.png" />

@@ -1,2 +1,2 @@
 export { StrikePage } from './strike';
-export * from './home';
+export { Home } from './home';
