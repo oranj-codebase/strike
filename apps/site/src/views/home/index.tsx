@@ -260,7 +260,7 @@ export function Home() {
                 See STRIKE in action
               </p>
             </div>
-            <div className="font-normal text-[18px] leading-[27px] text-center">
+            <div className="font-normal text-[18px] leading-[27px] text-justify">
               <p>
                 Strike is a platform that enhances user engagement on the
                 Internet Computer by utilizing interactive Strike Cards. These
