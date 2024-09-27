@@ -17,7 +17,7 @@ import {
 import '@blinks-icp/core/index.css';
 import '@blinks-icp/wallet-adapter-react/index.css';
 
-const StrikeSlider = dynamic(() => import('./StrikeSlider'));
+const StrikeSlider = dynamic(() => import('./StrikeSlider'), { ssr: false });
 
 export function Home() {
   const router = useRouter();
