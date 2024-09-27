@@ -46,7 +46,7 @@ export function Home() {
                   STRIKE
                 </span>
               </a>
-              <div className="flex flex-row font-medium items-center text-[18px] leading-[24px] gap-[32px]">
+              <div className="flex flex-row font-medium items-center text-[14px] leading-[24px] gap-[32px]">
                 <a href="/">Get Chrome Extension</a>
               </div>
             </div>
@@ -121,8 +121,10 @@ export function Home() {
                 </span>
               </div>
               <div className="flex flex-col justfiy-between text-left">
-                <p className="text-[32px] font-medium font-sans">Lorem Ipsum</p>
-                <p className="text-[24px] font-normal">
+                <p className="text-[24px] leading-[32px]  font-medium font-sans">
+                  Lorem Ipsum
+                </p>
+                <p className="text-[16px] leading-[24px] font-normal">
                   Lorem ipsum dolor sit amet consectetur. Et tortor cras massa
                   bibendum consectetur ut volutpat non massa. Cum dui aliquam
                   nam.
@@ -136,8 +138,10 @@ export function Home() {
                 </span>
               </div>
               <div className="flex flex-col justfiy-between text-left">
-                <p className="text-[32px] font-sans font-medium">Lorem Ipsum</p>
-                <p className="text-[24px] font-normal">
+                <p className="text-[24px] leading-[32px] font-sans font-medium">
+                  Lorem Ipsum
+                </p>
+                <p className="text-[16px] leading-[24px] font-normal">
                   Lorem ipsum dolor sit amet consectetur. Nisi phasellus eu
                   pharetra vulputate scelerisque bibendum. Diam tempor faucibus.
                 </p>
@@ -150,8 +154,10 @@ export function Home() {
                 </span>
               </div>
               <div className="flex flex-col justfiy-between text-left">
-                <p className="text-[32px] font-sans font-medium">Lorem Ipsum</p>
-                <p className="text-[24px] font-normal">
+                <p className="text-[24px] leading-[32px] font-sans font-medium">
+                  Lorem Ipsum
+                </p>
+                <p className="text-[16px] leading-[24px] font-normal">
                   Lorem ipsum dolor sit amet consectetur. Lobortis vivamus dui
                   dui purus sit egestas vitae est tellus. At penatibus tellus
                   nibh duis ultricies.
