@@ -8,7 +8,7 @@ export default function StrikeCard({
   text: string;
 }) {
   return (
-    <div className="flex flex-col gap-[16px] p-[16px] rounded-[6px] bg-[#F4F4F5]">
+    <div className="flex flex-col gap-[16px] p-[16px] rounded-[6px] bg-[#F4F4F5] my-[20px]">
       <div className="flex flex-row gap-[1px] items-center leading-[9.82px] text-[9.82px] font-medium">
         <StrikeLogo width={12} height={12} />
         <span className="font-syne font-bold">STRIKE</span>
