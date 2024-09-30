@@ -1,12 +1,15 @@
 'use server';
+import { Metadata } from 'next';
+import { Home } from '@/views';
 
-import { StrikePage } from '@/views';
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: 'Empowering Actionable Links on ICP',
+    description:
+      'Strike enables seamless interaction with canisters via actionable links on the Internet Computer Protocol.',
+  };
+}
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string };
-}) {
-  const actionUrl = searchParams['url'];
-  return <StrikePage url={actionUrl} />;
+export default async function HomePage() {
+  return <Home />;
 }
