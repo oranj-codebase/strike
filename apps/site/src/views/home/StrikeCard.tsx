@@ -1,6 +1,12 @@
 import { StrikeLogo, BetBTCIcon, TelegramIcon, TwitterIcon } from '@/assets';
 
-export default function StrikeCard({ image }: { image?: string }) {
+export default function StrikeCard({
+  image,
+  text,
+}: {
+  image: string;
+  text: string;
+}) {
   return (
     <div className="flex flex-col gap-[16px] p-[16px] rounded-[6px] bg-[#F4F4F5]">
       <div className="flex flex-row gap-[1px] items-center leading-[9.82px] text-[9.82px] font-medium">
@@ -9,11 +15,11 @@ export default function StrikeCard({ image }: { image?: string }) {
       </div>
       <div className="flex flex-col gap-[8px] p-[8px] rounded-[6px] bg-[#FAFAFA] relative">
         <p className="font-normal text-[8px] leading-[12px] font-inter">
-          Who will become the next President of the United States?
+          {text}
         </p>
         <div className="relative">
           <img
-            src={image ? image : 'card0.png'}
+            src={image}
             className="rounded-[6px] max-w-[240px] max-h-[232px]"
             alt="CardImg"
           />

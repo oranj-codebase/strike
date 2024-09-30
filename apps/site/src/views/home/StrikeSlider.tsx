@@ -22,16 +22,32 @@ export default function StrikeSlider() {
   return (
     <>
       <Slider className="slider-container m-0 p-0 w-[288px]" {...settings}>
-        <StrikeCard key={0} image="card1.png" />
-        <StrikeCard key={1} image="card2.png" />
+        <StrikeCard
+          key={0}
+          image="card1.png"
+          text="Will China lift Bitcoin ban by 2025?"
+        />
+        <StrikeCard
+          key={1}
+          image="card2.png"
+          text="Will Bitcoin reach all time high in 2024?"
+        />
       </Slider>
       <Slider
         className="slider-container m-0 p-0 w-[288px]"
         {...settings}
         rtl={true}
       >
-        <StrikeCard key={0} image="card3.png" />
-        <StrikeCard key={1} image="card4.png" />
+        <StrikeCard
+          key={0}
+          image="card3.png"
+          text="Who will become the next President of the United States?"
+        />
+        <StrikeCard
+          key={1}
+          image="card4.png"
+          text="Which club win the UEFA UCL 2024-25?"
+        />
       </Slider>
     </>
   );

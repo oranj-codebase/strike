@@ -126,12 +126,10 @@ export function Home() {
                 <p className="text-[24px] leading-[32px]  font-medium font-sans">
                   Install the Chrome Extension
                 </p>
-                <p className="text-[16px] leading-[24px] font-normal">
-                  Start by downloading the Strike Chrome extension. This
-                  extension is necessary to interact with Strike, allowing you
-                  to authenticate and execute actions directly from Strike
-                  supported social platforms, powered by the Internet Computer
-                  Protocol (ICP).
+                <p className="text-[16px] leading-[24px] font-normal text-justify indent-[16px]">
+                  Download the Strike Chrome extension to authenticate and
+                  interact with Strike-supported platforms via the Internet
+                  Computer Protocol (ICP).
                 </p>
               </div>
             </div>
@@ -145,11 +143,10 @@ export function Home() {
                 <p className="text-[24px] leading-[32px] font-sans font-medium">
                   Create and Host the Actions File
                 </p>
-                <p className="text-[16px] leading-[24px] font-normal">
-                  Define your actions in a JSON file and host it where publicly
-                  accessible via URL. You can easily test your link by using the
-                  Strike website to unfurl the link and preview your actions
-                  before sharing them on social platforms.
+                <p className="text-[16px] leading-[24px] font-normal text-justify indent-[16px]">
+                  Define actions in a JSON file, host it publicly, and test it
+                  using the Strike website to preview the actions before
+                  sharing.
                 </p>
               </div>
             </div>
@@ -163,12 +160,10 @@ export function Home() {
                 <p className="text-[24px] leading-[32px] font-sans font-medium">
                   Share and Engage with Strike Cards
                 </p>
-                <p className="text-[16px] leading-[24px] font-normal">
-                  Once your hosted link is ready, share it on platforms like X
-                  (formerly Twitter). The link will unfurl into a Strike Card,
-                  giving users a one-click option to engage with the actions
-                  you’ve created, all powered by the Internet Computer Protocol
-                  (ICP).
+                <p className="text-[16px] leading-[24px] font-normal text-justify indent-[16px]">
+                  Share your hosted link on platforms like X (formerly Twitter),
+                  where it will unfurl into a Strike Card for users to interact
+                  with your canister actions, powered by ICP.
                 </p>
               </div>
             </div>
@@ -185,7 +180,7 @@ export function Home() {
               </p>
             </div>
             <div>
-              <p className="text-[18px] leading-[27px]">
+              <p className="text-[18px] leading-[27px] text-justify indent-[18px]">
                 Lorem ipsum dolor sit amet consectetur. Turpis arcu sem turpis
                 dictumst euismod rhoncus. Pellentesque eget vestibulum lorem
                 venenatis dictum nisl cum. Lobortis.
@@ -260,10 +255,10 @@ export function Home() {
                 See STRIKE in action
               </p>
             </div>
-            <div className="font-normal text-[18px] leading-[27px] text-justify">
+            <div className="font-normal text-[18px] leading-[27px] text-justify indent-[18px]">
               <p>
                 Strike is a platform that enhances user engagement on the
-                Internet Computer by utilizing interactive Strike Cards. These
+                Internet Computer by utilizing interactive Strike UI. These
                 cards are allowing users to interact seamlessly through shared
                 URLs across social media platforms.
               </p>

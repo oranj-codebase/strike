@@ -3,6 +3,11 @@ export default {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
   safelist: process.env.NODE_ENV === 'development' ? [{ pattern: /./ }] : [],
   theme: {
+    screens: {
+      sm: '320px',
+      md: '960px',
+      lg: '1440px',
+    },
     extend: {
       fontFamily: {
         inter: ['var(--font-inter)'],
