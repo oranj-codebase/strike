@@ -126,9 +126,9 @@ export function Home() {
                 <p className="text-[24px] leading-[32px]  font-medium font-sans">
                   Install the Chrome Extension
                 </p>
-                <p className="text-[16px] leading-[24px] font-normal text-justify indent-[16px]">
-                  Download the Strike Chrome extension to authenticate and
-                  interact with Strike-supported platforms via the Internet
+                <p className="text-[16px] leading-[24px] font-normal text-justify">
+                  Download the STRIKE Chrome extension to authenticate and
+                  interact with STRIKE-supported platforms via the Internet
                   Computer Protocol (ICP).
                 </p>
               </div>
@@ -143,9 +143,9 @@ export function Home() {
                 <p className="text-[24px] leading-[32px] font-sans font-medium">
                   Create and Host the Actions File
                 </p>
-                <p className="text-[16px] leading-[24px] font-normal text-justify indent-[16px]">
+                <p className="text-[16px] leading-[24px] font-normal text-justify">
                   Define actions in a JSON file, host it publicly, and test it
-                  using the Strike website to preview the actions before
+                  using the STRIKE website to preview the actions before
                   sharing.
                 </p>
               </div>
@@ -158,11 +158,11 @@ export function Home() {
               </div>
               <div className="flex flex-col justfiy-between text-left">
                 <p className="text-[24px] leading-[32px] font-sans font-medium">
-                  Share and Engage with Strike Cards
+                  Share and Engage with STRIKE Cards
                 </p>
-                <p className="text-[16px] leading-[24px] font-normal text-justify indent-[16px]">
+                <p className="text-[16px] leading-[24px] font-normal text-justify">
                   Share your hosted link on platforms like X (formerly Twitter),
-                  where it will unfurl into a Strike Card for users to interact
+                  where it will unfurl into a STRIKE Card for users to interact
                   with your canister actions, powered by ICP.
                 </p>
               </div>
@@ -180,7 +180,7 @@ export function Home() {
               </p>
             </div>
             <div>
-              <p className="text-[18px] leading-[27px] text-justify indent-[18px]">
+              <p className="text-[18px] leading-[27px] text-justify">
                 Lorem ipsum dolor sit amet consectetur. Turpis arcu sem turpis
                 dictumst euismod rhoncus. Pellentesque eget vestibulum lorem
                 venenatis dictum nisl cum. Lobortis.
@@ -255,10 +255,10 @@ export function Home() {
                 See STRIKE in action
               </p>
             </div>
-            <div className="font-normal text-[18px] leading-[27px] text-justify indent-[18px]">
+            <div className="font-normal text-[18px] leading-[27px] text-justify">
               <p>
-                Strike is a platform that enhances user engagement on the
-                Internet Computer by utilizing interactive Strike UI. These
+                STRIKE is a platform that enhances user engagement on the
+                Internet Computer by utilizing interactive STRIKE UI. These
                 cards are allowing users to interact seamlessly through shared
                 URLs across social media platforms.
               </p>
