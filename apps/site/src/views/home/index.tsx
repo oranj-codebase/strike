@@ -70,8 +70,9 @@ export function Home() {
               </div>
               <div className="font-normal text-[18px] leading-[27px]">
                 <p>
-                  STRIKE helps you share superlinks on social media sites such
-                  as Telegram or X with embedded actions.
+                  STRIKE helps users share links that convert into STRIKE Cards,
+                  making it simple to interact and perform actions on social
+                  media.
                 </p>
               </div>
               <div className="flex flex-row justify-between">
@@ -181,23 +182,33 @@ export function Home() {
             </div>
             <div>
               <p className="text-[18px] leading-[27px] text-justify">
-                Lorem ipsum dolor sit amet consectetur. Turpis arcu sem turpis
-                dictumst euismod rhoncus. Pellentesque eget vestibulum lorem
-                venenatis dictum nisl cum. Lobortis.
+                STRIKE empowers users to share actionable links that interact
+                with canisters on the Internet Computer Protocol (ICP). With
+                STRIKE, users can perform secure and efficient actions directly
+                from social platforms, making decentralized interactions easy
+                and accessible.
               </p>
             </div>
             <div className="flex flex-col gap-[16px] font-medium">
               <div className="flex gap-[12px] text-[16px] leading-[24px] items-center">
                 <CheckBoxIcon height={21} width={21} />
-                <span>Superfast using ICP</span>
+                <span>Powered by ICP for fast, decentralized performance</span>
               </div>
               <div className="flex gap-[12px] text-[16px] leading-[24px] items-center">
                 <CheckBoxIcon height={21} width={21} />
-                <span>Embedded actions</span>
+                <span>
+                  Interactive STRIKE Cards that unfurl with actionable content
+                </span>
               </div>
               <div className="flex gap-[12px] text-[16px] leading-[24px] items-center">
                 <CheckBoxIcon height={21} width={21} />
-                <span>Directly share to social media</span>
+                <span>Embed custom actions with simple JSON integration</span>
+              </div>
+              <div className="flex gap-[12px] text-[16px] leading-[24px] items-center">
+                <CheckBoxIcon height={21} width={21} />
+                <span>
+                  Share directly to social media platforms like Twitter (X)
+                </span>
               </div>
             </div>
           </div>
@@ -233,10 +244,13 @@ export function Home() {
                   Powered by ICP
                 </button>
                 <button className="border-1 rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute top-[181px] left-[-61px] text-[10px] leading-[15px] font-medium">
-                  Embedded actions
+                  Embedded custom actions
                 </button>
-                <button className="border-1 rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute top-[134px] right-[-61px] text-[10px] leading-[15px] font-medium">
-                  Directly share to social media
+                <button className="border-1 rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute  top-[54px] right-[-81px] text-[10px] leading-[15px] font-medium">
+                  Interactive STRIKE Cards
+                </button>
+                <button className="border-1 rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute top-[181px] right-[-52px] text-[10px] leading-[15px] font-medium">
+                  Share directly
                 </button>
               </div>
               <button className="rounded-[6px] text-[8px] leading-[12px] bg-[#3670FF] text-white px-[9px] py-[6px] font-semibold">
@@ -257,10 +271,12 @@ export function Home() {
             </div>
             <div className="font-normal text-[18px] leading-[27px] text-justify">
               <p>
-                STRIKE is a platform that enhances user engagement on the
-                Internet Computer by utilizing interactive STRIKE UI. These
-                cards are allowing users to interact seamlessly through shared
-                URLs across social media platforms.
+                Unlock the full potential of STRIKE by interacting with
+                canisters directly through shared links on social media. Using
+                the STRIKE Chrome extension, users can engage with interactive
+                STRIKE Cards to take actions like placing bets or managing
+                assets—all with one click, powered by the Internet Computer
+                Protocol (ICP).
               </p>
             </div>
           </div>
@@ -277,7 +293,9 @@ export function Home() {
           </a>
           <div className="flex flex-row gap-[32px] text-[14px] leading-[24px] font-medium">
             <a href="/privacy">Privacy Policy</a>
-            <a href="/">Visit Oranj</a>
+            <a href="https://docs.strike.oranj.co/" target="_blank">
+              Visit Oranj
+            </a>
           </div>
           <div className="font-normal text-[16px] leading-[24px] text-[#717179]">
             <span>© Oranj 2024</span>
