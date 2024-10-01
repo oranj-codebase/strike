@@ -24,7 +24,7 @@ export default function PrivacyPage() {
           <ul className="list-disc pl-[40px] py-[15px]">
             <li>
               The types of information we may collect from you or that you may
-              provide when you use our Strikes application or related services.
+              provide when you use our STRIKE application or related services.
             </li>
             <li>
               Our practices for collecting, using, maintaining, protecting, and
@@ -33,10 +33,10 @@ export default function PrivacyPage() {
           </ul>
           <p>This policy applies to information collected:</p>
           <ul className="list-disc pl-[40px] py-[15px]">
-            <li>Through our Strikes application and related services.</li>
+            <li>Through our STRIKE application and related services.</li>
             <li>
               In email, text, and other electronic communications between you
-              and Strikes.
+              and STRIKE.
             </li>
             <li>
               Through any APIs, developer tools, or decentralized protocols
@@ -79,8 +79,7 @@ export default function PrivacyPage() {
           <p>We use your information to:</p>
           <ul className="list-disc pl-[40px] py-[15px]">
             <li>
-              Provide, operate, and improve our Strikes application and
-              services.
+              Provide, operate, and improve our STRIKE application and services.
             </li>
             <li>
               Process transactions and send notices about your transactions.
