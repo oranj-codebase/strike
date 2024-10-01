@@ -1,19 +1,21 @@
 'use client';
 
 import { Connect2ICProvider } from '@blinks-icp/wallet-adapter-react';
-import { createClient, defaultProviders } from '@blinks-icp/wallet-adapter';
+import {
+  createClient,
+  NFID,
+  InternetIdentity,
+} from '@blinks-icp/wallet-adapter';
 import '@blinks-icp/core/index.css';
 import '@blinks-icp/wallet-adapter-react/index.css';
 import { host, provider } from '../config';
 
 const isServer = typeof window === 'undefined';
+const config = { host, providerUrl: provider };
 
 const providers = isServer
   ? []
-  : defaultProviders({
-      host,
-      providerUrl: provider,
-    });
+  : [new NFID(config), new InternetIdentity(config)];
 
 const client = createClient({
   providers,
