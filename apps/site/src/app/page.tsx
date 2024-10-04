@@ -6,7 +6,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: 'Empowering Actionable Links on ICP',
     description:
-      'Strike enables seamless interaction with canisters via actionable links on the Internet Computer Protocol.',
+      'STRIKE enables seamless interaction with canisters via actionable links on the Internet Computer Protocol.',
   };
 }
 
