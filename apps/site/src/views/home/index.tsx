@@ -47,7 +47,13 @@ export function Home() {
                 </span>
               </a>
               <div className="flex flex-row font-medium items-center text-[14px] leading-[24px] gap-[32px]">
-                <a href="/">Get Chrome Extension</a>
+                <a
+                  href="https://chromewebstore.google.com/detail/strike-by-oranj/iomlailejogiahpdlmckpjdkipgpfccm"
+                  target="_blank"
+                  rel="external"
+                >
+                  Get Chrome Extension
+                </a>
               </div>
             </div>
             <div className="flex flex-col gap-[48px] pb-[48px]">
