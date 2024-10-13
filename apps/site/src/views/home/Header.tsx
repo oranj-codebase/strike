@@ -7,7 +7,6 @@ import { ICP_BLINK_PREFIX } from '@blinks-icp/core';
 import { StrikeLogo, BetBTCIcon, LinkIcon } from '@/assets';
 import '@blinks-icp/core/index.css';
 import '@blinks-icp/wallet-adapter-react/index.css';
-import useWindowSize from '@/hook/useWindowSize';
 
 const StrikeSlider = dynamic(() => import('./StrikeSlider'), { ssr: false });
 
@@ -15,7 +14,6 @@ export default function Header() {
   const router = useRouter();
 
   const [tempUrl, setTempUrl] = useState('');
-  const { width } = useWindowSize();
 
   const handlerUnFurlBtnClick = () => {
     if (!tempUrl) return;
