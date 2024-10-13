@@ -4,8 +4,10 @@ export default {
   safelist: process.env.NODE_ENV === 'development' ? [{ pattern: /./ }] : [],
   theme: {
     screens: {
-      sm: '576px',
-      md: '960px',
+      xss: '375px',
+      xs: '425px',
+      sm: '768px',
+      md: '1024px',
       lg: '1440px',
     },
     extend: {

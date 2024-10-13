@@ -9,7 +9,7 @@ export default function StrikeSlider() {
   const settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 2,
+    slidesToShow: width >= 768 ? 2 : 1,
     slidesToScroll: 1,
     pauseOnFocus: false,
     pauseOnHover: false,
@@ -18,13 +18,13 @@ export default function StrikeSlider() {
     speed: 8000,
     autoplaySpeed: 2000,
     cssEase: 'linear',
-    vertical: width > 1440 ? true : false,
+    vertical: width >= 1024 ? true : false,
     verticalSwiping: true,
   };
   return (
     <>
       <Slider
-        className="slider-container m-0 p-0 lg:w-[288px] w-full"
+        className="slider-container m-0 p-0 md:w-[288px] w-full"
         {...settings}
       >
         <StrikeCard
@@ -39,7 +39,7 @@ export default function StrikeSlider() {
         />
       </Slider>
       <Slider
-        className="slider-container m-0 p-0 lg:w-[288px] w-full"
+        className="slider-container m-0 p-0 md:w-[288px] w-full"
         {...settings}
         rtl={true}
       >
