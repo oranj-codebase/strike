@@ -29,7 +29,7 @@ export const Popup = () => {
             className="hover:underline text-primary"
             onClick={() =>
               chrome.tabs.create({
-                url: 'https://strike.oranj.co.in/',
+                url: 'https://docs.strike.oranj.co',
               })
             }
           >

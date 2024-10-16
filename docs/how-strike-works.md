@@ -1,6 +1,10 @@
-# How Strike Works?
+---
+hidden: true
+---
 
-Strike is designed to simplify interactions with canisters (smart contracts) on the Internet Computer Protocol (ICP). Here's an overview of how Strike works, including the steps for setting it up, creating actions, and sharing them through platforms like Twitter (X).
+# How Strike Works
+
+STRIKE is designed to simplify interactions with canisters (smart contracts) on the Internet Computer Protocol (ICP). Here's an overview of how Strike works, including the steps for setting it up, creating actions, and sharing them through platforms like Twitter (X).
 
 ### **1. Installing the Chrome Extension**
 

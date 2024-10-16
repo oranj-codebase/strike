@@ -19,9 +19,11 @@ const WalletSelect = ({
   subtitle,
   icon,
   isSelected,
+  isDisabled,
   onChange,
 }: WalletProps & {
   isSelected?: boolean;
+  isDisabled?: boolean;
   onChange?: (nextVal: boolean) => void;
 }) => {
   const borderColor = isSelected
@@ -31,7 +33,10 @@ const WalletSelect = ({
     onChange?.(!isSelected);
   };
   return (
-    <label className="cursor-pointer items-center w-full" onClick={onClick}>
+    <label
+      className={`cursor-pointer items-center w-full ${isDisabled ? 'pointer-events-none opacity-50' : ''}`}
+      onClick={onClick}
+    >
       <input type="hidden" checked={isSelected} onChange={onClick} />
       <div
         className={
@@ -48,7 +53,11 @@ const WalletSelect = ({
             </span>
           )}
         </div>
-        <Checkbox checked={isSelected} />
+        {isDisabled ? (
+          <span className="text-[red] text-[14px]">Coming soon</span>
+        ) : (
+          <Checkbox checked={isSelected} />
+        )}
       </div>
     </label>
   );
@@ -117,6 +126,7 @@ export const WalletSelector = ({
       />
       <WalletSelect
         isSelected={isPlug}
+        isDisabled={true}
         title="Plug"
         icon={<PlugLogo />}
         onChange={(isChecked: boolean) =>

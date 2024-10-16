@@ -1,10 +1,10 @@
 # Actions
 
-The **JSON file** used in Strike is a key component for defining actions and interactions with canisters on the Internet Computer. This JSON file contains metadata that defines the structure, appearance, and functionality of the Strike component when a user interacts with a canister via a shared URL (such as through Twitter).&#x20;
+The **JSON file** used in STRIKE is a key component for defining actions and interactions with canisters on the Internet Computer. This JSON file contains metadata that defines the structure, appearance, and functionality of the STRIKE component when a user interacts with a canister via a shared URL (such as through Twitter). &#x20;
 
 Below is a detailed breakdown of the JSON format, followed by an explanation of the image provided.
 
-<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image.png" alt="" width="363"><figcaption><p>Actions</p></figcaption></figure>
 
 ### **JSON File Structure**
 
@@ -43,7 +43,7 @@ json{
 #### **1. Icon**
 
 * **Field**: `"icon"`
-* **Value**: URL of the image that will be displayed in the Strike interface as an icon.
+* **Value**: URL of the image that will be displayed in the STRIKE interface as an icon.
 * **Example**: `"https://ucarecdn.com/e75cce91-c367-4f74-9ffe-2b6d63398ce1/-/preview/880x864/-/quality/smart/-/format/auto/"`
 * **Purpose**: This image will be displayed at the top of the interface. It’s used as a visual representation of the canister or the action.
 
