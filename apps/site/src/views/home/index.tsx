@@ -3,8 +3,11 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
-import { ICP_BLINK_PREFIX } from '@blinks-icp/core';
-import { ConnectButton, ConnectDialog } from '@blinks-icp/wallet-adapter-react';
+import { ICP_BLINK_PREFIX } from '@oranjlabs/strike';
+import {
+  ConnectButton,
+  ConnectDialog,
+} from '@oranjlabs/icp-wallet-adapter-react';
 import {
   StrikeLogo,
   TelegramIcon,
@@ -14,8 +17,8 @@ import {
   LinkIcon,
   CheckBoxIcon,
 } from '@/assets';
-import '@blinks-icp/core/index.css';
-import '@blinks-icp/wallet-adapter-react/index.css';
+import '@oranjlabs/strike/index.css';
+import '@oranjlabs/icp-wallet-adapter-react/index.css';
 
 const StrikeSlider = dynamic(() => import('./StrikeSlider'), { ssr: false });
 
