@@ -45,11 +45,13 @@ export default function Feature() {
         </div>
       </div>
       <div className="lg:px-[88px] px-[20px] lg:py-[112px]">
-        <div className="relative flex flex-col gap-[20px] rounded-[12px] p-[12px]">
-          <img
+        <div className="relative flex flex-col gap-[20px] rounded-[12px] p-[12px] sm:max-w-[336px] max-w-[245px]">
+          <Image
             src={'/hello-strike.png'}
             alt="card"
-            className="rounded-[8px] max-w-[336px]"
+            width={336}
+            height={320}
+            className="rounded-[8px] sm:max-w-[336px] max-w-[245px]"
           />
           <div className="flex flex-col gap-[12px] font-normal">
             <div className="flex flex-row gap-[8px]">
@@ -85,16 +87,16 @@ export default function Feature() {
               </button>
             </div>
           </div>
-          <button className="border-1 rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute  top-[170px] left-[-17px] text-[10px] leading-[15px] font-medium">
+          <button className="border-1 rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute  sm:top-[170px] top-[120px] left-[-17px] text-[10px] leading-[15px] font-medium">
             Powered by ICP
           </button>
-          <button className="border-1 rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute top-[250px] left-[-32px] text-[10px] leading-[15px] font-medium">
+          <button className="border-1 rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute sm:top-[250px] top-[180px] left-[-32px] text-[10px] leading-[15px] font-medium">
             Embedded custom actions
           </button>
-          <button className="border-1 rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute  top-[170px] right-[-41px] text-[10px] leading-[15px] font-medium">
+          <button className="border-1 rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute  sm:top-[170px] top-[120px] right-[-41px] text-[10px] leading-[15px] font-medium">
             Interactive STRIKE Cards
           </button>
-          <button className="border-1 rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute top-[250px] right-[-17px] text-[10px] leading-[15px] font-medium">
+          <button className="border-1 rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute sm:top-[250px] top-[180px] right-[-40px] text-[10px] leading-[15px] font-medium">
             Share directly
           </button>
         </div>
