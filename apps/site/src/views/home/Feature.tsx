@@ -87,16 +87,16 @@ export default function Feature() {
               </button>
             </div>
           </div>
-          <button className="border-1 rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute  sm:top-[170px] top-[120px] left-[-17px] text-[10px] leading-[15px] font-medium">
+          <button className="border-[1px] border-[#E4E4E7] rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute  sm:top-[170px] top-[120px] left-[-17px] text-[10px] leading-[15px] font-medium">
             Powered by ICP
           </button>
-          <button className="border-1 rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute sm:top-[250px] top-[180px] left-[-32px] text-[10px] leading-[15px] font-medium">
+          <button className="border-[1px] border-[#E4E4E7] rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute sm:top-[250px] top-[180px] left-[-32px] text-[10px] leading-[15px] font-medium">
             Embedded custom actions
           </button>
-          <button className="border-1 rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute  sm:top-[170px] top-[120px] right-[-41px] text-[10px] leading-[15px] font-medium">
+          <button className="border-[1px] border-[#E4E4E7] rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute  sm:top-[170px] top-[120px] right-[-41px] text-[10px] leading-[15px] font-medium">
             Interactive STRIKE Cards
           </button>
-          <button className="border-1 rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute sm:top-[250px] top-[180px] right-[-40px] text-[10px] leading-[15px] font-medium">
+          <button className="border-[1px] border-[#E4E4E7] rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute sm:top-[250px] top-[180px] right-[-40px] text-[10px] leading-[15px] font-medium">
             Share directly
           </button>
         </div>
