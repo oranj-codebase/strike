@@ -13,7 +13,7 @@ export function Home() {
         <Step />
         <Feature />
         <Demo />
-        <Footer />
+        <Footer /
       </main>
     </div>
   );
