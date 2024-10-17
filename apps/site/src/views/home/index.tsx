@@ -11,8 +11,8 @@ export function Home() {
       <main className="container max-w-[1440px] mx-auto font-inter ">
         <Header />
         <Step />
-        <Demo />
         <Feature />
+        <Demo />
         <Footer />
       </main>
     </div>

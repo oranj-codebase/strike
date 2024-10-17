@@ -4,6 +4,7 @@ import {
   Syne,
   Space_Grotesk,
   Sora,
+  Archivo,
   Instrument_Sans,
 } from 'next/font/google';
 import ConnectProvider from '@/provider/ConnectProvider';
@@ -34,7 +35,11 @@ const instrumentSans = Instrument_Sans({
   display: 'swap',
   variable: '--font-instrument_sans',
 });
-
+const archivo = Archivo({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-archivo',
+});
 export const metadata: Metadata = {
   title: 'STRIKE | Blinks on ICP',
 };
@@ -47,7 +52,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${syne.variable} ${sora.variable} ${spaceGrotesk.variable} ${instrumentSans.variable} font-inter`}
+      className={`${inter.variable} ${syne.variable} ${sora.variable} ${spaceGrotesk.variable} ${instrumentSans.variable} ${archivo.variable} font-inter`}
     >
       <head>
         <meta charSet="UTF-8" />

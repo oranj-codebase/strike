@@ -1,20 +1,15 @@
-import {
-  CheckBoxIcon,
-  BetBTCIcon,
-  TwitterIcon,
-  StrikeLogo,
-  TelegramIcon,
-} from '@/assets';
+import Image from 'next/image';
+import { CheckBoxIcon, VerifyIcon } from '@/assets';
 
 export default function Feature() {
   return (
-    <section className="flex md:flex-row flex-col gap-[64px] items-center font-normal lg:py-[96px] py-[20px] lg:px-[160px] px-[20px]">
+    <section className="flex md:flex-row flex-col gap-[64px] items-center font-normal lg:py-[96px] py-[48px] lg:px-[160px] px-[20px]">
       <div className="flex flex-col gap-[16px] w-full">
-        <div className="font-medium md:text-left text-center ">
+        <div className="flex flex-col gap-[12px] font-medium sm:text-center text-left ">
           <a className="text-[#3670FF] text-[16px] leading-[24px]" href="/">
             Features
           </a>
-          <p className="font-sans text-[48px] leading-[60px]">
+          <p className="sm:font-sans font-archivo sm:text-[48px] sm:font-medium font-bold text-[32px] leading-[60px]">
             Features of STRIKE
           </p>
         </div>
@@ -26,7 +21,7 @@ export default function Feature() {
             platforms, making decentralized interactions easy and accessible.
           </p>
         </div>
-        <div className="flex flex-col gap-[16px] font-medium">
+        <div className="flex flex-col gap-[16px] font-normal">
           <div className="flex gap-[12px] text-[16px] leading-[24px] items-center">
             <CheckBoxIcon height={21} width={21} />
             <span>Powered by ICP for fast, decentralized performance</span>
@@ -49,49 +44,58 @@ export default function Feature() {
           </div>
         </div>
       </div>
-      <div className="lg:px-[88px] lg:py-[112px] lg:px-[44px] lg:py-[56px] px-[20px] py-[20px]">
-        <div className="flex flex-col gap-[16px] p-[16px] rounded-[6px] bg-[#F4F4F5] w-[288px]">
-          <div className="flex flex-row gap-[1px] items-center leading-[9.82px] text-[9.82px] font-medium">
-            <StrikeLogo width={12} height={12} />
-            <span className="font-syne font-bold">STRIKE</span>
-          </div>
-          <div className="flex flex-col gap-[12px] p-[12px] rounded-[6px] bg-[#FAFAFA] relative">
-            <p className="font-normal text-[8px] leading-[12px]">
-              Who will become the next President of the United States?
-            </p>
-            <div className="relative">
-              <img
-                src="/card0.png"
-                className="rounded-[6px] max-w-[240px] max-h-[232px]"
-                alt="CardImg"
-              />
-              <div className="flex gap-[8px] absolute right-[4px] bottom-[4px]">
-                <div className="bg-[#121212] p-[4px] rounded-[4px]">
-                  <BetBTCIcon width={46} height={12} />
-                </div>
-                <div className="bg-[#121212] p-[5px] rounded-[4px]">
-                  <TelegramIcon width={10} height={10} />
-                </div>
-                <div className="flex  bg-[#121212] p-[4px] rounded-[4px]">
-                  <TwitterIcon width={10} height={10} />
-                </div>
-              </div>
+      <div className="lg:px-[88px] px-[20px] lg:py-[112px]">
+        <div className="relative flex flex-col gap-[20px] rounded-[12px] p-[12px]">
+          <img
+            src={'/hello-strike.png'}
+            alt="card"
+            className="rounded-[8px] max-w-[336px]"
+          />
+          <div className="flex flex-col gap-[12px] font-normal">
+            <div className="flex flex-row gap-[8px]">
+              <p className="text-[#3F3F45] text-[10px] leading-[15px]">
+                ea6rm-nyaaa-aaaak-ak2wa-cai
+              </p>
+              <VerifyIcon width={12} height={12} />
             </div>
-            <button className="border-1 rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute  top-[54px] left-[-44px] text-[10px] leading-[15px] font-medium">
-              Powered by ICP
-            </button>
-            <button className="border-1 rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute top-[181px] left-[-61px] text-[10px] leading-[15px] font-medium">
-              Embedded custom actions
-            </button>
-            <button className="border-1 rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute  top-[54px] right-[-81px] text-[10px] leading-[15px] font-medium">
-              Interactive STRIKE Cards
-            </button>
-            <button className="border-1 rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute top-[181px] right-[-52px] text-[10px] leading-[15px] font-medium">
-              Share directly
-            </button>
+            <div className="flex flex-col">
+              <p className="text-[#121212] text-[16px] leading-[24px] font-semibold">
+                Simple ownership
+              </p>
+              <p className="text-[#27272A] text-[12px] leading-[18px]">
+                demo canister integration with STRIKE
+              </p>
+            </div>
+            <div className="flex flew-row gap-[10px] text-[12px] leading-[18px] font-semibold text-white w-full">
+              <button className="bg-[#121212] px-[16px] py-[8px] rounded-[8px] w-1/2">
+                Hello
+              </button>
+              <button className="bg-[#121212] px-[16px] py-[8px] rounded-[8px] w-1/2">
+                Get Owner
+              </button>
+            </div>
+            <div className="flex flex-row gap-[8px] justify-between">
+              <input
+                className="rounded-[8px] border-[1px] border-[#D4D4D8] p-[8px] text-[12px] leading-[18px] outline-none w-full"
+                placeholder="Enter a new owner"
+                disabled
+              />
+              <button className="rounded-[8px] px-[16px] py-[8px] border-[1px] border-[#2B5ACC] bg-[#3670FF] text-white font-semibold text-[12px] leading-[18px] whitespace-nowrap">
+                Set Owner
+              </button>
+            </div>
           </div>
-          <button className="rounded-[6px] text-[8px] leading-[12px] bg-[#3670FF] text-white px-[9px] py-[6px] font-semibold">
-            Click Here to Bet
+          <button className="border-1 rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute  top-[170px] left-[-17px] text-[10px] leading-[15px] font-medium">
+            Powered by ICP
+          </button>
+          <button className="border-1 rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute top-[250px] left-[-32px] text-[10px] leading-[15px] font-medium">
+            Embedded custom actions
+          </button>
+          <button className="border-1 rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute  top-[170px] right-[-41px] text-[10px] leading-[15px] font-medium">
+            Interactive STRIKE Cards
+          </button>
+          <button className="border-1 rounded-[32px] py-[4px] px-[8px] bg-[#FAFAFA] text-[#3670FF] absolute top-[250px] right-[-17px] text-[10px] leading-[15px] font-medium">
+            Share directly
           </button>
         </div>
       </div>

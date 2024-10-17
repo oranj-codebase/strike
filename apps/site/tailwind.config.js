@@ -17,6 +17,7 @@ export default {
         sora: ['var(--font-sora)'],
         grotesk: ['var(--font-space_grotesk)'],
         sans: ['var(--font-instrument_sans)'],
+        archivo: ['var(--font-archivo)'],
       },
       colors: {
         accent: {

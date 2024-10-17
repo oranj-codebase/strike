@@ -1,12 +1,12 @@
 export default function Step() {
   return (
-    <section className="flex flex-col gap-[96px] text-center font-medium lg:py-[96px] py-[20px] lg:px-[160px] px-[20px]">
+    <section className="flex flex-col md:gap-[96px] gap-[48px] font-medium lg:py-[96px] py-[48px] lg:px-[160px] px-[20px]">
       <div className="flex flex-col gap-[16px]">
-        <div>
+        <div className="flex flex-col gap-[12px] sm:text-center text-left">
           <a className="text-[#3670FF] text-[16px] leading-[24px]" href="/">
             Steps
           </a>
-          <p className="text-[48px] leading-[60px] font-sans">
+          <p className="sm:text-[48px] text-[32px] sm:font-medium font-bold sm:leading-[60px] leading-[40px] sm:font-sans font-archivo">
             How STRIKE works
           </p>
         </div>
@@ -17,15 +17,15 @@ export default function Step() {
           </p>
         </div>
       </div>
-      <div className="flex md:flex-row flex-col gap-[32px] font-normal">
-        <div className="rounded-[12px] p-[32px] flex flex-col gap-[32px] bg-[#FFFFFF] md:w-1/3 w-full ">
+      <div className="flex md:flex-row flex-col sm:gap-[32px] gap-[16px] font-normal">
+        <div className="rounded-[12px] sm:p-[32px] p-[16px] flex flex-col gap-[32px] bg-[#FFFFFF] md:w-1/3 w-full ">
           <div className="flex justify-center items-center w-[64px] h-[64px] rounded-[12px] border-2] bg-[#F4F4F5]">
-            <span className="text-[30px] leading[38px] font-sans font-medium">
+            <span className="sm:text-[30px] text-[24px] leading[38px] font-sans font-medium">
               1
             </span>
           </div>
-          <div className="flex flex-col justfiy-between text-left">
-            <p className="text-[24px] leading-[32px]  font-medium font-sans">
+          <div className="flex flex-col gap-[12px] justfiy-between text-left">
+            <p className="sm:text-[24px] text-[20px] leading-[32px] sm:font-medium font-bold sm:font-sans font-archivo">
               Install the Chrome Extension
             </p>
             <p className="text-[16px] leading-[24px] font-normal text-justify">
@@ -35,14 +35,14 @@ export default function Step() {
             </p>
           </div>
         </div>
-        <div className="rounded-[12px] p-[32px] flex flex-col gap-[32px] bg-[#FFFFFF] md:w-1/3 w-full">
+        <div className="rounded-[12px] sm:p-[32px] p-[16px] flex flex-col gap-[32px] bg-[#FFFFFF] md:w-1/3 w-full ">
           <div className="flex justify-center items-center w-[64px] h-[64px] rounded-[12px] border-2] bg-[#F4F4F5]">
-            <span className="text-[30px] leading[38px] font-sans font-medium">
+            <span className="sm:text-[30px] text-[24px] leading[38px] font-sans font-medium">
               2
             </span>
           </div>
-          <div className="flex flex-col justfiy-between text-left">
-            <p className="text-[24px] leading-[32px] font-sans font-medium">
+          <div className="flex flex-col gap-[12px] justfiy-between text-left">
+            <p className="sm:text-[24px] text-[20px] leading-[32px] sm:font-medium font-bold sm:font-sans font-archivo">
               Create and Host the Actions File
             </p>
             <p className="text-[16px] leading-[24px] font-normal text-justify">
@@ -51,14 +51,14 @@ export default function Step() {
             </p>
           </div>
         </div>
-        <div className="rounded-[12px] p-[32px] flex flex-col gap-[32px] bg-[#FFFFFF] md:w-1/3 w-full">
+        <div className="rounded-[12px] sm:p-[32px] p-[16px] flex flex-col gap-[32px] bg-[#FFFFFF] md:w-1/3 w-full ">
           <div className="flex justify-center items-center w-[64px] h-[64px] rounded-[12px] border-2] bg-[#F4F4F5]">
-            <span className="text-[30px] leading[38px] font-sans font-medium">
+            <span className="sm:text-[30px] text-[24px] leading[38px] font-sans font-medium">
               3
             </span>
           </div>
-          <div className="flex flex-col justfiy-between text-left">
-            <p className="text-[24px] leading-[32px] font-sans font-medium">
+          <div className="flex flex-col gap-[12px] justfiy-between text-left">
+            <p className="sm:text-[24px] text-[20px] leading-[32px] sm:font-medium font-bold sm:font-sans font-archivo">
               Share and Engage with STRIKE Cards
             </p>
             <p className="text-[16px] leading-[24px] font-normal text-justify">

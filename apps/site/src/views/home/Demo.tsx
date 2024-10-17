@@ -2,13 +2,13 @@ import { Vector } from '@/assets';
 
 export default function Demo() {
   return (
-    <section className="flex flex-col gap-[96px] lg:py-[96px] py-[20px] lg:px-[160px] px-[20px]">
+    <section className="flex flex-col md:gap-[96px] gap-[48px] lg:py-[96px] py-[48px] lg:px-[160px] px-[20px]">
       <div className="flex flex-col gap-[16px]">
-        <div className="flex flex-col gap-[12px] text-center font-medium">
+        <div className="flex flex-col gap-[12px] sm:text-center text-left font-medium">
           <a className="text-[#3670FF] text-[16px] leading-[24px]" href="/">
             Demo
           </a>
-          <p className="font-sans text-[48px] leading-[60px]">
+          <p className="sm:font-sans font-archivo sm:text-[48px] text-[32px] sm:font-medium font-bold sm:leading-[60px] leading-[40px]">
             See STRIKE in action
           </p>
         </div>
