@@ -2,12 +2,14 @@ import Slider, { LazyLoadTypes } from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import StrikeCard from './StrikeCard';
+import useWindowSize from '@/hook/useWindowSize';
 
 export default function StrikeSlider() {
+  const { width } = useWindowSize();
   const settings = {
     dots: false,
     infinite: true,
-    slidesToShow: 2,
+    slidesToShow: width >= 768 ? 2 : 1,
     slidesToScroll: 1,
     pauseOnFocus: false,
     pauseOnHover: false,
@@ -16,12 +18,15 @@ export default function StrikeSlider() {
     speed: 8000,
     autoplaySpeed: 2000,
     cssEase: 'linear',
-    vertical: true,
+    vertical: width >= 1024 ? true : false,
     verticalSwiping: true,
   };
   return (
     <>
-      <Slider className="slider-container m-0 p-0 w-[288px]" {...settings}>
+      <Slider
+        className="slider-container m-0 p-0 md:w-[288px] w-full"
+        {...settings}
+      >
         <StrikeCard
           key={0}
           image="card1.png"
@@ -34,7 +39,7 @@ export default function StrikeSlider() {
         />
       </Slider>
       <Slider
-        className="slider-container m-0 p-0 w-[288px]"
+        className="slider-container m-0 p-0 md:w-[288px] w-full"
         {...settings}
         rtl={true}
       >

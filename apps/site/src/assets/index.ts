@@ -5,3 +5,7 @@ export * from './TwitterIcon';
 export * from './Vector';
 export * from './LinkIcon';
 export * from './CheckBox';
+export * from './MenuIcon';
+export * from './CrossIcon';
+export * from './ExtensionIcon';
+export * from './VerifyIcon';
