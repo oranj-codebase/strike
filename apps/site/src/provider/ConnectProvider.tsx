@@ -1,7 +1,7 @@
 'use client';
 
 import { Connect2ICProvider } from '@oranjlabs/icp-wallet-adapter-react';
-import { createClient, defaultProviders } from '@oranjlabs/icp-wallet-adapter';
+import { createClient, InternetIdentity } from '@oranjlabs/icp-wallet-adapter';
 import '@oranjlabs/strike/index.css';
 import '@oranjlabs/icp-wallet-adapter-react/index.css';
 
